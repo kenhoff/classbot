@@ -13,3 +13,7 @@ controller.spawn({
 controller.hears('hello', ['direct_message'], function (bot, message) {
 	bot.reply(message, "hullo")
 })
+
+controller.hears('bye', ['direct_message'], function (bot, message) {
+	bot.reply(message, "goodbye")
+})
