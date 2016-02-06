@@ -1,0 +1,23 @@
+{
+  "name": "grader",
+  "version": "1.0.0",
+  "description": "The grader Slack bot for Front End Web Dev at Spark Boulder",
+  "main": "grader.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kenhoff/grader.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kenhoff/grader/issues"
+  },
+  "homepage": "https://github.com/kenhoff/grader#readme",
+  "dependencies": {
+    "botkit": "0.0.5",
+    "dotenv": "^2.0.0"
+  }
+}
