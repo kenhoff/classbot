@@ -14,6 +14,11 @@ controller.hears('hello', ['direct_message'], function (bot, message) {
 	bot.reply(message, "hullo")
 })
 
+controller.hears('assignment', ['direct_message'], function (bot, message) {
+	bot.reply(message, "assignment submitted")
+})
+
+
 controller.hears('bye', ['direct_message'], function (bot, message) {
 	bot.reply(message, "goodbye")
 })
