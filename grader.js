@@ -22,12 +22,12 @@ controller.spawn({
 	}
 })
 
-controller.hears(['submit ([0-9]+)(.*)'], ['direct_message'], function(bot, message) {
+controller.hears(['submit ([0-9]+)\s*(.*)'], ['direct_message'], function(bot, message) {
 	assignmentNumber = message.match[1]
 	if (assignmentNumber > assignments.length - 1) {
 		bot.reply(message, "Sorry! That assignment isn't available yet. See what assignments are available with `assignments`.")
 	} else {
-		url = message.match[2].replace(/[<>]/g, "")
+		url = message.match[2].replace(/[<>]/g, "").trim()
 		bot.startPrivateConversation(message, function(err, convo) {
 			if (err) {
 				convo.say("Whoa, ran into an issue there. Try again?")
