@@ -2,13 +2,9 @@ if (process.env.NODE_ENV != "production") {
 	require('dotenv').config();
 }
 
-var Botkit = require('botkit');
+assignments = [require('./assignments/assignment0.js')]
 
-assignments = [require('./assignments/assignment0.js'), require('./assignments/assignment1.js')]
-
-console.log(assignments);
-
-controller = Botkit.slackbot({
+controller = require('botkit').slackbot({
 	debug: false,
 	storage: require('botkit-storage-redis')({
 		url: process.env.REDIS_URL
@@ -26,29 +22,108 @@ controller.spawn({
 	}
 })
 
-controller.hears(['submit assignment([0-9]+) (.*)'], ['direct_message'], function(bot, message) {
+controller.hears(['submit ([0-9]+)(.*)'], ['direct_message'], function(bot, message) {
 	assignmentNumber = message.match[1]
-	url = message.match[2].replace(/[<>]/g, "")
-	bot.startPrivateConversation(message, function(err, convo) {
-		if (err) {
-			convo.say("Whoa, ran into an issue there. Try again?")
-		} else {
-			convo.say("Submitting " + url + " for Assignment #" + assignmentNumber + "...")
-			assignments[parseInt(assignmentNumber)](url, function(err, scoreObject) {
-				if (err) {
-					convo.say("Error: " + err)
-				} else {
-					convo.say("Done processing. Your score is: " + scoreObject.score * 100 + "%")
-					for (test of scoreObject.tests) {
-						convo.say((test.passed ? ":white_check_mark:" : ":x:") + " " + test.description)
-					}
+	if (assignmentNumber > assignments.length - 1) {
+		bot.reply(message, "Sorry! That assignment isn't available yet. See what assignments are available with `assignments`.")
+	} else {
+		url = message.match[2].replace(/[<>]/g, "")
+		bot.startPrivateConversation(message, function(err, convo) {
+			if (err) {
+				convo.say("Whoa, ran into an issue there. Try again?")
+			} else {
+				convo.say("Submitting " + url + " for Assignment #" + assignmentNumber + "...")
+				assignments[parseInt(assignmentNumber)](url, function(err, scoreObject) {
+					if (err) {
+						convo.say("Error: " + err)
+					} else {
+						convo.say("Done processing. Your score is: " + scoreObject.score * 100 + "%")
+						for (test of scoreObject.tests) {
+							convo.say((test.passed ? ":white_check_mark:" : ":x:") + " " + test.description)
+						}
 
+						// write score
+						controller.storage.users.get(message.user, function(err, user_data) {
+							if (!("id" in user_data)) {
+								user_data.id = message.user
+							}
+							if (!("assignments" in user_data)) {
+								user_data.assignments = []
+							}
+							user_data.assignments[parseInt(assignmentNumber)] = scoreObject
+							controller.storage.users.save(user_data, function(err) {
+								if (err) {
+									console.log(err);
+									convo.say("Uh oh, we had a problem saving that grade. Try again?")
+								} else {
+									convo.say("Assignment grade saved!")
+								}
+							})
+						});
+					}
+				})
+			}
+		})
+	}
+})
+
+controller.hears(["assignments"], ["direct_message"], function(bot, message) {
+	availableAssignments = []
+	for (var i = 0; i < assignments.length; i++) {
+		availableAssignments.push("`" + i + "`")
+	}
+	bot.reply(message, "Available assignments are: " + availableAssignments.join(" "))
+})
+
+controller.hears(["dump grades"], ["direct_message"], function(bot, message) {
+	if (message.user == process.env.ADMIN_USER) {
+		controller.storage.users.all(function(err, all_user_data) {
+			bot.reply(message, "```" + JSON.stringify(all_user_data) + "```")
+		});
+	} else {
+		bot.reply(message, "Insufficient permissions.")
+	}
+})
+
+
+controller.hears(["grades", "grade"], ["direct_message"], function(bot, message) {
+	bot.startPrivateConversation(message, function(err, convo) {
+		convo.say("Looking up grades...")
+		controller.storage.users.get(message.user, function(err, user_data) {
+			if (!("assignments" in user_data) || (user_data.assignments.length == 0)) {
+				convo.say("You haven't submitted any assignments yet.")
+			} else {
+				userScore = 0
+				totalScore = 0
+				for (var i = 0; i < user_data.assignments.length; i++) {
+					if (user_data.assignments[i]) {
+						convo.say("Assignment " + i + ": " + (user_data.assignments[i].score * 100) + "%")
+						userScore += user_data.assignments[i].score * 100
+					} else {
+						convo.say("Assignment " + i + ": 0%")
+						userScore += 0
+					}
+					totalScore += 100
 				}
-			})
-		}
+				convo.say("Total: " + ((userScore / totalScore) * 100) + "% _(" + userScore + "/" + totalScore + ")_")
+			}
+		});
 	})
 })
 
+controller.hears(["help"], ["direct_message"], function(bot, message) {
+	listOfCommands = [
+		"submit <<assignmentNumber>> <<URL>>",
+		"grades",
+		"help"
+	]
+	for (var i = 0; i < listOfCommands.length; i++) {
+		listOfCommands[i] = "`" + listOfCommands[i] + "`"
+	}
+	bot.reply(message, listOfCommands.join("\n"))
+})
+
+
 controller.hears(['.*'], ['direct_message'], function(bot, message) {
-	bot.reply(message, "I'm sorry, I didn't quite understand that. To submit an assignment, try something like:\n`submit assignment0 http://sparkboulder.com`")
+	bot.reply(message, "I'm sorry, I didn't quite understand that. For commands, type `help`")
 })

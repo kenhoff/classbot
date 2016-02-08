@@ -1,3 +1,5 @@
+calculateScore = require("../calculateScore.js")
+
 module.exports = function(url, cb) {
 	if (!url) {
 		return cb("URL not found")
@@ -20,14 +22,4 @@ module.exports = function(url, cb) {
 		tests: tests
 	}
 	return cb(null, scoreObject)
-}
-
-calculateScore = function(tests) {
-	passedTestCount = 0
-	for (test of tests) {
-		if (test.passed == true) {
-			passedTestCount += 1
-		}
-	}
-	return passedTestCount / tests.length
 }
