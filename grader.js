@@ -114,6 +114,7 @@ controller.hears(["grades", "grade"], ["direct_message"], function(bot, message)
 controller.hears(["help"], ["direct_message"], function(bot, message) {
 	listOfCommands = [
 		"submit <<assignmentNumber>> <<URL>>",
+		"assignments",
 		"grades",
 		"help"
 	]
