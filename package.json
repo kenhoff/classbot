@@ -19,6 +19,7 @@
   "dependencies": {
     "botkit": "0.0.5",
     "botkit-storage-redis": "^1.0.0",
-    "dotenv": "^2.0.0"
+    "dotenv": "^2.0.0",
+    "request": "^2.69.0"
   }
 }

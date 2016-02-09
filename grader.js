@@ -2,7 +2,7 @@ if (process.env.NODE_ENV != "production") {
 	require('dotenv').config();
 }
 
-assignments = [require('./assignments/assignment0.js')]
+assignments = [require('./assignments/assignment0.js'), require('./assignments/assignment1.js')]
 
 controller = require('botkit').slackbot({
 	debug: false,
