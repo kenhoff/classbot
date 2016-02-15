@@ -2,7 +2,7 @@ if (process.env.NODE_ENV != "production") {
 	require('dotenv').config();
 }
 
-assignments = [require('./assignments/assignment0.js'), require('./assignments/assignment1.js')]
+assignments = [require('./assignments/assignment0.js'), require('./assignments/assignment1.js'), require('./assignments/assignment2.js')]
 
 controller = require('botkit').slackbot({
 	debug: false,
@@ -37,7 +37,7 @@ controller.hears(['submit ([0-9]+)\s*(.*)'], ['direct_message'], function(bot, m
 					if (err) {
 						convo.say("Error: " + err)
 					} else {
-						convo.say("Done processing. Your score is: " + scoreObject.score * 100 + "%")
+						convo.say("Done processing. Your score is: " + (scoreObject.score * 100).toFixed(2) + "%")
 						for (test of scoreObject.tests) {
 							convo.say((test.passed ? ":white_check_mark:" : ":x:") + " " + test.description)
 						}
@@ -97,7 +97,7 @@ controller.hears(["grades", "grade"], ["direct_message"], function(bot, message)
 				totalScore = 0
 				for (var i = 0; i < user_data.assignments.length; i++) {
 					if (user_data.assignments[i]) {
-						convo.say("Assignment " + i + ": " + (user_data.assignments[i].score * 100) + "%")
+						convo.say("Assignment " + i + ": " + (user_data.assignments[i].score * 100).toFixed(2) + "%")
 						userScore += user_data.assignments[i].score * 100
 					} else {
 						convo.say("Assignment " + i + ": 0%")
@@ -105,7 +105,7 @@ controller.hears(["grades", "grade"], ["direct_message"], function(bot, message)
 					}
 					totalScore += 100
 				}
-				convo.say("Total: " + ((userScore / totalScore) * 100) + "% _(" + userScore + "/" + totalScore + ")_")
+				convo.say("Total: " + ((userScore / totalScore) * 100).toFixed(2) + "% _(" + userScore.toFixed(2) + "/" + totalScore.toFixed(2) + ")_")
 			}
 		});
 	})
