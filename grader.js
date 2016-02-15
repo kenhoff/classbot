@@ -28,40 +28,36 @@ controller.hears(['submit ([0-9]+)\s*(.*)'], ['direct_message'], function(bot, m
 		bot.reply(message, "Sorry! That assignment isn't available yet. See what assignments are available with `assignments`.")
 	} else {
 		url = message.match[2].replace(/[<>]/g, "").trim()
-		bot.startPrivateConversation(message, function(err, convo) {
+		bot.reply(message, "Submitting " + url + " for Assignment #" + assignmentNumber + "...")
+		assignments[parseInt(assignmentNumber)](url, function(err, scoreObject) {
 			if (err) {
-				convo.say("Whoa, ran into an issue there. Try again?")
+				bot.reply(message, "Error: " + err)
 			} else {
-				convo.say("Submitting " + url + " for Assignment #" + assignmentNumber + "...")
-				assignments[parseInt(assignmentNumber)](url, function(err, scoreObject) {
-					if (err) {
-						convo.say("Error: " + err)
-					} else {
-						convo.say("Done processing. Your score is: " + (scoreObject.score * 100).toFixed(2) + "%")
-						for (test of scoreObject.tests) {
-							convo.say((test.passed ? ":white_check_mark:" : ":x:") + " " + test.description)
-						}
-
-						// write score
-						controller.storage.users.get(message.user, function(err, user_data) {
-							if (!("id" in user_data)) {
-								user_data.id = message.user
-							}
-							if (!("assignments" in user_data)) {
-								user_data.assignments = []
-							}
-							user_data.assignments[parseInt(assignmentNumber)] = scoreObject
-							controller.storage.users.save(user_data, function(err) {
-								if (err) {
-									console.log(err);
-									convo.say("Uh oh, we had a problem saving that grade. Try again?")
-								} else {
-									convo.say("Assignment grade saved!")
-								}
-							})
-						});
+				bot.startPrivateConversation(message, function(err, convo) {
+					convo.say("Done processing. Your score is: " + (scoreObject.score * 100).toFixed(2) + "%")
+					for (test of scoreObject.tests) {
+						convo.say((test.passed ? ":white_check_mark:" : ":x:") + " " + test.description)
 					}
+					// write score
+					controller.storage.users.get(message.user, function(err, user_data) {
+						if (!("id" in user_data)) {
+							user_data.id = message.user
+						}
+						if (!("assignments" in user_data)) {
+							user_data.assignments = []
+						}
+						user_data.assignments[parseInt(assignmentNumber)] = scoreObject
+						controller.storage.users.save(user_data, function(err) {
+							if (err) {
+								convo.say("Uh oh, we had a problem saving that grade. Try again?")
+								convo.say(err)
+							} else {
+								convo.say("Assignment grade saved!")
+							}
+						})
+					});
 				})
+
 			}
 		})
 	}
