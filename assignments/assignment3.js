@@ -47,43 +47,46 @@ module.exports = function(url, cb) {
 	}]
 	for (style of stylesRequired) {
 		tests.push({
-			style:
-			description: 'site has an element that points to a *valid page* on a *different domain* (e.g. `href` starts with `http` or `https`)',
+			style: style,
+			description: 'site has an element that has a `' + (
+				Array.isArray(style) ? style.join("` or `") : style
+			) + '` assigned',
 			assert: function(url, cb) {
 				request(url, function(error, response, body) {
-					if (!error && response.statusCode == 200) {
-						jsdom.env(body, function(err, window) {
-							elements = window.document.getElementsByTagName('*')
-							if (elements.length >= 1) {
-								async.detectSeries(elements, function(element, asyncCB) {
-									if (element.getAttribute('href').startsWith('http') || element.getAttribute('href').startsWith('https')) {
-										request(element.getAttribute('href'), function(err, response, body) {
-											if (parseInt(response.statusCode) >= 400) {
-												asyncCB(false)
-											} else {
-												asyncCB(true)
-											}
-										})
-									} else {
-										asyncCB(false)
-									}
-								}, function(element) {
-									if (element) {
-										this.passed = true
-									} else {
-										this.passed = false
-									}
-									cb(null, this)
-								}.bind(this))
-							} else {
-								this.passed = false
-								cb(null, this)
-							}
-						}.bind(this))
-					} else {
-						this.passed = false
-						cb(null, this)
-					}
+					cb(null, this)
+						// if (!error && response.statusCode == 200) {
+						// 	jsdom.env(body, function(err, window) {
+						// 		elements = window.document.getElementsByTagName('*')
+						// 		if (elements.length >= 1) {
+						// 			async.detectSeries(elements, function(element, asyncCB) {
+						// 				if (element.getAttribute('href').startsWith('http') || element.getAttribute('href').startsWith('https')) {
+						// 					request(element.getAttribute('href'), function(err, response, body) {
+						// 						if (parseInt(response.statusCode) >= 400) {
+						// 							asyncCB(false)
+						// 						} else {
+						// 							asyncCB(true)
+						// 						}
+						// 					})
+						// 				} else {
+						// 					asyncCB(false)
+						// 				}
+						// 			}, function(element) {
+						// 				if (element) {
+						// 					this.passed = true
+						// 				} else {
+						// 					this.passed = false
+						// 				}
+						// 				cb(null, this)
+						// 			}.bind(this))
+						// 		} else {
+						// 			this.passed = false
+						// 			cb(null, this)
+						// 		}
+						// 	}.bind(this))
+						// } else {
+						// 	this.passed = false
+						// 	cb(null, this)
+						// }
 				}.bind(this))
 			}
 		})
