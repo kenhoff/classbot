@@ -86,24 +86,20 @@ controller.hears(["grades", "grade"], ["direct_message"], function(bot, message)
 	bot.startPrivateConversation(message, function(err, convo) {
 		convo.say("Looking up grades...")
 		controller.storage.users.get(message.user, function(err, user_data) {
-			if (!("assignments" in user_data) || (user_data.assignments.length == 0)) {
-				convo.say("You haven't submitted any assignments yet.")
-			} else {
-				userScore = 0
-				totalScore = 0
-				for (var i = 0; i < user_data.assignments.length; i++) {
-					if (user_data.assignments[i]) {
-						convo.say("Assignment " + i + ": " + (user_data.assignments[i].score * 100).toFixed(2) + "%")
-						userScore += user_data.assignments[i].score * 100
-					} else {
-						convo.say("Assignment " + i + ": 0%")
-						userScore += 0
-					}
-					totalScore += 100
+			userScore = 0
+			totalScore = 0
+			for (var i = 0; i < assignments.length; i++) {
+				if (("assignments" in user_data) && (user_data.assignments[i])) {
+					convo.say("Assignment " + i + ": " + (user_data.assignments[i].score * 100).toFixed(2) + "%")
+					userScore += user_data.assignments[i].score * 100
+				} else {
+					convo.say("Assignment " + i + ": 0%")
+					userScore += 0
 				}
-				convo.say("Total: " + ((userScore / totalScore) * 100).toFixed(2) + "% _(" + userScore.toFixed(2) + "/" + totalScore.toFixed(2) + ")_")
+				totalScore += 100
 			}
-		});
+			convo.say("Total: " + ((userScore / totalScore) * 100).toFixed(2) + "% _(" + userScore.toFixed(2) + "/" + totalScore.toFixed(2) + ")_")
+		})
 	})
 })
 
