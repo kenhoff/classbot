@@ -162,7 +162,8 @@ module.exports = function(url, cb) {
 									// lop off the last item, replace with href
 									pathArray = url.split('/');
 									pathArray.splice(-1, 1)
-									request(pathArray.join('/') + "/" + aTag.getAttribute('href'), function(errrr, response, body) {
+									request(pathArray.join('/') + "/" + aTag.getAttribute('href'), function(err, response, body) {
+										console.log(err, response.statusCode);
 										if (parseInt(response.statusCode) >= 400) {
 											asyncCB(false)
 										} else {
