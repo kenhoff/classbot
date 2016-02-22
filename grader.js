@@ -6,8 +6,8 @@ assignments = [require('./assignments/assignment0.js'), require('./assignments/a
 
 controller = require('botkit').slackbot({
 	debug: false,
-	storage: require('botkit-storage-redis')({
-		url: process.env.REDIS_URL
+	storage: require('botkit-storage-firebase')({
+		firebase_uri: process.env.FIREBASE_URL
 	})
 })
 
@@ -40,6 +40,11 @@ controller.hears(['submit ([0-9]+)\s*(.*)'], ['direct_message'], function(bot, m
 					}
 					// write score
 					controller.storage.users.get(message.user, function(err, user_data) {
+						if (!user_data) {
+							user_data = {
+								id: message.user
+							}
+						}
 						if (!("id" in user_data)) {
 							user_data.id = message.user
 						}
