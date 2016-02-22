@@ -214,7 +214,9 @@ module.exports = function(url, cb) {
 	async.map(tests, function(test, cb) {
 		test.assert(url, cb)
 	}, function(err, results) {
-		console.log("done with tests");
+		for (test of tests) {
+			delete test.assert
+		}
 		scoreObject = {
 			score: calculateScore(tests),
 			tests: tests

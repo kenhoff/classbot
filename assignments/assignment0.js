@@ -16,6 +16,7 @@ module.exports = function(url, cb) {
 	}]
 	for (test of tests) {
 		test.assert(url)
+		delete test.assert
 	}
 	scoreObject = {
 		score: calculateScore(tests),
