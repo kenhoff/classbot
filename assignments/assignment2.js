@@ -78,7 +78,7 @@ module.exports = function(url, cb) {
 							async.detectSeries(aTags, function(aTag, asyncCB) {
 								if (aTag.getAttribute('href').startsWith('http') || aTag.getAttribute('href').startsWith('https')) {
 									request(aTag.getAttribute('href'), function(err, response, body) {
-										if (parseInt(response.statusCode) >= 400) {
+										if (err || (parseInt(response.statusCode) >= 400)) {
 											asyncCB(false)
 										} else {
 											asyncCB(true)
@@ -121,7 +121,7 @@ module.exports = function(url, cb) {
 									host = pathArray[2];
 									origin = protocol + '//' + host;
 									request(origin + aTag.getAttribute('href'), function(errrr, response, body) {
-										if (parseInt(response.statusCode) >= 400) {
+										if (err || (parseInt(response.statusCode) >= 400)) {
 											asyncCB(false)
 										} else {
 											asyncCB(true)
@@ -163,7 +163,7 @@ module.exports = function(url, cb) {
 									pathArray = url.split('/');
 									pathArray.splice(-1, 1)
 									request(pathArray.join('/') + "/" + aTag.getAttribute('href'), function(err, response, body) {
-										if (parseInt(response.statusCode) >= 400) {
+										if (err || (parseInt(response.statusCode) >= 400)) {
 											asyncCB(false)
 										} else {
 											asyncCB(true)
@@ -202,7 +202,7 @@ module.exports = function(url, cb) {
 							async.detectSeries(imgTags, function(imgTag, asyncCB) {
 								if (imgTag.getAttribute('src').startsWith('http') || imgTag.getAttribute('src').startsWith('https')) {
 									request(imgTag.getAttribute('src'), function(err, response, body) {
-										if (parseInt(response.statusCode) >= 400) {
+										if (err || (parseInt(response.statusCode) >= 400)) {
 											asyncCB(false)
 										} else {
 											asyncCB(true)
@@ -245,7 +245,7 @@ module.exports = function(url, cb) {
 									host = pathArray[2];
 									origin = protocol + '//' + host;
 									request(origin + imgTag.getAttribute('src'), function(errrr, response, body) {
-										if (parseInt(response.statusCode) >= 400) {
+										if (err || (parseInt(response.statusCode) >= 400)) {
 											asyncCB(false)
 										} else {
 											asyncCB(true)
@@ -286,8 +286,8 @@ module.exports = function(url, cb) {
 									// lop off the last item, replace with src
 									pathArray = url.split('/');
 									pathArray.splice(-1, 1)
-									request(pathArray.join('/') + "/" + imgTag.getAttribute('src'), function(errrr, response, body) {
-										if (parseInt(response.statusCode) >= 400) {
+									request(pathArray.join('/') + "/" + imgTag.getAttribute('src'), function(err, response, body) {
+										if (err || (parseInt(response.statusCode) >= 400)) {
 											asyncCB(false)
 										} else {
 											asyncCB(true)
