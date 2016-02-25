@@ -143,8 +143,10 @@ module.exports = function(url, cb) {
 								FetchExternalResources: ["link", "css"]
 							},
 							done: function(err, window) {
-								elements = window.document.getElementsByTagName('div')
+								elements = window.document.getElementsByTagName('*')
 								for (element of elements) {
+									console.log(element.tagName);
+									console.log(window.getComputedStyle(element).display);
 									if (window.getComputedStyle(element).display == this.displayType) {
 										this.passed = true
 										return cb(null, this)
