@@ -76,15 +76,15 @@ controller.hears(["assignments"], ["direct_message"], function(bot, message) {
 	bot.reply(message, "Available assignments are: " + availableAssignments.join(" "))
 })
 
-controller.hears(["dump grades"], ["direct_message"], function(bot, message) {
-	if (message.user == process.env.ADMIN_USER) {
-		controller.storage.users.all(function(err, all_user_data) {
-			bot.reply(message, "```" + JSON.stringify(all_user_data) + "```")
-		});
-	} else {
-		bot.reply(message, "Insufficient permissions.")
-	}
-})
+// controller.hears(["dump grades"], ["direct_message"], function(bot, message) {
+// 	if (message.user == process.env.ADMIN_USER) {
+// 		controller.storage.users.all(function(err, all_user_data) {
+// 			bot.reply(message, "```" + JSON.stringify(all_user_data) + "```")
+// 		})
+// 	} else {
+// 		bot.reply(message, "Insufficient permissions.")
+// 	}
+// })
 
 
 controller.hears(["grades", "grade"], ["direct_message"], function(bot, message) {
