@@ -161,7 +161,7 @@ module.exports = function(url, cb) {
 							done: function(err, window) {
 								elements = window.document.getElementsByTagName('div')
 								for (element of elements) {
-									if (element.getAttribute("class").includes(this.bootstrapClass)) {
+									if (element.getAttribute("class") && element.getAttribute("class").includes(this.bootstrapClass)) {
 										this.passed = true
 										return cb(null, this)
 									}
