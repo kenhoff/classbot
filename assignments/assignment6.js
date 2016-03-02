@@ -172,7 +172,7 @@ module.exports = function(url, cb) {
 								FetchExternalResources: ["link", "css"]
 							},
 							done: function(err, window) {
-								elements = window.document.getElementsByTagName('div')
+								elements = window.document.getElementsByTagName('*')
 								for (element of elements) {
 									if (element.getAttribute("class") && element.getAttribute("class").includes(this.bootstrapClass)) {
 										this.passed = true
