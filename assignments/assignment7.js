@@ -52,7 +52,6 @@ bootswatchThemesString = function() {
 	}
 	return stringArray.join(", ")
 }()
-console.log(bootswatchThemesString);
 
 module.exports = function(url, cb) {
 	if (!url) {
