@@ -2,9 +2,9 @@ if (process.env.NODE_ENV != "production") {
 	require('dotenv').config();
 }
 
-assignments = [require('./assignments/assignment0.js'), require('./assignments/assignment1.js'), require('./assignments/assignment2.js'), require('./assignments/assignment3.js'), require('./assignments/assignment4.js'), require('./assignments/assignment5.js'), require('./assignments/assignment6.js'), require('./assignments/assignment7.js'), require('./assignments/assignment8.js')]
+var assignments = [require('./assignments/assignment0.js'), require('./assignments/assignment1.js'), require('./assignments/assignment2.js'), require('./assignments/assignment3.js'), require('./assignments/assignment4.js'), require('./assignments/assignment5.js'), require('./assignments/assignment6.js'), require('./assignments/assignment7.js'), require('./assignments/assignment8.js'), require('./assignments/assignment9.js'), require('./assignments/assignment10.js')]
 
-controller = require('botkit').slackbot({
+var controller = require('botkit').slackbot({
 	debug: false,
 	storage: require('botkit-storage-firebase')({
 		firebase_uri: process.env.FIREBASE_URL
@@ -23,11 +23,11 @@ controller.spawn({
 })
 
 controller.hears(['submit ([0-9]+)\s*(.*)'], ['direct_message'], function(bot, message) {
-	assignmentNumber = message.match[1]
+	var assignmentNumber = message.match[1]
 	if (assignmentNumber > assignments.length - 1) {
 		bot.reply(message, "Sorry! That assignment isn't available yet. See what assignments are available with `assignments`.")
 	} else {
-		url = message.match[2].replace(/[<>]/g, "").trim()
+		var url = message.match[2].replace(/[<>]/g, "").trim()
 		bot.reply(message, "Submitting " + url + " for Assignment #" + assignmentNumber + "...")
 		assignments[parseInt(assignmentNumber)](url, function(err, scoreObject) {
 			if (err) {
@@ -35,7 +35,7 @@ controller.hears(['submit ([0-9]+)\s*(.*)'], ['direct_message'], function(bot, m
 			} else {
 				bot.startPrivateConversation(message, function(err, convo) {
 					convo.say("Done processing. Your score is: " + (scoreObject.score * 100).toFixed(2) + "%")
-					for (test of scoreObject.tests) {
+					for (var test of scoreObject.tests) {
 						convo.say((test.passed ? ":white_check_mark:" : ":x:") + " " + test.description)
 					}
 					// write score
@@ -69,7 +69,7 @@ controller.hears(['submit ([0-9]+)\s*(.*)'], ['direct_message'], function(bot, m
 })
 
 controller.hears(["assignments"], ["direct_message"], function(bot, message) {
-	availableAssignments = []
+	var availableAssignments = []
 	for (var i = 0; i < assignments.length; i++) {
 		availableAssignments.push("`" + i + "`")
 	}
@@ -91,8 +91,8 @@ controller.hears(["grades", "grade"], ["direct_message"], function(bot, message)
 	bot.startPrivateConversation(message, function(err, convo) {
 		convo.say("Looking up grades...")
 		controller.storage.users.get(message.user, function(err, user_data) {
-			userScore = 0
-			totalScore = 0
+			var userScore = 0
+			var totalScore = 0
 			for (var i = 0; i < assignments.length; i++) {
 				if (("assignments" in user_data) && (user_data.assignments[i])) {
 					convo.say("Assignment " + i + ": " + (user_data.assignments[i].score * 100).toFixed(2) + "%")
@@ -109,7 +109,7 @@ controller.hears(["grades", "grade"], ["direct_message"], function(bot, message)
 })
 
 controller.hears(["help"], ["direct_message"], function(bot, message) {
-	listOfCommands = [
+	var listOfCommands = [
 		"submit <<assignmentNumber>> <<URL>>",
 		"assignments",
 		"grades",
