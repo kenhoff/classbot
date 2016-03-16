@@ -1,8 +1,9 @@
 module.exports = {
-	"extends": ["standard", "eslint:recommended"],
-	"plugins": [
-		"standard"
-	],
+	env: {
+		node: true,
+		es6: true
+	},
+	"extends": ["eslint:recommended"],
 	rules: {
 		"no-console": 0
 	}
