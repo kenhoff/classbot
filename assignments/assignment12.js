@@ -103,6 +103,7 @@ module.exports = function(url, cb) {
 			request(url, function(error, response, body) {
 				if (!error && response.statusCode == 200) {
 					var virtualConsole = jsdom.createVirtualConsole();
+					this.passed = false;
 					virtualConsole.on("log", function(message) {
 						if (Array.isArray(message)) {
 							var arrayToCheck = [1, "two", "3"];
@@ -114,8 +115,6 @@ module.exports = function(url, cb) {
 										break;
 									}
 								}
-							} else {
-								this.passed = false;
 							}
 						}
 					}.bind(this));
