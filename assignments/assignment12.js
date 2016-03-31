@@ -105,14 +105,17 @@ module.exports = function(url, cb) {
 					var virtualConsole = jsdom.createVirtualConsole();
 					this.passed = false;
 					virtualConsole.on("log", function(message) {
-						if (Array.isArray(message)) {
-							var arrayToCheck = [1, "two", "3"];
-							if (message.length == arrayToCheck.length) {
-								this.passed = true;
-								for (var i = 0; i < message.length; i++) {
-									if (message[i] !== arrayToCheck[i]) {
-										this.passed = false;
-										break;
+						if (!this.passed) {
+							if (Array.isArray(message)) {
+								console.log(message);
+								var arrayToCheck = [1, "two", "3"];
+								if (message.length == arrayToCheck.length) {
+									this.passed = true;
+									for (var i = 0; i < message.length; i++) {
+										if (message[i] !== arrayToCheck[i]) {
+											this.passed = false;
+											break;
+										}
 									}
 								}
 							}
