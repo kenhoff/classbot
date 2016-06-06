@@ -112,8 +112,6 @@ controller.hears(["help"], ["direct_message"], function(bot, message) {
 		"sessions",
 		"session <<sessionNumber>>",
 		"readings <<sessionNumber>>",
-		"slides <<sessionNumber>>",
-		"assignment <<assignmentNumber>>",
 		"submit <<assignmentNumber>> <<URL>>",
 		"grades",
 		"help"
@@ -129,7 +127,7 @@ controller.hears(["session ([0-9]+)"], ["direct_message"], function(bot, message
 	var text = ["*Session " + session.id + "* - " + moment(session.date).format("dddd, MMMM Do") + " \n",
 		"*Readings to be completed prior to " + session.id + ":* " + "type `readings " + session.id + "` to view",
 		"*Slides:* <" + session.lecture_slides + "|Session " + session.id + " slides>",
-		"*Assignment:* " + "type `assignment " + session.id + "` to view"
+		"*Assignment:* " + "to submit assignment " + session.id + ", type `submit " + session.id + " https://your-url-here.example.com`"
 	];
 
 
@@ -145,9 +143,15 @@ controller.hears(["session ([0-9]+)"], ["direct_message"], function(bot, message
 controller.hears(["sessions"], ["direct_message"], function(bot, message) {
 	var listOfSessions = [];
 	for (var session of sessions) {
-		listOfSessions.push("Session " + session.id + ": " + moment(session.date).format("dddd, MMMM Do"));
+		listOfSessions.push("*Session " + session.id + ":* " + moment(session.date).format("dddd, MMMM Do"));
 	}
-	bot.reply(message, "*Sessions*\n\n" + listOfSessions.join("\n") + "\n\nTo get more info about a session, type `session <<sessionNumber>>`, like `session 0` or `session 19`");
+	bot.reply(message, {
+		attachments: [{
+			fallback: "Session information",
+			text: "*Sessions*\n\n" + listOfSessions.join("\n") + "\n\nTo get more info about a session, type `session <<sessionNumber>>`, like `session 0` or `session 19`",
+			mrkdwn_in: ["text"]
+		}]
+	});
 });
 
 controller.hears(["readings ([0-9]+)"], ["direct_message"], function(bot, message) {
