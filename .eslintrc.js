@@ -6,6 +6,7 @@ module.exports = {
 	"extends": ["eslint:recommended"],
 	rules: {
 		"no-console": 0,
-		"semi": [2, "always"]
+		"semi": [2, "always"],
+		"quote-props": ["error", "consistent-as-needed"]
 	}
 };

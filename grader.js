@@ -1,16 +1,18 @@
 var express = require('express');
 var app = express();
+var moment = require('moment');
 
 var port = process.env.PORT || 3000;
-app.listen(port, function() {
-	console.log("listening on", port);
-});
+app.listen(port); // binding to a port just for heroku
 
 if (process.env.NODE_ENV != "production") {
 	require('dotenv').config();
 }
 
 var assignments = [require('./assignments/assignment0.js'), require('./assignments/assignment1.js'), require('./assignments/assignment2.js'), require('./assignments/assignment3.js'), require('./assignments/assignment4.js'), require('./assignments/assignment5.js'), require('./assignments/assignment6.js'), require('./assignments/assignment7.js'), require('./assignments/assignment8.js'), require('./assignments/assignment9.js'), require('./assignments/assignment10.js'), require('./assignments/assignment11.js'), require('./assignments/assignment12.js'), require('./assignments/assignment13.js'), require('./assignments/assignment14.js'), require('./assignments/assignment15.js'), require('./assignments/assignment16.js'), require('./assignments/assignment17.js'), require('./assignments/assignment18.js'), require('./assignments/assignment19.js')];
+
+var readings = require("./readings");
+var sessions = require("./sessions");
 
 var controller = require('botkit').slackbot({
 	debug: false,
@@ -84,17 +86,6 @@ controller.hears(["assignments"], ["direct_message"], function(bot, message) {
 	bot.reply(message, "Available assignments are: " + availableAssignments.join(" "));
 });
 
-// controller.hears(["dump grades"], ["direct_message"], function(bot, message) {
-// 	if (message.user == process.env.ADMIN_USER) {
-// 		controller.storage.users.all(function(err, all_user_data) {
-// 			bot.reply(message, "```" + JSON.stringify(all_user_data) + "```")
-// 		})
-// 	} else {
-// 		bot.reply(message, "Insufficient permissions.")
-// 	}
-// })
-
-
 controller.hears(["grades", "grade"], ["direct_message"], function(bot, message) {
 	bot.startPrivateConversation(message, function(err, convo) {
 		convo.say("Looking up grades...");
@@ -118,8 +109,12 @@ controller.hears(["grades", "grade"], ["direct_message"], function(bot, message)
 
 controller.hears(["help"], ["direct_message"], function(bot, message) {
 	var listOfCommands = [
+		"sessions",
+		"session <<sessionNumber>>",
+		"readings <<sessionNumber>>",
+		"slides <<sessionNumber>>",
+		"assignment <<assignmentNumber>>",
 		"submit <<assignmentNumber>> <<URL>>",
-		"assignments",
 		"grades",
 		"help"
 	];
@@ -129,6 +124,46 @@ controller.hears(["help"], ["direct_message"], function(bot, message) {
 	bot.reply(message, listOfCommands.join("\n"));
 });
 
+controller.hears(["session ([0-9]+)"], ["direct_message"], function(bot, message) {
+	var session = sessions[message.match[1]];
+	var text = ["*Session " + session.id + "* - " + moment(session.date).format("dddd, MMMM Do") + " \n",
+		"*Readings to be completed prior to " + session.id + ":* " + "type `readings " + session.id + "` to view",
+		"*Slides:* <" + session.lecture_slides + "|Session " + session.id + " slides>",
+		"*Assignment:* " + "type `assignment " + session.id + "` to view"
+	];
+
+
+	bot.reply(message, {
+		attachments: [{
+			fallback: "Information for Session " + session.id,
+			text: text.join("\n"),
+			mrkdwn_in: ["text"]
+		}]
+	});
+});
+
+controller.hears(["sessions"], ["direct_message"], function(bot, message) {
+	var listOfSessions = [];
+	for (var session of sessions) {
+		listOfSessions.push("Session " + session.id + ": " + moment(session.date).format("dddd, MMMM Do"));
+	}
+	bot.reply(message, "*Sessions*\n\n" + listOfSessions.join("\n") + "\n\nTo get more info about a session, type `session <<sessionNumber>>`, like `session 0` or `session 19`");
+});
+
+controller.hears(["readings ([0-9]+)"], ["direct_message"], function(bot, message) {
+	var readingNumber = parseInt(message.match[1]);
+	if (readingNumber >= readings.length) {
+		bot.reply(message, "Whoops! Looks like the readings for session " + readingNumber + " aren't available yet.");
+	} else {
+		bot.reply(message, {
+			attachments: [{
+				fallback: "Reading material for session " + readingNumber,
+				text: readings[readingNumber],
+				mrkdwn_in: ["text"]
+			}]
+		});
+	}
+});
 
 controller.hears(['.*'], ['direct_message'], function(bot, message) {
 	bot.reply(message, "I'm sorry, I didn't quite understand that. For commands, type `help`");
