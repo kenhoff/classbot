@@ -124,7 +124,7 @@ controller.hears(["help"], ["direct_message"], function(bot, message) {
 
 controller.hears(["session ([0-9]+)"], ["direct_message"], function(bot, message) {
 	var session = sessions[message.match[1]];
-	var text = ["*Session " + session.id + "* - " + moment(session.date).format("dddd, MMMM Do") + " \n",
+	var text = ["*Session " + session.id + "* - " + moment(session.date, "YYYY.MM.DD").format("dddd, MMMM Do") + " \n",
 		"*Readings to be completed prior to " + session.id + ":* " + "type `readings " + session.id + "` to view",
 		"*Slides:* <" + session.lecture_slides + "|Session " + session.id + " slides>",
 		"*Assignment:* " + "to submit assignment " + session.id + ", type `submit " + session.id + " https://your-url-here.example.com`"
@@ -143,7 +143,7 @@ controller.hears(["session ([0-9]+)"], ["direct_message"], function(bot, message
 controller.hears(["sessions"], ["direct_message"], function(bot, message) {
 	var listOfSessions = [];
 	for (var session of sessions) {
-		listOfSessions.push("*Session " + session.id + ":* " + moment(session.date).format("dddd, MMMM Do"));
+		listOfSessions.push("*Session " + session.id + ":* " + moment(session.date, "YYYY MM DD").format("dddd, MMMM Do"));
 	}
 	bot.reply(message, {
 		attachments: [{
