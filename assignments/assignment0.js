@@ -1,26 +1,26 @@
-calculateScore = require("../calculateScore.js")
+var calculateScore = require("../calculateScore.js");
 
 module.exports = function(url, cb) {
 	if (!url) {
-		return cb("URL not found")
+		return cb("URL not found");
 	}
-	tests = [{
+	var tests = [{
 		description: "submitted url was `http://sparkboulder.com`", // the thing pumped back into slack
 		assert: function(url) {
 			if (url == "http://sparkboulder.com") {
-				this.passed = true
+				this.passed = true;
 			} else {
-				this.passed = false
+				this.passed = false;
 			}
 		}
-	}]
-	for (test of tests) {
-		test.assert(url)
-		delete test.assert
+	}];
+	for (var test of tests) {
+		test.assert(url);
+		delete test.assert;
 	}
-	scoreObject = {
+	var scoreObject = {
 		score: calculateScore(tests),
 		tests: tests
-	}
-	return cb(null, scoreObject)
-}
+	};
+	return cb(null, scoreObject);
+};
