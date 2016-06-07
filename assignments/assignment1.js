@@ -1,3 +1,4 @@
+var calculateScore = require("../calculateScore.js");
 var request = require('request');
 var async = require('async');
 
