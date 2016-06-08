@@ -48,9 +48,9 @@ Today, we want to get something out in the world (and viewable publicly on the i
 
 *Part 1*
 
-1. Go to <https://www.firebase.com/|Firebase> and sign in.
-2. Create a New App with the Name and URL of your choosing. Anything is fine, but it'll be the URL of your finished site.
-3. Click "Set Up Hosting" on your new app.
+1. Go to <https://firebase.google.com/|Firebase> and sign in. It should take you to <https://console.firebase.google.com/>.
+2. Click "Create New Project" and put in a project name of your choosing. Anything is fine, but it'll included in the URL of your finished site.
+3. Inside the dashboard for your new app, click "Hosting" on the left-hand navigation.
 4. There's a lot of scary directions on this page! We'll work through them in the sections below.
 
 
@@ -60,6 +60,7 @@ Today, we want to get something out in the world (and viewable publicly on the i
 2. Next, we need to use the *command line* to install our Firebase tools. I hope you watched the previous videos!
 	- For Macs, open your *Terminal* app (Applications > Utilities > Terminal), and type `sudo npm install -g firebase-tools`. It will ask you to authenticate.
 	- For Windows, open *Git Bash*, and type `npm install -g firebase-tools`. It might ask you to authenticate.
+	- If it gives you a prompt that says `Password:` and the text cursor isn't actually doing anything, that's okay! Type your password as normal and hit enter - it deliberately doesn't show you any characters of your password, even obfuscated ones.
 
 
 *Part 3*
@@ -68,8 +69,10 @@ Today, we want to get something out in the world (and viewable publicly on the i
 2. With the command line, navigate into your new directory using the `cd` command. You can also use `pwd` to make sure you got it right.
 3. Run `firebase login`. You'll only have to do this once! It should open a browser window, and ask you to authenticate.
 4. Run `firebase init`.
-	- For "What Firebase do you want to use?", select the brand new app that you created in the first section.
-	- For "What directory should be the public root?", I'd recommend typing `.`. You can use `public` if you want, but then all your files will have to be in a `public` directory inside your project directory.
+	- For "What Firebase CLI features do you want to setup for this folder?", use the up/down arrow keys to move, and `space` to select. Make sure that `Database` is *unselected* (circle is empty) and `Hosting` is *selected* (circle is full). Once you're done selecting, hit `enter`.
+	- For "What do you want to use as your public directory?", I'd recommend typing `.` and hitting `enter`. (You can use `public` if you want, but then all your files will have to be in a `public` directory inside your project directory.)
+	- For "Configure as a single-page app (rewrite all urls to /index.html)?" enter `N` and hit `enter`.
+	- For "What Firebase project do you want to associate as default?", use the up/down arrow keys select the brand new app that you created in the first section, and hit enter.
 
 
 *Part 4*
@@ -77,6 +80,6 @@ Today, we want to get something out in the world (and viewable publicly on the i
 1. In your project directory, create a `index.html` file with some HTML in it, or edit another file.
 2. On the command line, make sure that you're in your project directory.
 3. On the command line, type `firebase deploy`.
-4. On the command line, type `firebase open`.
-5. Go to step 7 and repeat as necessary.
+4. On the command line, type `firebase open hosting:site`.
+5. Go to part 4, step 1 and repeat as necessary.
 6. Witness the vastness of your cosmic power!
