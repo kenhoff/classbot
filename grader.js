@@ -124,20 +124,23 @@ controller.hears(["help"], ["direct_message"], function(bot, message) {
 
 controller.hears(["session ([0-9]+)"], ["direct_message"], function(bot, message) {
 	var session = sessions[message.match[1]];
-	var text = ["*Session " + session.id + "* - " + moment(session.date, "YYYY.MM.DD").format("dddd, MMMM Do") + " \n",
-		"*Readings to be completed prior to " + session.id + ":* " + "type `readings " + session.id + "` to view",
-		"*Slides:* <" + session.lecture_slides + "|Session " + session.id + " slides>",
-		"*Assignment:* " + "to submit assignment " + session.id + ", type `submit " + session.id + " https://your-url-here.example.com`"
-	];
+	if (session < sessions.length) {
+		var text = ["*Session " + session.id + "* - " + moment(session.date, "YYYY.MM.DD").format("dddd, MMMM Do") + " \n",
+			"*Readings to be completed prior to " + session.id + ":* " + "type `readings " + session.id + "` to view",
+			"*Slides:* <" + session.lecture_slides + "|Session " + session.id + " slides>",
+			"*Assignment:* " + "to submit assignment " + session.id + ", type `submit " + session.id + " https://your-url-here.example.com`"
+		];
 
-
-	bot.reply(message, {
-		attachments: [{
-			fallback: "Information for Session " + session.id,
-			text: text.join("\n"),
-			mrkdwn_in: ["text"]
-		}]
-	});
+		bot.reply(message, {
+			attachments: [{
+				fallback: "Information for Session " + session.id,
+				text: text.join("\n"),
+				mrkdwn_in: ["text"]
+			}]
+		});
+	} else {
+		bot.reply(message, "Sorry! I don't have information about that session yet.");
+	}
 });
 
 controller.hears(["sessions"], ["direct_message"], function(bot, message) {
