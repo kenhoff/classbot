@@ -5,7 +5,8 @@
   "main": "grader.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node grader.js"
+    "start": "node grader.js",
+    "dev": "nodemon grader.js --ext js,mrkdwn"
   },
   "repository": {
     "type": "git",
