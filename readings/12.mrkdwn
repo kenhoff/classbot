@@ -1,0 +1,18 @@
+<https://teamtreehouse.com/library/javascript-basics/storing-and-tracking-information-with-variables/introducing-variables|Variables> *(recommended)*
+  - I really like the "box" analogy that he uses in this video.
+
+<https://teamtreehouse.com/library/javascript-basics/storing-and-tracking-information-with-variables/strings-and-numbers|Strings and Numbers> *(recommended)*
+  - I talked a bit about "escaping" characters last session - just use the `\` character.
+
+<https://teamtreehouse.com/library/javascript-basics/storing-and-tracking-information-with-variables/combining-strings-2|Combining Strings> *(recommended)*
+  - What's that, you say? Quote of the Day app? No way, we're going to make Lorem Ipsum Generators! Sounds like concatenating strings is gonna come in handy!
+
+<https://teamtreehouse.com/library/javascript-loops-arrays-and-objects/simplify-repetitive-tasks-with-loops/for-loops|For Loops> *(recommended)*
+  - He mentions that there's two other types of loops, `do` and `while` loops. Check these out if you'd like - I'd recommend using `for`.
+
+<https://teamtreehouse.com/library/javascript-basics/creating-reusable-code-with-functions/introducing-functions|Functions> *(recommended)*
+
+<https://teamtreehouse.com/library/javascript-basics/working-with-numbers/numbers|Numbers> _(optional)_
+
+<https://teamtreehouse.com/library/javascript-basics/making-decisions-with-conditional-statements/introducing-conditional-statements|Conditional Statements> _(optional)_
+  - We won't _really_ use too many conditional statements - but the `for` loop does inherently use them.
