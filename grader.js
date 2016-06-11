@@ -123,8 +123,8 @@ controller.hears(["help"], ["direct_message"], function(bot, message) {
 });
 
 controller.hears(["session ([0-9]+)"], ["direct_message"], function(bot, message) {
-	var session = sessions[message.match[1]];
-	if (session < sessions.length) {
+	if (parseInt(message.match[1]) < sessions.length) {
+		var session = sessions[parseInt(message.match[1])];
 		var text = ["*Session " + session.id + "* - " + moment(session.date, "YYYY.MM.DD").format("dddd, MMMM Do") + " \n",
 			"*Readings to be completed prior to " + session.id + ":* " + "type `readings " + session.id + "` to view",
 			"*Slides:* <" + session.lecture_slides + "|Session " + session.id + " slides>",
