@@ -1,0 +1,9 @@
+<https://teamtreehouse.com/library/jquery-basics/introduction-to-jquery/what-is-jquery|What is jQuery?> *(recommended)*
+	- Right around 3:20, he says _"Often, this can be overwhelming, and I tend to ignore most of the text and look at the code examples at the bottom."_ Words to live by!
+
+<https://teamtreehouse.com/library/jquery-basics/introduction-to-jquery/-ways-to-include-jquery-in-a-project|Ways to include jQuery in a project> *(recommended)*
+	- The first part in this is the most important - getting jQuery from a CDN is the easiest and most efficient.
+	- The second part is a bit trickier - learning when put your `$(document).ready(function(){...})` is a little difficult. As a general rule of thumb, always put your `<link>` to `myScript.js` as the very *last* element of your `<body>` tag.
+
+<https://teamtreehouse.com/library/jquery-basics/creating-a-spoiler-revealer/preparation|Creating a Spoiler Revealer> _(optional)_
+	- If possible, I'd like you to go through the entire treehouse project of creating a spoiler revealer. It's a good demonstration of the whole experience of using jQuery.
