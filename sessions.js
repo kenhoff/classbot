@@ -1,81 +1,101 @@
 module.exports = [{
+	title: "Introduction, first HTML page",
 	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/0",
 	date: "2016.06.06",
 	id: 0
 }, {
+	title: "Command Line, Hosting your site on Firebase",
 	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/1",
 	date: "2016.06.08",
 	id: 1
 }, {
+	title: "HTML tags & attributes, the `style` attribute",
 	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/2",
 	date: "2016.06.13",
 	id: 2
 }, {
+	title: "CSS styles and selectors, external stylesheets",
 	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/3",
 	date: "2016.06.15",
 	id: 3,
 	notes: "Note: No sessions June 20th or 22nd!"
 }, {
+	title: "Portfolio Site Show-and-Tell, Lab session",
 	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/4",
 	date: "2016.06.27",
 	id: 4
 }, {
+	title: "CSS layouts, the `display` style, flexbox & media queries",
 	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/5",
 	date: "2016.06.29",
 	id: 5
 }, {
+	title: "Bootstrap & CSS frameworks",
 	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/6",
 	date: "2016.07.04",
 	id: 6
 }, {
+	title: "Bootstrap Themes & Customization",
 	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/7",
 	date: "2016.07.06",
 	id: 7
 }, {
+	title: "Working with Clients, Customers, Designers and Product managers",
 	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/8",
 	date: "2016.07.11",
 	id: 8
 }, {
+	title: "Client Project Show-and-Tell, Lab session",
 	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/9",
 	date: "2016.07.13",
 	id: 9
 }, {
+	title: "Javascript 101: the `<script>` tag",
 	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/10",
 	date: "2016.07.18",
 	id: 10
 }, {
+	title: "Javascript 102: variables, loops, and functions",
 	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/11",
 	date: "2016.07.20",
 	id: 11
 }, {
+	title: "Javascript 103: objects and arrays",
 	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/12",
 	date: "2016.07.25",
 	id: 12
 }, {
+	title: "Javascript 104: working with the browser API",
 	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/13",
 	date: "2016.07.27",
 	id: 13
 }, {
+	title: "Hackertyper project Show-and-Tell, Lab session",
 	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/14",
 	date: "2016.08.01",
 	id: 14
 }, {
+	title: "jQuery 201: including jQuery on your site",
 	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/15",
 	date: "2016.08.03",
 	id: 15
 }, {
+	title: "jQuery 202: `$`, using jQuery selectors and methods",
 	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/16",
 	date: "2016.08.08",
 	id: 16
 }, {
+	title: "jQuery 203: HTTP requests with jQuery",
 	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/17",
 	date: "2016.08.10",
 	id: 17
 }, {
+	title: "Advanced Topics: Back End Web Development with Node.js",
 	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/18",
 	date: "2016.08.15",
 	id: 18
 }, {
+	title: "Quote-of-the-Day project Show-and-Tell, wrap-up/party :tada:",
 	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/19",
 	date: "2016.08.17",
 	id: 19

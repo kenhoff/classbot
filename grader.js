@@ -125,8 +125,9 @@ controller.hears(["help"], ["direct_message"], function(bot, message) {
 controller.hears(["session ([0-9]+)"], ["direct_message"], function(bot, message) {
 	if (parseInt(message.match[1]) < sessions.length) {
 		var session = sessions[parseInt(message.match[1])];
-		var text = ["*Session " + session.id + "* - " + moment(session.date, "YYYY.MM.DD").format("dddd, MMMM Do") + " \n",
-			"*Readings to be completed prior to " + session.id + ":* " + "type `readings " + session.id + "` to view",
+		var text = ["*Session " + session.id + "* - " + session.title,
+			moment(session.date, "YYYY.MM.DD").format("dddd, MMMM Do") + "\n",
+			"*Readings to be completed prior to session" + session.id + ":* " + "type `readings " + session.id + "` to view",
 			"*Slides:* <" + session.lecture_slides + "|Session " + session.id + " slides>",
 			"*Assignment:* " + "to submit assignment " + session.id + ", type `submit " + session.id + " https://your-url-here.example.com`"
 		];
@@ -146,17 +147,15 @@ controller.hears(["session ([0-9]+)"], ["direct_message"], function(bot, message
 controller.hears(["sessions"], ["direct_message"], function(bot, message) {
 	var listOfSessions = [];
 	for (var session of sessions) {
-		if ("notes" in session) {
-			var notes = " - " + session.notes;
-		} else {
-			notes = "";
-		}
-		listOfSessions.push("*Session " + session.id + ":* " + moment(session.date, "YYYY MM DD").format("dddd, MMMM Do") + notes);
+		listOfSessions.push(buildSessionText(session));
 	}
+	var sessionsText = "*Sessions*\n\n";
+	sessionsText += listOfSessions.join("\n");
+	sessionsText += "\n\nTo get more info about a session, type `session <<sessionNumber>>`, like `session 0` or `session 19`";
 	bot.reply(message, {
 		attachments: [{
-			fallback: "Session information",
-			text: "*Sessions*\n\n" + listOfSessions.join("\n") + "\n\nTo get more info about a session, type `session <<sessionNumber>>`, like `session 0` or `session 19`",
+			fallback: "",
+			text: sessionsText,
 			mrkdwn_in: ["text"]
 		}]
 	});
@@ -180,3 +179,16 @@ controller.hears(["readings ([0-9]+)"], ["direct_message"], function(bot, messag
 controller.hears(['.*'], ['direct_message'], function(bot, message) {
 	bot.reply(message, "I'm sorry, I didn't quite understand that. For commands, type `help`");
 });
+
+var buildSessionText = function(session) {
+	var sessionText = "*Session " + session.id + "*";
+	var date = moment(session.date, "YYYY MM DD").format("ddd, MMM Do");
+	var title = session.title;
+	var slides = "<" + session.lecture_slides + "|Slides>";
+	var text = [sessionText, date, slides, title].join("\t");
+
+	if ("notes" in session) {
+		text += "\t" + session.notes;
+	}
+	return text;
+};
