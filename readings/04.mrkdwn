@@ -1,0 +1,10 @@
+<https://teamtreehouse.com/library/css-basics/basic-selectors/intro-to-selectors|Intro to Selectors> *(recommended)*
+	- *Selectors* are what we use to pick elements on the page that we'd like to style.
+<https://teamtreehouse.com/library/css-basics/basic-selectors/type-selectors|Type Selectors> *(recommended)*
+	- These selectors select certain *types of elements* to style on the page.
+<https://teamtreehouse.com/library/css-basics/basic-selectors/id-selectors) *(recommended)* and [Class Selectors](https://teamtreehouse.com/library/css-basics/basic-selectors/class-selectors|ID Selectors> *(recommended)*
+	- ID and Class selectors style all elements that have a given `id` or `class`.
+<https://teamtreehouse.com/library/css-basics/basic-selectors/reusing-classes|Reusing Classes> _(optional)_
+	- You can add multiple `class`es to a tag to make things a bit easier. (But you should probably avoid adding multiple `id`s to a tag!)
+<https://teamtreehouse.com/library/css-basics/basic-selectors/descendant-selectors-2|Descendant Selectors> _(optional)_
+	- We can use Descendant Selectors to style certain `<p>`s inside a certain `.class`, or `<li>`s inside a `#navbar`.
