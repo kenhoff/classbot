@@ -1,0 +1,17 @@
+*More CSS Box Model*
+	<https://teamtreehouse.com/library/css-basics/the-box-model/padding|Padding> *(recommended)*
+	<https://teamtreehouse.com/library/css-basics/the-box-model/borders|Borders> *(recommended)*
+	<https://teamtreehouse.com/library/css-basics/the-box-model/margins|Margins> *(recommended)*
+		- We've seen these before, when we were looking at the CSS Box Model. One thing to note here is the use of shorthand styles; e.g. using `margin` instead of `margin-top`, `margin-right`, `margin-bottom` and `margin-left`.
+
+*Background Images and Position*
+	<https://teamtreehouse.com/library/css-basics/basic-layout/backgrounds-color-and-images|Color and Images> *(recommended)*
+	<https://teamtreehouse.com/library/css-basics/basic-layout/backgrounds-size-and-position|Size and Position> *(recommended)*
+		- There's a bunch of times when we want text or divs over an image - `background-image` fixes that for us.
+
+<https://teamtreehouse.com/library/css-basics/designing-with-the-latest-features/border-radius-2|Border Radius> _(optional)_
+	- `border-radius` is handy when we've got to round the corners of a `div`, but looks better when we've got a `background-image` assigned.
+
+<https://teamtreehouse.com/library/css-basics/fundamental-concepts/the-cascade-importance|The Cascade>
+<https://teamtreehouse.com/library/css-basics/fundamental-concepts/the-cascade-specificity-and-source-order|Specificity and Source Order> _(optional)_
+	- We touched on specificity last time - these videos don't go into detail, but does give some examples that might help.
