@@ -12,7 +12,7 @@ if (process.env.NODE_ENV != "production") {
 var assignments = [require('./assignments/assignment0.js'), require('./assignments/assignment1.js'), require('./assignments/assignment2.js'), require('./assignments/assignment3.js'), require('./assignments/assignment4.js'), require('./assignments/assignment5.js'), require('./assignments/assignment6.js'), require('./assignments/assignment7.js'), require('./assignments/assignment8.js'), require('./assignments/assignment9.js'), require('./assignments/assignment10.js'), require('./assignments/assignment11.js'), require('./assignments/assignment12.js'), require('./assignments/assignment13.js'), require('./assignments/assignment14.js'), require('./assignments/assignment15.js'), require('./assignments/assignment16.js'), require('./assignments/assignment17.js'), require('./assignments/assignment18.js'), require('./assignments/assignment19.js')];
 
 var readings = require("./readings");
-var sessions = require("./sessions");
+var sessions = require("./sessions.js");
 
 var controller = require('botkit').slackbot({
 	debug: false,

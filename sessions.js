@@ -1,0 +1,82 @@
+module.exports = [{
+	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/0",
+	date: "2016.06.06",
+	id: 0
+}, {
+	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/1",
+	date: "2016.06.08",
+	id: 1
+}, {
+	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/2",
+	date: "2016.06.13",
+	id: 2
+}, {
+	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/3",
+	date: "2016.06.15",
+	id: 3,
+	notes: "Note: No sessions June 20th or 22nd!"
+}, {
+	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/4",
+	date: "2016.06.27",
+	id: 4
+}, {
+	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/5",
+	date: "2016.06.29",
+	id: 5
+}, {
+	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/6",
+	date: "2016.07.04",
+	id: 6
+}, {
+	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/7",
+	date: "2016.07.06",
+	id: 7
+}, {
+	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/8",
+	date: "2016.07.11",
+	id: 8
+}, {
+	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/9",
+	date: "2016.07.13",
+	id: 9
+}, {
+	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/10",
+	date: "2016.07.18",
+	id: 10
+}, {
+	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/11",
+	date: "2016.07.20",
+	id: 11
+}, {
+	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/12",
+	date: "2016.07.25",
+	id: 12
+}, {
+	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/13",
+	date: "2016.07.27",
+	id: 13
+}, {
+	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/14",
+	date: "2016.08.01",
+	id: 14
+}, {
+	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/15",
+	date: "2016.08.03",
+	id: 15
+}, {
+	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/16",
+	date: "2016.08.08",
+	id: 16
+}, {
+	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/17",
+	date: "2016.08.10",
+	id: 17
+}, {
+	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/18",
+	date: "2016.08.15",
+	id: 18
+}, {
+	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/19",
+	date: "2016.08.17",
+	id: 19
+}];
