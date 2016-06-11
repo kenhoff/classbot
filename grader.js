@@ -146,7 +146,12 @@ controller.hears(["session ([0-9]+)"], ["direct_message"], function(bot, message
 controller.hears(["sessions"], ["direct_message"], function(bot, message) {
 	var listOfSessions = [];
 	for (var session of sessions) {
-		listOfSessions.push("*Session " + session.id + ":* " + moment(session.date, "YYYY MM DD").format("dddd, MMMM Do"));
+		if ("notes" in session) {
+			var notes = " - " + session.notes;
+		} else {
+			notes = "";
+		}
+		listOfSessions.push("*Session " + session.id + ":* " + moment(session.date, "YYYY MM DD").format("dddd, MMMM Do") + notes);
 	}
 	bot.reply(message, {
 		attachments: [{
