@@ -1,0 +1,9 @@
+<https://teamtreehouse.com/library/css-basics/getting-started-with-css/inline-and-internal-styles|Inline and Internal Styles> *(required)*
+	- So far, we've only used *Inline Styles* (the `style` attributes on all of our tags). This video introduces *Internal Styles*, which are `<style>` tags placed in the `<head>` of the page.
+	- Using *Internal Styles* is generally always better than using *Inline Styles*!
+<https://teamtreehouse.com/library/css-basics/getting-started-with-css/external-style-sheets|External Style Sheets> *(required)*
+	- Using *External Style Sheets* is generally always better than using *Internal* or *Inline Styles*!
+<https://teamtreehouse.com/library/css-basics/the-box-model/the-css-box-model|The CSS Box Model> *(required)*
+	- Remember, we can 'lay out' our site by using a combination of nested `<div>`s, `inline` and `block` styles, as well as `width`, `height`, `padding`, `border`, and `margin`.
+<https://teamtreehouse.com/library/css-basics/the-box-model/display-values|Display Values> _(optional)_
+	- This video covers the `display` attributes and the values `block`, `inline`, and `inline-block`. One of the cool things that he does in this video is turning a bunch of `<li>` tags into a horizontal list, like a nav menu!
