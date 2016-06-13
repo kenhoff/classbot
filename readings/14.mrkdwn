@@ -1,3 +1,17 @@
 *Hackertyper project Show-and-Tell, Lab session*
 
-Stay tuned!
+_This project description is incomplete - stay tuned!_
+
+I'd like for you to build something like http://hackertyper.com/!
+
+You can put whatever text you want in there! You can keep the big long string of C++ code, or you can put in the complete text of Moby Dick (you bibliophile, you!), or you could just mash together a bunch of Kanye tweets and call it good! (infinite monkey theorem, amirite?)
+
+
+
+
+
+Now, theoretically, you _could_ just slightly modify http://hackertyper.com/script.js, throw it on your site, and submit that, and nobody would be the wiser!
+
+...until you list it on your portfolio page and someone asks you how it works :\ that might make for an awkward interview question. I wouldn't recommend copy-pasting this one, even a little bit. *Build it from scratch!*
+
+Here's some things that might help you build this:

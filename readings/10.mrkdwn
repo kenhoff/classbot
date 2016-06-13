@@ -1,1 +1,10 @@
 *Javascript 101: the `<script>` tag*
+
+<https://teamtreehouse.com/library/javascript-basics/introducing-javascript/javascript-everywhere|JavaScript Everywhere> *(recommended)*
+  - JavaScript originally started as just for the browser, but has since expanded to run just about everywhere. Fun facts - `npm` (which we use to install our Firebase tools) and Atom are both written in JavaScript!
+
+<https://teamtreehouse.com/library/javascript-basics/introducing-javascript/your-first-javascript-program-2) and [Where Does JavaScript Go?](https://teamtreehouse.com/library/javascript-basics/introducing-javascript/where-does-javascript-go|Your First JavaScript Program> *(recommended)*
+  - One thing that's not as clear in these videos - it's totally possible for us to include scripts inside of `<script>` tags directly in an HTML page, much like we were doing with internal styles.
+
+<https://teamtreehouse.com/library/javascript-basics/introducing-javascript/the-javascript-console|The JavaScript Console> *(recommended)*
+  - The console is one of the single most valuable debugging tools for web development. It'll show you if you have a syntax error in your script, or if jQuery isn't included and it needs to be, and lots of other things.

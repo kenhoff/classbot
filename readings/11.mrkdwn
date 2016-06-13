@@ -1,13 +1,9 @@
 *Javascript 102: variables, loops, and functions*
 
-<https://teamtreehouse.com/library/javascript-basics/introducing-javascript/javascript-everywhere|JavaScript Everywhere> *(recommended)*
-  - JavaScript originally started as just for the browser, but has since expanded to run just about everywhere. Fun facts - `npm` (which we use to install our Firebase tools) and Atom are both written in JavaScript!
+<https://teamtreehouse.com/library/javascript-basics/storing-and-tracking-information-with-variables/introducing-variables|Variables> *(recommended)*
+	- I really like the "box" analogy that he uses in this video.
 
-<https://teamtreehouse.com/library/javascript-basics/introducing-javascript/your-first-javascript-program-2) and [Where Does JavaScript Go?](https://teamtreehouse.com/library/javascript-basics/introducing-javascript/where-does-javascript-go|Your First JavaScript Program> *(recommended)*
-  - One thing that's not as clear in these videos - it's totally possible for us to include scripts inside of `<script>` tags directly in an HTML page, much like we were doing with internal styles.
+<https://teamtreehouse.com/library/javascript-loops-arrays-and-objects/simplify-repetitive-tasks-with-loops/for-loops|For Loops> *(recommended)*
+	- He mentions that there's two other types of loops, `do` and `while` loops. Check these out if you'd like - I'd recommend using `for`.
 
-<https://teamtreehouse.com/library/javascript-basics/introducing-javascript/the-javascript-console|The JavaScript Console> *(recommended)*
-  - The console is one of the single most valuable debugging tools for web development. It'll show you if you have a syntax error in your script, or if jQuery isn't included and it needs to be, and lots of other things.
-
-<https://teamtreehouse.com/library/jquery-basics/introduction-to-jquery/why-jquery-a-brief-history-of-frontend-development|Why jQuery?> _(optional)_
-  - We'll be using jQuery in a little while. This video actually seems a bit misleading to me, but I wanted to include it just for the last 10 seconds - jQuery will use the same selectors that we're using for CSS. Yay!
+<https://teamtreehouse.com/library/javascript-basics/creating-reusable-code-with-functions/introducing-functions|Functions> *(recommended)*
