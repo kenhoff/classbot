@@ -1,3 +1,5 @@
+*CSS styles and selectors, external stylesheets*
+
 <https://teamtreehouse.com/library/css-basics/getting-started-with-css/inline-and-internal-styles|Inline and Internal Styles> *(recommended)*
 	- So far, we've only used *Inline Styles* (the `style` attributes on all of our tags). This video introduces *Internal Styles*, which are `<style>` tags placed in the `<head>` of the page.
 	- Using *Internal Styles* is generally always better than using *Inline Styles*!

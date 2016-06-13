@@ -1,3 +1,5 @@
+*Javascript 102: variables, loops, and functions*
+
 <https://teamtreehouse.com/library/javascript-basics/introducing-javascript/javascript-everywhere|JavaScript Everywhere> *(recommended)*
   - JavaScript originally started as just for the browser, but has since expanded to run just about everywhere. Fun facts - `npm` (which we use to install our Firebase tools) and Atom are both written in JavaScript!
 
