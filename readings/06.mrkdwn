@@ -13,9 +13,6 @@
 <https://teamtreehouse.com/library/framework-basics/prototyping-with-bootstrap/using-the-grid-system|Using the Grid System> *(super recommended)*
 	- We've learned about using a bunch of nested *flexbox*-es to lay out our page - one of the best thing about Bootstrap is that it gives us an alternative for that with the *Grid System*.
 
-<https://teamtreehouse.com/library/responsive-layouts/media-queries/media-query-review|Media Queries> *(required)*
-	- How does Bootstrap's responsiveness work? Media Queries! Chances are you won't need media queries for a long time (because Bootstrap handles all of this stuff for us), *but* they're important to know about, in case you need to go in to modify them.
-
 <https://teamtreehouse.com/library/framework-basics/prototyping-with-bootstrap/building-a-header-navigation-and-jumbotron-component|Building a Header, Navigation, and Jumbotron Component> _(optional)_
 	- This is a long one, definitely not required. But, one of the important things that he mentions is that almost everything on your page should be wrapped in an element with the class of `container` or `container-fluid` - helps with responsiveness and breakpoints.
 

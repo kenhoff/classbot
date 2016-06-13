@@ -18,3 +18,6 @@
 
 <https://teamtreehouse.com/library/css-basics/the-box-model/display-values|Display Values> _(optional)_
 	- This video covers the `display` attributes and the values `block`, `inline`, and `inline-block`. One of the cool things that he does in this video is turning a bunch of `<li>` tags into a horizontal list, like a nav menu!
+
+<https://teamtreehouse.com/library/responsive-layouts/media-queries/media-query-review|Media Queries> *(required)*
+	- How does Bootstrap's responsiveness work? Media Queries! Chances are you won't need media queries for a long time (because Bootstrap handles all of this stuff for us), *but* they're important to know about, in case you need to go in to modify them.
