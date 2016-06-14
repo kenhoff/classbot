@@ -9,7 +9,7 @@ if (process.env.NODE_ENV != "production") {
 	require('dotenv').config();
 }
 
-var assignments = [require('./assignments/assignment00.js'), require('./assignments/assignment01.js'), require('./assignments/assignment02.js'), require('./assignments/assignment03.js'), require('./assignments/assignment04.js'), require('./assignments/assignment05.js'), require('./assignments/assignment06.js'), require('./assignments/assignment07.js'), require('./assignments/assignment08.js'), require('./assignments/assignment09.js'), require('./assignments/assignment10.js'), require('./assignments/assignment11.js'), require('./assignments/assignment12.js'), require('./assignments/assignment13.js'), require('./assignments/assignment14.js'), require('./assignments/assignment15.js'), require('./assignments/assignment16.js'), require('./assignments/assignment17.js'), require('./assignments/assignment18.js'), require('./assignments/assignment19.js')];
+var assignments = require("./assignments");
 
 var readings = require("./readings");
 var sessions = require("./sessions.js");
