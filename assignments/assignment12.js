@@ -1,3 +1,5 @@
+// Javascript 103: objects and arrays
+
 var request = require('request');
 var async = require('async');
 var calculateScore = require('../calculateScore.js');

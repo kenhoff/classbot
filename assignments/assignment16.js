@@ -1,3 +1,5 @@
+// jQuery 202: `$`, using jQuery selectors and methods
+
 var request = require('request');
 var async = require('async');
 var calculateScore = require('../calculateScore.js');

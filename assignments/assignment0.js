@@ -1,3 +1,5 @@
+// Introduction, first HTML page
+
 var calculateScore = require("../calculateScore.js");
 
 module.exports = function(url, cb) {

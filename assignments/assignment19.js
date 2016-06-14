@@ -1,3 +1,5 @@
+// Quote-of-the-Day project Show-and-Tell, wrap-up/party
+
 var request = require('request');
 var async = require('async');
 var calculateScore = require('../calculateScore.js');

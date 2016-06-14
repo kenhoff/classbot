@@ -1,3 +1,5 @@
+// jQuery 203: HTTP requests with jQuery
+
 var request = require('request');
 var async = require('async');
 var calculateScore = require('../calculateScore.js');

@@ -1,23 +1,25 @@
+// Command Line, Hosting your site on Firebase
+
 var calculateScore = require("../calculateScore.js");
 var request = require('request');
 var async = require('async');
 
 module.exports = function(url, cb) {
 	if (!url) {
-		return cb("URL not found")
+		return cb("URL not found");
 	}
-	tests = [{
+	var tests = [{
 		description: "submitted URL was accessible from the internet",
 		assert: function(url, cb) {
 			request(url, function(error, response, body) {
 				if (!error && response.statusCode == 200) {
-					this.passed = true
-					cb(null, this)
+					this.passed = true;
+					cb(null, this);
 				} else {
-					this.passed = false
-					cb(null, this)
+					this.passed = false;
+					cb(null, this);
 				}
-			}.bind(this))
+			}.bind(this));
 		}
 	}, {
 		description: "text (with whitespace stripped) is equal to `<html><body><h1>Hello,World!</h1></body></html>`",
@@ -25,30 +27,30 @@ module.exports = function(url, cb) {
 			request(url, function(error, response, body) {
 				if (!error && response.statusCode == 200) {
 					if (body.replace(/\s/g, "") == "<html><body><h1>Hello,World!</h1></body></html>") {
-						this.passed = true
-						cb(null, this)
+						this.passed = true;
+						cb(null, this);
 					} else {
-						this.passed = false
-						cb(null, this)
+						this.passed = false;
+						cb(null, this);
 					}
 				} else {
-					this.passed = false
-					cb(null, this)
+					this.passed = false;
+					cb(null, this);
 				}
-			}.bind(this))
+			}.bind(this));
 		}
-	}]
+	}];
 
 	async.map(tests, function(test, cb) {
-		test.assert(url, cb)
+		test.assert(url, cb);
 	}, function(err, results) {
-		for (test of tests) {
-			delete test.assert
+		for (var test of tests) {
+			delete test.assert;
 		}
-		scoreObject = {
+		var scoreObject = {
 			score: calculateScore(tests),
 			tests: tests
-		}
-		return cb(null, scoreObject)
-	})
-}
+		};
+		return cb(null, scoreObject);
+	});
+};

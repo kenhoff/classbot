@@ -1,3 +1,5 @@
+// Javascript 101: the `<script>` tag
+
 var request = require('request');
 var async = require('async');
 var calculateScore = require('../calculateScore.js');

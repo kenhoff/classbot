@@ -1,3 +1,5 @@
+// Client Project Show-and-Tell, Lab session
+
 var request = require('request');
 var async = require('async');
 var calculateScore = require('../calculateScore.js');

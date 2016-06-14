@@ -1,3 +1,5 @@
+// Working with Clients, Customers, Designers and Product managers
+
 var request = require('request');
 var async = require('async');
 var calculateScore = require('../calculateScore.js');

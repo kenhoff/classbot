@@ -1,3 +1,5 @@
+// Javascript 104: working with the browser API
+
 var request = require('request');
 var async = require('async');
 var calculateScore = require('../calculateScore.js');

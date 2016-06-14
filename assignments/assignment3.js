@@ -1,3 +1,5 @@
+// CSS styles and selectors, external stylesheets
+
 var request = require('request');
 var async = require('async');
 var jsdom = require("jsdom")

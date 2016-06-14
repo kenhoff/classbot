@@ -1,3 +1,5 @@
+// Javascript 102: variables, loops, and functions
+
 var request = require('request');
 var async = require('async');
 var calculateScore = require('../calculateScore.js');

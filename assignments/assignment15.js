@@ -1,3 +1,5 @@
+// jQuery 201: including jQuery on your site
+
 var request = require('request');
 var async = require('async');
 var calculateScore = require('../calculateScore.js');

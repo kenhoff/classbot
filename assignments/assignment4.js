@@ -1,3 +1,5 @@
+// Portfolio Site Show-and-Tell, Lab session
+
 var request = require('request');
 var async = require('async');
 var jsdom = require("jsdom")
