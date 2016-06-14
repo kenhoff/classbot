@@ -1,5 +1,7 @@
 // CSS layouts, the `display` style, flexbox & media queries
 
+var calculateScore = require("../calculateScore.js");
+
 var request = require('request');
 var async = require('async');
 var jsdom = require("jsdom")

@@ -1,5 +1,7 @@
 // Portfolio Site Show-and-Tell, Lab session
 
+var calculateScore = require("../calculateScore.js");
+
 var request = require('request');
 var async = require('async');
 var calculateScore = require('../calculateScore.js');

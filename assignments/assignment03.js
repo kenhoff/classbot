@@ -1,5 +1,7 @@
 // CSS styles and selectors, external stylesheets
 
+var calculateScore = require("../calculateScore.js");
+
 var request = require('request');
 var async = require('async');
 var jsdom = require("jsdom")
