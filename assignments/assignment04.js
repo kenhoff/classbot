@@ -22,7 +22,6 @@ module.exports = function(url, cb) {
 			}.bind(this));
 		}
 	}];
-
 	async.map(tests, function(test, cb) {
 		test.assert(url, cb);
 	}, function() {
