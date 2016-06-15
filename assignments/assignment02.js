@@ -110,54 +110,7 @@ module.exports = function(url, cb) {
 				}
 			}.bind(this));
 		}
-	},
-
-	// {
-	// 	description: 'site has an `<a>` tag that points to a *valid page* on the *same domain* using an *absolute path* (e.g. `href` starts with `/`)',
-	// 	assert: function(url, cb) {
-	// 		request(url, function(error, response, body) {
-	// 			if (!error && response.statusCode == 200) {
-	// 				jsdom.env(body, function(err, window) {
-	// 					var aTags = window.document.getElementsByTagName('a');
-	// 					if (aTags.length >= 1) {
-	// 						async.detectSeries(aTags, function(aTag, asyncCB) {
-	// 							if (aTag.getAttribute('href').startsWith('/')) {
-	// 								var pathArray = url.split('/');
-	// 								var protocol = pathArray[0];
-	// 								var host = pathArray[2];
-	// 								var origin = protocol + '//' + host;
-	// 								request(origin + aTag.getAttribute('href'), function(errrr, response) {
-	// 									if (err || (parseInt(response.statusCode) >= 400)) {
-	// 										asyncCB(false);
-	// 									} else {
-	// 										asyncCB(true);
-	// 									}
-	// 								});
-	// 							} else {
-	// 								asyncCB(false);
-	// 							}
-	// 						}.bind(this), function(aTag) {
-	// 							if (aTag) {
-	// 								this.passed = true;
-	// 							} else {
-	// 								this.passed = false;
-	// 							}
-	// 							cb(null, this);
-	// 						}.bind(this));
-	// 					} else {
-	// 						this.passed = false;
-	// 						cb(null, this);
-	// 					}
-	// 				}.bind(this));
-	// 			} else {
-	// 				this.passed = false;
-	// 				cb(null, this);
-	// 			}
-	// 		}.bind(this));
-	// 	}
-	// },
-
-	{
+	}, {
 		description: 'site has an `<a>` tag that points to a *valid page* on the *same domain* (e.g. `href` does not start starts with `http` or `https`)',
 		assert: function(url, cb) {
 			request(url, function(error, response, body) {
@@ -238,54 +191,7 @@ module.exports = function(url, cb) {
 				}
 			}.bind(this));
 		}
-	},
-
-	// {
-	// 	description: 'site has an `<img>` tag that points to a *valid image* on the *same domain* using an *absolute path* (e.g. `src` starts with `/`)',
-	// 	assert: function(url, cb) {
-	// 		request(url, function(error, response, body) {
-	// 			if (!error && response.statusCode == 200) {
-	// 				jsdom.env(body, function(err, window) {
-	// 					var imgTags = window.document.getElementsByTagName('img');
-	// 					if (imgTags.length >= 1) {
-	// 						async.detectSeries(imgTags, function(imgTag, asyncCB) {
-	// 							if (imgTag.getAttribute('src').startsWith('/')) {
-	// 								var pathArray = url.split('/');
-	// 								var protocol = pathArray[0];
-	// 								var host = pathArray[2];
-	// 								var origin = protocol + '//' + host;
-	// 								request(origin + imgTag.getAttribute('src'), function(errrr, response) {
-	// 									if (err || (parseInt(response.statusCode) >= 400)) {
-	// 										asyncCB(false);
-	// 									} else {
-	// 										asyncCB(true);
-	// 									}
-	// 								});
-	// 							} else {
-	// 								asyncCB(false);
-	// 							}
-	// 						}.bind(this), function(imgTag) {
-	// 							if (imgTag) {
-	// 								this.passed = true;
-	// 							} else {
-	// 								this.passed = false;
-	// 							}
-	// 							cb(null, this);
-	// 						}.bind(this));
-	// 					} else {
-	// 						this.passed = false;
-	// 						cb(null, this);
-	// 					}
-	// 				}.bind(this));
-	// 			} else {
-	// 				this.passed = false;
-	// 				cb(null, this);
-	// 			}
-	// 		}.bind(this));
-	// 	}
-	// },
-
-	{
+	}, {
 		description: 'site has an `<img>` tag that points to a *valid image* on the *same domain* (e.g. `src` does not start starts with `http` or `https`)',
 		assert: function(url, cb) {
 			request(url, function(error, response, body) {
