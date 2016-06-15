@@ -25,10 +25,10 @@ controller.spawn({
 	token: process.env.SLACK_BOT_API_TOKEN
 }).startRTM(function(err) {
 	if (err) {
-		console.log(err);
+		console.log(err); // eslint-disable-line no-console
 		throw new Error('Could not connect to Slack');
 	} else {
-		console.log("Connected to Slack");
+		console.log("Connected to Slack"); // eslint-disable-line no-console
 	}
 });
 
@@ -39,15 +39,24 @@ controller.hears(['submit ([0-9]+)\s*(.*)'], ['direct_message'], function(bot, m
 	} else {
 		var url = message.match[2].replace(/[<>]/g, "").trim();
 		bot.reply(message, "Submitting " + url + " for Assignment #" + assignmentNumber + "...");
+		bot.reply(message, "Processing " + url + " _(this may take a few moments)_");
 		assignments[parseInt(assignmentNumber)](url, function(err, scoreObject) {
 			if (err) {
 				bot.reply(message, "Error: " + err);
 			} else {
 				bot.startPrivateConversation(message, function(err, convo) {
 					convo.say("Done processing. Your score is: " + (scoreObject.score * 100).toFixed(2) + "%");
+					var tests = [];
 					for (var test of scoreObject.tests) {
-						convo.say((test.passed ? ":white_check_mark:" : ":x:") + " " + test.description);
+						tests.push((test.passed ? ":white_check_mark:" : ":x:") + " " + test.description);
 					}
+					convo.say({
+						attachments: [{
+							fallback: "Test results for assignment " + assignmentNumber + ": " + url,
+							text: tests.join("\n"),
+							mrkdwn_in: ["text"]
+						}]
+					});
 					// write score
 					controller.storage.users.get(message.user, function(err, user_data) {
 						if (!user_data) {
