@@ -5,12 +5,6 @@ var calculateScore = require("../calculateScore.js");
 var request = require('request');
 var async = require('async');
 var jsdom = require("jsdom");
-// - an external style sheet <-- ignore this for now
-// - a `div` with an `id` of `main-content`
-// - a `div` with a `class` of `profile-section`
-// - an element with a `display` of `block` assigned using an *internal* style
-// - an element with a `display` of `inline` assigned using an *internal* style
-// - an element with a `display` of `inline-block` assigned using an *internal* style
 
 var stylesRequired = ['color', 'background-color', 'font-style', 'font-family', 'font-size', 'width', 'height', ['padding-top', 'padding-bottom', 'padding-left', 'padding-right'], 'border-color', 'border-radius', 'border-width', 'border-style', ['margin-top', 'margin-bottom', 'margin-left', 'margin-right']];
 
