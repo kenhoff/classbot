@@ -4,156 +4,34 @@ var calculateScore = require("../calculateScore.js");
 
 var request = require('request');
 var async = require('async');
-var jsdom = require("jsdom")
-
-// - the standard Bootstrap CSS from bootstrapcdn.com
-// - the standard Bootstrap Theme CSS from bootstrapcdn.com
-// - jQuery from the googleapis.com CDN
-// - the standard Bootstrap Javascript script from bootstrapcdn.com
-// - a `.container` element
-// - a `.row` element
-// - a `.col-xs-*` element
-// - a `.col-sm-*` element
-// - a `.col-md-*` element
-// - a `.col-lg-*` element
+var jsdom = require("jsdom");
 
 module.exports = function(url, cb) {
 	if (!url) {
-		return cb("URL not found")
+		return cb("URL not found");
 	}
-	tests = [{
+	var tests = [{
 		description: "submitted URL was accessible from the internet",
 		assert: function(url, cb) {
-			request(url, function(error, response, body) {
+			request(url, function(error, response) {
 				if (!error && response.statusCode == 200) {
-					this.passed = true
-					cb(null, this)
+					this.passed = true;
+					cb(null, this);
 				} else {
-					this.passed = false
-					cb(null, this)
+					this.passed = false;
+					cb(null, this);
 				}
-			}.bind(this))
+			}.bind(this));
 		}
-	}, {
-		description: 'site has the standard Bootstrap CSS from bootstrapcdn.com (a `link` with `href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"`)',
-		assert: function(url, cb) {
-			request(url, function(error, response, body) {
-				if (!error && response.statusCode == 200) {
-					jsdom.env(body, {
-						url: url,
-						features: {
-							FetchExternalResources: ["link", "css"]
-						},
-						done: function(err, window) {
-							elements = window.document.getElementsByTagName('link')
-							for (element of elements) {
-								if (element.getAttribute("href") == "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css") {
-									this.passed = true
-									return cb(null, this)
-								}
-							}
-							this.passed = false
-							return cb(null, this)
-						}.bind(this)
-					})
-				} else {
-					this.passed = false
-					cb(null, this)
-				}
-			}.bind(this))
-		}
-	}, {
-		description: 'site has the standard Bootstrap Theme CSS from bootstrapcdn.com (a `link` with `href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"`)',
-		assert: function(url, cb) {
-			request(url, function(error, response, body) {
-				if (!error && response.statusCode == 200) {
-					jsdom.env(body, {
-						url: url,
-						features: {
-							FetchExternalResources: ["link", "css"]
-						},
-						done: function(err, window) {
-							elements = window.document.getElementsByTagName('link')
-							for (element of elements) {
-								if (element.getAttribute("href") == "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css") {
-									this.passed = true
-									return cb(null, this)
-								}
-							}
-							this.passed = false
-							return cb(null, this)
-						}.bind(this)
-					})
-				} else {
-					this.passed = false
-					cb(null, this)
-				}
-			}.bind(this))
-		}
-	}, {
-		description: 'site has jQuery from googleapis.com (a `script` with `src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"`)',
-		assert: function(url, cb) {
-			request(url, function(error, response, body) {
-				if (!error && response.statusCode == 200) {
-					jsdom.env(body, {
-						url: url,
-						features: {
-							FetchExternalResources: ["link", "css"]
-						},
-						done: function(err, window) {
-							elements = window.document.getElementsByTagName('script')
-							for (element of elements) {
-								if (element.getAttribute("src") == "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js") {
-									this.passed = true
-									return cb(null, this)
-								}
-							}
-							this.passed = false
-							return cb(null, this)
-						}.bind(this)
-					})
-				} else {
-					this.passed = false
-					cb(null, this)
-				}
-			}.bind(this))
-		}
-	}, {
-		description: 'the standard Bootstrap Javascript script from bootstrapcdn.com (a `script` with `src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"`)',
-		assert: function(url, cb) {
-			request(url, function(error, response, body) {
-				if (!error && response.statusCode == 200) {
-					jsdom.env(body, {
-						url: url,
-						features: {
-							FetchExternalResources: ["link", "css"]
-						},
-						done: function(err, window) {
-							elements = window.document.getElementsByTagName('script')
-							for (element of elements) {
-								if (element.getAttribute("src") == "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js") {
-									this.passed = true
-									return cb(null, this)
-								}
-							}
-							this.passed = false
-							return cb(null, this)
-						}.bind(this)
-					})
-				} else {
-					this.passed = false
-					cb(null, this)
-				}
-			}.bind(this))
-		}
-	}]
+	}];
 
-	classes = ["container", "row", "col-xs-", "col-sm-", "col-md-", "col-lg-"]
 
-	for (bootstrapClass of classes) {
+	var displayTypes = ['block', 'inline', 'inline-block'];
+
+	for (var displayType of displayTypes) {
 		tests.push({
-			bootstrapClass: bootstrapClass,
-			description: 'a `div` with class `' + (bootstrapClass.endsWith("-") ? bootstrapClass + "*" : bootstrapClass) + "`",
+			displayType: displayType,
+			description: 'site has an element with a `display` of `' + displayType + '` assigned',
 			assert: function(url, cb) {
 				request(url, function(error, response, body) {
 					if (!error && response.statusCode == 200) {
@@ -163,36 +41,128 @@ module.exports = function(url, cb) {
 								FetchExternalResources: ["link", "css"]
 							},
 							done: function(err, window) {
-								elements = window.document.getElementsByTagName('div')
-								for (element of elements) {
-									if (element.getAttribute("class") && element.getAttribute("class").includes(this.bootstrapClass)) {
-										this.passed = true
-										return cb(null, this)
+								var elements = window.document.getElementsByTagName('*');
+								for (var element of elements) {
+									if (window.getComputedStyle(element).display == this.displayType) {
+										this.passed = true;
+										return cb(null, this);
 									}
 								}
-								this.passed = false
-								return cb(null, this)
+								this.passed = false;
+								return cb(null, this);
 							}.bind(this)
-						})
+						});
 					} else {
-						this.passed = false
-						cb(null, this)
+						this.passed = false;
+						cb(null, this);
 					}
-				}.bind(this))
+				}.bind(this));
 			}
-		})
+		});
 	}
 
-	async.map(tests, function(test, cb) {
-		test.assert(url, cb)
-	}, function(err, results) {
-		for (test of tests) {
-			delete test.assert
+
+	tests.push({
+		description: 'site has an element with `margin: auto`',
+		assert: function(url, cb) {
+			request(url, function(error, response, body) {
+				if (!error && response.statusCode == 200) {
+					jsdom.env(body, {
+						url: url,
+						features: {
+							FetchExternalResources: ["link", "css"]
+						},
+						done: function(err, window) {
+							var elements = window.document.getElementsByTagName('*');
+							for (var element of elements) {
+								if (
+									(window.getComputedStyle(element)["margin-top"] == "auto") &&
+									(window.getComputedStyle(element)["margin-right"] == "auto") &&
+									(window.getComputedStyle(element)["margin-bottom"] == "auto") &&
+									(window.getComputedStyle(element)["margin-left"] == "auto")) {
+									this.passed = true;
+									return cb(null, this);
+								}
+							}
+							this.passed = false;
+							return cb(null, this);
+						}.bind(this)
+					});
+				} else {
+					this.passed = false;
+					cb(null, this);
+				}
+			}.bind(this));
 		}
-		scoreObject = {
+	}, {
+		description: 'site has an element with `text-align: center`',
+		assert: function(url, cb) {
+			request(url, function(error, response, body) {
+				if (!error && response.statusCode == 200) {
+					jsdom.env(body, {
+						url: url,
+						features: {
+							FetchExternalResources: ["link", "css"]
+						},
+						done: function(err, window) {
+							var elements = window.document.getElementsByTagName('*');
+							for (var element of elements) {
+								if (window.getComputedStyle(element)["text-align"] == "center") {
+									this.passed = true;
+									return cb(null, this);
+								}
+							}
+							this.passed = false;
+							return cb(null, this);
+						}.bind(this)
+					});
+				} else {
+					this.passed = false;
+					cb(null, this);
+				}
+			}.bind(this));
+		}
+	}, {
+		description: 'site has an element with `display: flex`',
+		assert: function(url, cb) {
+			request(url, function(error, response, body) {
+				if (!error && response.statusCode == 200) {
+					jsdom.env(body, {
+						url: url,
+						features: {
+							FetchExternalResources: ["link", "css"]
+						},
+						done: function(err, window) {
+							var elements = window.document.getElementsByTagName('*');
+							for (var element of elements) {
+								if (window.getComputedStyle(element)["display"] == "flex") {
+									this.passed = true;
+									return cb(null, this);
+								}
+							}
+							this.passed = false;
+							return cb(null, this);
+						}.bind(this)
+					});
+				} else {
+					this.passed = false;
+					cb(null, this);
+				}
+			}.bind(this));
+		}
+	});
+
+
+	async.map(tests, function(test, cb) {
+		test.assert(url, cb);
+	}, function() {
+		for (var test of tests) {
+			delete test.assert;
+		}
+		var scoreObject = {
 			score: calculateScore(tests),
 			tests: tests
-		}
-		return cb(null, scoreObject)
-	})
-}
+		};
+		return cb(null, scoreObject);
+	});
+};
