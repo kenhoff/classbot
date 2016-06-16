@@ -80,7 +80,7 @@ module.exports = function(url, cb) {
 						var aTags = window.document.getElementsByTagName('a');
 						if (aTags.length >= 1) {
 							async.detectSeries(aTags, function(aTag, asyncCB) {
-								if (aTag.getAttribute('href').startsWith('http') || aTag.getAttribute('href').startsWith('https')) {
+								if (aTag.getAttribute('href') && (aTag.getAttribute('href').startsWith('http') || aTag.getAttribute('href').startsWith('https'))) {
 									request(aTag.getAttribute('href'), function(err, response) {
 										if (err || (parseInt(response.statusCode) >= 400)) {
 											asyncCB(false);
