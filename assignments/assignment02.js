@@ -119,7 +119,7 @@ module.exports = function(url, cb) {
 						var aTags = window.document.getElementsByTagName('a');
 						if (aTags.length >= 1) {
 							async.detectSeries(aTags, function(aTag, asyncCB) {
-								if (!aTag.getAttribute('href').startsWith('/') && !aTag.getAttribute('href').startsWith('http')) {
+								if (aTag.getAttribute('href') && (!aTag.getAttribute('href').startsWith('/') && !aTag.getAttribute('href').startsWith('http'))) {
 									// lop off the last item, replace with href
 									var pathArray = url.split('/');
 									pathArray.splice(-1, 1);
@@ -161,7 +161,7 @@ module.exports = function(url, cb) {
 						var imgTags = window.document.getElementsByTagName('img');
 						if (imgTags.length >= 1) {
 							async.detectSeries(imgTags, function(imgTag, asyncCB) {
-								if (imgTag.getAttribute('src').startsWith('http') || imgTag.getAttribute('src').startsWith('https')) {
+								if (imgTag.getAttribute('src') && (imgTag.getAttribute('src').startsWith('http') || imgTag.getAttribute('src').startsWith('https'))) {
 									request(imgTag.getAttribute('src'), function(err, response) {
 										if (err || (parseInt(response.statusCode) >= 400)) {
 											asyncCB(false);
@@ -200,7 +200,7 @@ module.exports = function(url, cb) {
 						var imgTags = window.document.getElementsByTagName('img');
 						if (imgTags.length >= 1) {
 							async.detectSeries(imgTags, function(imgTag, asyncCB) {
-								if (!imgTag.getAttribute('src').startsWith('/') && !imgTag.getAttribute('src').startsWith('http')) {
+								if (imgTag.getAttribute('src') && (!imgTag.getAttribute('src').startsWith('/') && !imgTag.getAttribute('src').startsWith('http'))) {
 									// lop off the last item, replace with src
 									var pathArray = url.split('/');
 									pathArray.splice(-1, 1);
