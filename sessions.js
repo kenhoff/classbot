@@ -25,7 +25,7 @@ module.exports = [{
 	date: "2016.06.27",
 	id: 4
 }, {
-	title: "Working with Clients",
+	title: "Client Project Kickoff: Working with Clients",
 	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/5",
 	date: "2016.06.29",
 	id: 5
