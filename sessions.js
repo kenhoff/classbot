@@ -25,22 +25,22 @@ module.exports = [{
 	date: "2016.06.27",
 	id: 4
 }, {
-	title: "CSS layouts, the `display` style, flexbox & media queries",
+	title: "Working with Clients",
 	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/5",
 	date: "2016.06.29",
 	id: 5
 }, {
-	title: "Bootstrap & CSS frameworks",
+	title: "Prebuilt & Customizable themes",
 	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/6",
 	date: "2016.07.04",
 	id: 6
 }, {
-	title: "Bootstrap Themes & Customization",
+	title: "Bootstrap & CSS frameworks",
 	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/7",
 	date: "2016.07.06",
 	id: 7
 }, {
-	title: "Working with Clients, Customers, Designers and Product managers",
+	title: "CSS layouts, the `display` style, flexbox & media queries",
 	lecture_slides: "https://hoff.tech/classes/frontendwebdev/sessions/8",
 	date: "2016.07.11",
 	id: 8
