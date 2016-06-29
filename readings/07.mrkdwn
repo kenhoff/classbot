@@ -1,12 +1,20 @@
-*Bootstrap Themes & Customization*
+*Bootstrap & CSS frameworks*
 
-Surprise! No recommended Treehouse watching this week, but there is an optional video. Instead, I'd like you to start exploring *Bootstrap Themes*.
+<https://teamtreehouse.com/library/framework-basics/introduction-to-frontend-frameworks/what-is-a-frontend-framework|What is a Front-End Framework?> *(recommended)*
+<https://teamtreehouse.com/library/framework-basics/introduction-to-frontend-frameworks/should-we-use-a-framework|Should We Use a Framework?> *(recommended)*
+	- These are short intro videos - note that he says that frameworks are not a crutch, and that we must still understand HTML, CSS, and some Javascript, but using a framework can significantly speed up development time.
 
-- Click around and start finding your favorite themes on these sites: *(required)*
-	- https://bootswatch.com/
-	- http://startbootstrap.com/
-	- http://www.bootstrapzero.com/
-	- https://wrapbootstrap.com/
+<https://teamtreehouse.com/library/framework-basics/prototyping-with-bootstrap/introduction-to-bootstrap|Intro to Bootstrap> *(recommended)*
+	- Don't freak out - we're not going to be doing Less, Sass, or any mixins.
 
-<https://teamtreehouse.com/library/framework-basics/build-a-website-with-bootstrap/customizing-bootstrap|Customizing Bootstrap> _(optional)_
-	- If you want to generate a custom Bootstrap theme, you can always do so by using http://getbootstrap.com/customize/. However, it does require you to know exactly what you want, and plug in all the styles yourself. Probably just be easier to use a prebuilt theme :)
+<https://teamtreehouse.com/library/framework-basics/prototyping-with-bootstrap/downloading-bootstrap|Downloading Bootstrap> *(recommended)*
+	- You can ignore the first minute of this video - we're only going to use the CDN for Bootstrap in this class.
+
+<https://teamtreehouse.com/library/framework-basics/prototyping-with-bootstrap/using-the-grid-system|Using the Grid System> *(super recommended)*
+	- We've learned about using a bunch of nested *flexbox*-es to lay out our page - one of the best thing about Bootstrap is that it gives us an alternative for that with the *Grid System*.
+
+<https://teamtreehouse.com/library/framework-basics/prototyping-with-bootstrap/building-a-header-navigation-and-jumbotron-component|Building a Header, Navigation, and Jumbotron Component> _(optional)_
+	- This is a long one, definitely not required. But, one of the important things that he mentions is that almost everything on your page should be wrapped in an element with the class of `container` or `container-fluid` - helps with responsiveness and breakpoints.
+
+<https://teamtreehouse.com/library/framework-basics/prototyping-with-bootstrap/working-with-nested-grids-and-responsive-images|Working with Nested Grids and Responsive Images> _(optional)_
+	- Some of these videos aren't broken down as logically as the others, but one of the main takeaways here is that in order to use nested columns, we need to create a new `row` and then we have 12 columns to work with again.
