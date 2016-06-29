@@ -28,7 +28,6 @@ module.exports = {
 				}.bind(this));
 			}
 		}];
-
 		tests.push({
 			description: 'site has an external style sheet (a `link` with `rel="stylesheet"` and an `href` to a valid `.css` file)',
 			assert: function(url, cb) {
