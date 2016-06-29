@@ -107,13 +107,13 @@ controller.hears(["assignment ([0-9]*)"], ["direct_message"], function(bot, mess
 			bot.reply(message, "Sorry! That assignment isn't available yet. See what assignments are available with `assignments`.");
 		} else {
 			if (assignments[assignmentNumber].description) {
-				bot.reply(message, assignments[assignmentNumber].description);
+				bot.reply(message, "*Assignment " + assignmentNumber + "*\n\n" + assignments[assignmentNumber].description);
 			} else {
 				bot.reply(message, "Hmm...a description for that assignment isn't available yet! Check back later.");
 			}
 		}
 	} else {
-		bot.reply(message, "Wait...what?")
+		bot.reply(message, "Wait...what?");
 	}
 });
 
@@ -141,7 +141,7 @@ controller.hears(["grades", "grade"], ["direct_message"], function(bot, message)
 controller.hears(["help"], ["direct_message"], function(bot, message) {
 	var listOfCommands = [
 		"sessions",
-		"assignmentss",
+		"assignments",
 		"session 0",
 		"session 19",
 		"readings 0",

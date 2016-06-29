@@ -13,7 +13,7 @@ module.exports = {
 		var tests = [{
 			description: "submitted URL was accessible from the internet",
 			assert: function(url, cb) {
-				request(url, function(error, response, body) {
+				request(url, function(error, response) {
 					if (!error && response.statusCode == 200) {
 						this.passed = true;
 						cb(null, this);
@@ -45,7 +45,7 @@ module.exports = {
 
 		async.map(tests, function(test, cb) {
 			test.assert(url, cb);
-		}, function(err, results) {
+		}, function() {
 			for (var test of tests) {
 				delete test.assert;
 			}
