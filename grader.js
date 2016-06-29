@@ -40,7 +40,7 @@ controller.hears(['submit ([0-9]+)\s*(.*)'], ['direct_message'], function(bot, m
 		var url = message.match[2].replace(/[<>]/g, "").trim();
 		bot.reply(message, "Submitting " + url + " for Assignment #" + assignmentNumber + "...");
 		bot.reply(message, "Processing " + url + " _(this may take a few moments)_");
-		assignments[parseInt(assignmentNumber)](url, function(err, scoreObject) {
+		var cb = function(err, scoreObject) {
 			if (err) {
 				bot.reply(message, "Error: " + err);
 			} else {
@@ -83,7 +83,12 @@ controller.hears(['submit ([0-9]+)\s*(.*)'], ['direct_message'], function(bot, m
 				});
 
 			}
-		});
+		};
+		if ("test" in assignments[parseInt(assignmentNumber)]) {
+			assignments[parseInt(assignmentNumber)].test(url, cb);
+		} else {
+			assignments[parseInt(assignmentNumber)](url, cb);
+		}
 	}
 });
 
@@ -93,6 +98,19 @@ controller.hears(["assignments"], ["direct_message"], function(bot, message) {
 		availableAssignments.push("`" + i + "`");
 	}
 	bot.reply(message, "Available assignments are: " + availableAssignments.join(" "));
+});
+
+controller.hears(["assignment ([0-9]*)"], ["direct_message"], function(bot, message) {
+	var assignmentNumber = parseInt(message.match[1]);
+	if (assignmentNumber > assignments.length - 1) {
+		bot.reply(message, "Sorry! That assignment isn't available yet. See what assignments are available with `assignments`.");
+	} else {
+		if (assignments[assignmentNumber].description) {
+			bot.reply(message, assignments[assignmentNumber].description);
+		} else {
+			bot.reply(message, "Hmm...a description for that assignment isn't available yet! Check back later.");
+		}
+	}
 });
 
 controller.hears(["grades", "grade"], ["direct_message"], function(bot, message) {
@@ -119,9 +137,15 @@ controller.hears(["grades", "grade"], ["direct_message"], function(bot, message)
 controller.hears(["help"], ["direct_message"], function(bot, message) {
 	var listOfCommands = [
 		"sessions",
-		"session <<sessionNumber>>",
-		"readings <<sessionNumber>>",
-		"submit <<assignmentNumber>> <<URL>>",
+		"assignmentss",
+		"session 0",
+		"session 19",
+		"readings 0",
+		"readings 19",
+		"assignment 0",
+		"assignment 19",
+		"submit 0 my-awesome-app.firebaseapp.com",
+		"submit 19 my-other-awesome-app.firebaseapp.com",
 		"grades",
 		"help"
 	];
