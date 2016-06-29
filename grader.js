@@ -101,15 +101,19 @@ controller.hears(["assignments"], ["direct_message"], function(bot, message) {
 });
 
 controller.hears(["assignment ([0-9]*)"], ["direct_message"], function(bot, message) {
-	var assignmentNumber = parseInt(message.match[1]);
-	if (assignmentNumber > assignments.length - 1) {
-		bot.reply(message, "Sorry! That assignment isn't available yet. See what assignments are available with `assignments`.");
-	} else {
-		if (assignments[assignmentNumber].description) {
-			bot.reply(message, assignments[assignmentNumber].description);
+	if (message.match[1]) {
+		var assignmentNumber = parseInt(message.match[1]);
+		if (assignmentNumber > assignments.length - 1) {
+			bot.reply(message, "Sorry! That assignment isn't available yet. See what assignments are available with `assignments`.");
 		} else {
-			bot.reply(message, "Hmm...a description for that assignment isn't available yet! Check back later.");
+			if (assignments[assignmentNumber].description) {
+				bot.reply(message, assignments[assignmentNumber].description);
+			} else {
+				bot.reply(message, "Hmm...a description for that assignment isn't available yet! Check back later.");
+			}
 		}
+	} else {
+		bot.reply(message, "Wait...what?")
 	}
 });
 
