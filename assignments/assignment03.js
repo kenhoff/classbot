@@ -6,7 +6,7 @@ var request = require('request');
 var async = require('async');
 var jsdom = require("jsdom");
 
-var stylesRequired = ['color', 'background-color', 'font-style', 'font-family', 'font-size', 'width', 'height', ['padding-top', 'padding-bottom', 'padding-left', 'padding-right'], 'border-color', 'border-radius', 'border-width', 'border-style', ['margin-top', 'margin-bottom', 'margin-left', 'margin-right']];
+var stylesRequired = ['color', 'background-color', 'font-style', 'font-family', 'font-size', 'width', 'height', ['padding-top', 'padding-bottom', 'padding-left', 'padding-right'], 'border-radius', 'border-width', 'border-style', ['margin-top', 'margin-bottom', 'margin-left', 'margin-right']];
 
 module.exports = function(url, cb) {
 	if (!url) {
