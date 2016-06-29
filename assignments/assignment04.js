@@ -1,217 +1,41 @@
 // Portfolio Site Show-and-Tell, Lab session
 
-var calculateScore = require("../calculateScore.js");
-
 var request = require('request');
 var async = require('async');
 var calculateScore = require('../calculateScore.js');
 
-module.exports = function(url, cb) {
-	if (!url) {
-		return cb("URL not found");
+module.exports = {
+	description: "*Portfolio Site!*\n\nFor this assignment, just submit a link to the portfolio site that you built.\n\nA couple things:\n\n- Create a separate Firebase app, and keep that site live until the end of the class! You want to be able to show it to potential employers and clients.\n- The URL you put in here gets submitted along with your report card at the end of the class.\n- Keep on updating it, if you want! The best portfolios are ones that show that you're always growing.\n\nAnd of course, submit your site by running `submit 4 kens-awesome-portfolio.firebaseapp.com`.",
+	test: function(url, cb) {
+		if (!url) {
+			return cb("URL not found");
+		}
+		var tests = [{
+			description: "submitted URL was accessible from the internet",
+			assert: function(url, cb) {
+				request(url, function(error, response) {
+					if (!error && response.statusCode == 200) {
+						this.passed = true;
+						cb(null, this);
+					} else {
+						this.passed = false;
+						cb(null, this);
+					}
+				}.bind(this));
+			}
+		}];
+		async.map(tests, function(test, cb) {
+			test.assert(url, cb);
+		}, function() {
+			for (var test of tests) {
+				delete test.assert;
+			}
+			var scoreObject = {
+				score: calculateScore(tests),
+				tests: tests,
+				url: url
+			};
+			return cb(null, scoreObject);
+		});
 	}
-	var tests = [{
-		description: "submitted URL was accessible from the internet",
-		assert: function(url, cb) {
-			request(url, function(error, response) {
-				if (!error && response.statusCode == 200) {
-					this.passed = true;
-					cb(null, this);
-				} else {
-					this.passed = false;
-					cb(null, this);
-				}
-			}.bind(this));
-		}
-	}];
-	async.map(tests, function(test, cb) {
-		test.assert(url, cb);
-	}, function() {
-		for (var test of tests) {
-			delete test.assert;
-		}
-		var scoreObject = {
-			score: calculateScore(tests),
-			tests: tests,
-			url: url
-		};
-		return cb(null, scoreObject);
-	});
 };
-
-
-
-
-
-
-
-
-// var request = require('request');
-// var async = require('async');
-// var jsdom = require("jsdom");
-//
-// // - an element with a `background-position`
-// // - an element with a `background-size`
-// // - an element with a `background-image`
-// // - an element with `margin: auto`
-// // - an element with `text-align: center`
-// // - an element with `display: flex`
-//
-//
-// module.exports = function(url, cb) {
-// 	if (!url) {
-// 		return cb("URL not found");
-// 	}
-// 	tests = [{
-// 		description: "submitted URL was accessible from the internet",
-// 		assert: function(url, cb) {
-// 			request(url, function(error, response, body) {
-// 				if (!error && response.statusCode == 200) {
-// 					this.passed = true;
-// 					cb(null, this);
-// 				} else {
-// 					this.passed = false;
-// 					cb(null, this);
-// 				}
-// 			}.bind(this));
-// 		}
-// 	}];
-//
-// 	backgroundStyles = ['background-position', 'background-size', 'background-image'];
-//
-// 	for (backgroundStyle of backgroundStyles) {
-// 		tests.push({
-// 			backgroundStyle: backgroundStyle,
-// 			description: 'site has an element with a `' + backgroundStyle + '`',
-// 			assert: function(url, cb) {
-// 				request(url, function(error, response, body) {
-// 					if (!error && response.statusCode == 200) {
-// 						jsdom.env(body, {
-// 							url: url,
-// 							features: {
-// 								FetchExternalResources: ["link", "css"]
-// 							},
-// 							done: function(err, window) {
-// 								elements = window.document.getElementsByTagName('*');
-// 								for (element of elements) {
-// 									if (this.backgroundStyle in window.getComputedStyle(element)) {
-// 										this.passed = true;
-// 										return cb(null, this);
-// 									}
-// 								}
-// 								this.passed = false;
-// 								return cb(null, this);
-// 							}.bind(this)
-// 						});
-// 					} else {
-// 						this.passed = false;
-// 						cb(null, this);
-// 					}
-// 				}.bind(this));
-// 			}
-// 		});
-// 	}
-//
-// 	tests.push({
-// 		description: 'site has an element with `margin: auto`',
-// 		assert: function(url, cb) {
-// 			request(url, function(error, response, body) {
-// 				if (!error && response.statusCode == 200) {
-// 					jsdom.env(body, {
-// 						url: url,
-// 						features: {
-// 							FetchExternalResources: ["link", "css"]
-// 						},
-// 						done: function(err, window) {
-// 							elements = window.document.getElementsByTagName('*');
-// 							for (element of elements) {
-// 								if (
-// 									(window.getComputedStyle(element)["margin-top"] == "auto") &&
-// 									(window.getComputedStyle(element)["margin-right"] == "auto") &&
-// 									(window.getComputedStyle(element)["margin-bottom"] == "auto") &&
-// 									(window.getComputedStyle(element)["margin-left"] == "auto")) {
-// 									this.passed = true;
-// 									return cb(null, this);
-// 								}
-// 							}
-// 							this.passed = false;
-// 							return cb(null, this);
-// 						}.bind(this)
-// 					});
-// 				} else {
-// 					this.passed = false;
-// 					cb(null, this);
-// 				}
-// 			}.bind(this));
-// 		}
-// 	}, {
-// 		description: 'site has an element with `text-align: center`',
-// 		assert: function(url, cb) {
-// 			request(url, function(error, response, body) {
-// 				if (!error && response.statusCode == 200) {
-// 					jsdom.env(body, {
-// 						url: url,
-// 						features: {
-// 							FetchExternalResources: ["link", "css"]
-// 						},
-// 						done: function(err, window) {
-// 							elements = window.document.getElementsByTagName('*');
-// 							for (element of elements) {
-// 								if (window.getComputedStyle(element)["text-align"] == "center") {
-// 									this.passed = true;
-// 									return cb(null, this);
-// 								}
-// 							}
-// 							this.passed = false;
-// 							return cb(null, this);
-// 						}.bind(this)
-// 					});
-// 				} else {
-// 					this.passed = false;
-// 					cb(null, this);
-// 				}
-// 			}.bind(this));
-// 		}
-// 	}, {
-// 		description: 'site has an element with `display: flex`',
-// 		assert: function(url, cb) {
-// 			request(url, function(error, response, body) {
-// 				if (!error && response.statusCode == 200) {
-// 					jsdom.env(body, {
-// 						url: url,
-// 						features: {
-// 							FetchExternalResources: ["link", "css"]
-// 						},
-// 						done: function(err, window) {
-// 							elements = window.document.getElementsByTagName('*');
-// 							for (element of elements) {
-// 								if (window.getComputedStyle(element)["display"] == "flex") {
-// 									this.passed = true;
-// 									return cb(null, this);
-// 								}
-// 							}
-// 							this.passed = false;
-// 							return cb(null, this);
-// 						}.bind(this)
-// 					});
-// 				} else {
-// 					this.passed = false;
-// 					cb(null, this);
-// 				}
-// 			}.bind(this));
-// 		}
-// 	});
-//
-// 	async.map(tests, function(test, cb) {
-// 		test.assert(url, cb);
-// 	}, function(err, results) {
-// 		for (test of tests) {
-// 			delete test.assert;
-// 		}
-// 		scoreObject = {
-// 			score: calculateScore(tests),
-// 			tests: tests
-// 		};
-// 		return cb(null, scoreObject);
-// 	});
-// };
