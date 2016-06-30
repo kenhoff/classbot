@@ -59,6 +59,7 @@ module.exports = {
 				request(url, function(error, response, body) {
 					if (!error && response.statusCode == 200) {
 						jsdom.env(body, function(err, window) {
+							// TODO: check all meta tags, not just the first one
 							var metaTags = window.document.getElementsByTagName('meta');
 							if ((metaTags.length >= 1) && (metaTags[0].getAttribute("content") == "width=device-width, initial-scale=1") && (metaTags[0].getAttribute("name") == "viewport")) {
 								this.passed = true;
