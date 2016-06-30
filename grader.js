@@ -3,6 +3,7 @@ var app = express();
 var moment = require('moment');
 
 var port = process.env.PORT || 3000;
+app.use(express.static(__dirname + "/site"));
 app.listen(port); // binding to a port just for heroku
 
 if (process.env.NODE_ENV != "production") {
