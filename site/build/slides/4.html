@@ -1,0 +1,97 @@
+<html lang="en"><head><meta charset="utf-8"/><link href="https://fonts.googleapis.com/css?family=EB+Garamond|Montserrat" rel="stylesheet"/><style media="screen">body {
+	font-family: 'EB Garamond', serif;
+}
+
+h1 {
+	font-family: 'Montserrat', sans-serif;
+}
+
+strong {
+	text-decoration: underline;
+}
+
+.slide {
+	display: none;
+	margin: auto;
+	width: 100%;
+}
+.deck-current {
+	display: block;
+}
+img {
+	max-width: 100%;
+	height: auto;
+	margin: auto;
+	display: block;
+}
+@media (min-width: 34em) {
+	.slide {
+		max-width: 576px;
+	}
+}
+@media (min-width: 48em) {
+	.slide {
+		max-width: 720px;
+	}
+}
+@media (min-width: 62em) {
+	.slide {
+		max-width: 940px;
+	}
+}
+@media (min-width: 75em) {
+	.slide {
+		max-width: 1140px;
+	}
+}</style><base target="_blank"/></head></html><body><div><section class="slide"><h1 id="front-end-web-development">Front End Web Development</h1>
+<p>Spark Boulder, Summer 2016</p>
+<p>Session 4: <strong>The Session Home</strong></p>
+<p>Portfolio Site Show-and-Tell, Lab session</p>
+</section><section class="slide">
+<h1 id="there-s-a-bug-in-assignment-3">There&#39;s a bug in Assignment 3</h1>
+<p>For some reason, I can&#39;t get @classbot to pick up on <code>border-color</code>.</p>
+<p>I&#39;ll let you know if I&#39;m able to get that fixed, but I might just remove it.</p>
+<p>I&#39;ll let everyone know either way on Slack!</p>
+<p>Once I do, just rerun your submission.</p>
+</section><section class="slide">
+<h1 id="spring-2016-class-postmortem">Spring 2016 class postmortem</h1>
+<p>I recently finished a postmortem on the Spring 2016 class! Check it out if you want: <a href="https://hoff.tech/posts/2016/06/26/spark-class-spring-2016-postmortem">https://hoff.tech/posts/2016/06/26/spark-class-spring-2016-postmortem</a></p>
+</section><section class="slide">
+<h1 id="no-class-on-july-4th-">No class on July 4th!</h1>
+<p><img src="http://i.imgur.com/CHUGJzH.gif" alt="&#39;Merica"></p>
+<p>I&#39;d still recommend doing the readings, if you can. I&#39;ll include lots of links to free, prebuilt HTML themes that are available for you to download and customize for your clients, so you don&#39;t have to build everything yourself!</p>
+</section><section class="slide">
+<h1 id="more-dumb-fun-web-stuff">More dumb fun web stuff</h1>
+<p>Still trying to understand CSS selectors? Try this CSS Selector game!</p>
+<p><a href="http://flukeout.github.io/">http://flukeout.github.io/</a></p>
+</section><section class="slide">
+<h1 id="anyone-want-to-show-off-their-portfolio-site-">Anyone want to show off their portfolio site?</h1>
+<p>I&#39;ve had mine for a while, but I update it every so often: <a href="https://hoff.tech/">https://hoff.tech/</a></p>
+</section><section class="slide">
+<h1 id="reminder-keep-that-separate-firebase-live-">Reminder: keep that separate Firebase live!</h1>
+<p>Create a separate Firebase for your Portfolio Site, and keep it live after the class ends! You want to be able to show this off to potential employers and clients.</p>
+</section><section class="slide">
+<h1 id="setting-up-your-firebase-app-with-a-custom-url">Setting up your Firebase app with a custom URL</h1>
+<ol>
+<li>Buy a domain (I usually use <a href="https://www.namecheap.com/">Namecheap</a>)</li>
+<li>Go to the &quot;Hosting&quot; section on the Firebase app console</li>
+<li>Click the &quot;Connect Custom Domain&quot; button</li>
+<li>Add your domain (just <code>my-domain-name.com</code> - no <code>http</code> or <code>www</code>)</li>
+<li>To &quot;verify ownership&quot;, head into your Namecheap dashboard, and click &quot;Manage&quot; on the domain that you&#39;re trying to connect.</li>
+<li>Find the &quot;Host records&quot; section on the dashboard for your domain.</li>
+<li>Create two <code>TXT</code> records, each with the value specified in the Firebase popup.</li>
+<li>While you wait for Firebase to validate the domain, sit back, relax, and watch some <a href="https://youtu.be/9C_HReR_McQ">Don&#39;t Hug Me I&#39;m Scared</a>.</li>
+<li>Reconsider every life decision that you have ever made.</li>
+<li>Once Firebase has validated the domain, head back into the Namecheap host records for your domain.</li>
+<li>Add the <code>CNAME</code> host records specified in the Firebase popup.</li>
+<li>Test out your domain to see if it works!</li>
+</ol>
+</section><section class="slide">
+<h1 id="lab-time-">Lab time!</h1>
+<p>Ask questions, work on your portfolio site, or do whatever you want!</p>
+</section><section class="slide">
+<h1 id="excelsior-">Excelsior! 🚀</h1>
+</section></div><script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js" charset="utf-8"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/deck.js/1.1.0/core/deck.core.js" charset="utf-8"></script><script>$(function() {
+	$.deck.defaults.hashPrefix = ""
+	$.deck('.slide');
+});</script></body>

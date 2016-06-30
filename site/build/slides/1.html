@@ -1,0 +1,198 @@
+<html lang="en"><head><meta charset="utf-8"/><link href="https://fonts.googleapis.com/css?family=EB+Garamond|Montserrat" rel="stylesheet"/><style media="screen">body {
+	font-family: 'EB Garamond', serif;
+}
+
+h1 {
+	font-family: 'Montserrat', sans-serif;
+}
+
+strong {
+	text-decoration: underline;
+}
+
+.slide {
+	display: none;
+	margin: auto;
+	width: 100%;
+}
+.deck-current {
+	display: block;
+}
+img {
+	max-width: 100%;
+	height: auto;
+	margin: auto;
+	display: block;
+}
+@media (min-width: 34em) {
+	.slide {
+		max-width: 576px;
+	}
+}
+@media (min-width: 48em) {
+	.slide {
+		max-width: 720px;
+	}
+}
+@media (min-width: 62em) {
+	.slide {
+		max-width: 940px;
+	}
+}
+@media (min-width: 75em) {
+	.slide {
+		max-width: 1140px;
+	}
+}</style><base target="_blank"/></head></html><body><div><section class="slide"><h1 id="front-end-web-development">Front End Web Development</h1>
+<p>Spark Boulder, Summer 2016</p>
+<p>Session 1: <strong>The Motion Picture</strong></p>
+<p>Command Line, Hosting your site on Firebase</p>
+</section><section class="slide">
+<h1 id="logistics-things">Logistics Things</h1>
+<p>If you haven&#39;t turned in your enrollment agreement yet, do that! Email or print it out and give it to/email it to @alex</p>
+</section><section class="slide">
+<h1 id="more-dumb-fun-web-stuff">More dumb fun web stuff</h1>
+<p><a href="http://jenniferdewalt.com/">http://jenniferdewalt.com/</a></p>
+</section><section class="slide">
+<h1 id="a-note-on-assignments">A note on assignments</h1>
+<p>There&#39;s no due dates! You can complete assignments at your own convenience, and submit them whenever you want.</p>
+</section><section class="slide">
+<h1 id="projects-">Projects!</h1>
+<p>Over the course of the next 10 weeks, I&#39;m going to have you complete 4 different projects.</p>
+<p>You can present your project to the class, if you want! Definitely not required.</p>
+<p>Just like all of the other assignments, these aren&#39;t formally &quot;due&quot; anytime.</p>
+<p>These projects won&#39;t be formally graded at all, but they&#39;ll be included in your &quot;report card&quot; at the end of the class. They&#39;re also really cool to show off to potential clients and employers!</p>
+<h2 id="project-1-your-portfolio-page-session-4">Project 1: Your Portfolio Page - Session 4</h2>
+<blockquote>
+<p>This one can be super simple to start! The expectation is that you&#39;ll build on it over time to include all of your projects and other work that you&#39;re proud of.</p>
+</blockquote>
+<h2 id="project-2-client-project-session-9">Project 2: Client Project - Session 9</h2>
+<blockquote>
+<p>You&#39;ll find a client (local business, friend, or family) and build a simple site for them. Something simple, like a visual artist&#39;s portfolio or a restaurant&#39;s site. If you&#39;ve got someone in mind already, great! If not, no problem at all! I&#39;ve got a list of people who would be interested in having a site built for them.</p>
+</blockquote>
+<h2 id="project-3-hackertyper-clone-session-14">Project 3: Hackertyper Clone - Session 14</h2>
+<blockquote>
+<p>Ever played with <a href="http://hackertyper.com/?">http://hackertyper.com/?</a> Now you have!</p>
+<p>Build something pretty similar to this - you can pretend to be coding the matrix, or writing the complete works of lovecraft, or even just mushing together every Kanye quote you can find and calling it a work of genius.</p>
+</blockquote>
+<h2 id="project-4-quote-of-the-day-app-session-19">Project 4: Quote of the Day App - Session 19</h2>
+<blockquote>
+<p>Pretty simple on the surface - just display a random quote of the day. The complicated part of this is that the specific quote actually comes from a server, not the client-side page.</p>
+</blockquote>
+</section><section class="slide">
+<h1 id="how-to-use-chrome-s-developer-tools">How to use Chrome&#39;s Developer tools</h1>
+<p>Firefox and Safari both have their own versions of this - they might look a little bit different, but you should be able to accomplish the same things.</p>
+<p>There&#39;s a couple ways to access developer tools:</p>
+<ol>
+<li>Hamburger Menu &gt; Other Tools &gt; Developer Tools</li>
+<li>View &gt; Developer &gt; Developer Tools</li>
+<li><code>cmd-opt-I</code> (or <code>ctrl-opt-I</code> if you&#39;re on a PC)</li>
+</ol>
+<p>Poke around with the developer tools, see what&#39;s there! There&#39;s a lot of interesting stuff, like the page &quot;source&quot; (the code behind the page), tools to track web requests and CPU usage, and a console for JavaScript.</p>
+</section><section class="slide">
+<h1 id="inspecting-elements">Inspecting elements</h1>
+<p>There&#39;s a couple ways to inspect an element:</p>
+<ol>
+<li>Right-click an element on the page &gt; Inspect</li>
+<li>Click the upper-left button in the Developer tools pane</li>
+<li><code>cmd-shift-C</code> (or <code>ctrl-shift-C</code> if you&#39;re on a PC)</li>
+</ol>
+<p>Once you&#39;ve selected an element, check out the &quot;Styles&quot; pane inside of Developer tools, and see what&#39;s going on there.</p>
+</section><section class="slide">
+<h1 id="-file-system-or-file-structure-">&quot;File system&quot; or &quot;File structure&quot;</h1>
+<p>Files and folders are represented as a <strong>tree</strong> on your computer.</p>
+<p>&quot;directory&quot; == &quot;folder&quot;</p>
+<p><code>/</code> - is the &quot;root&quot; of your file system. The absolute top-most directory of your hard drive</p>
+<p><code>/Users/ken/Documents</code> - a directory where I keep all my documents!</p>
+<p><code>/Users</code> - all the users on my computer</p>
+<p><code>/Users/ken</code> - all the things that I (ken) own (are there other users?)</p>
+<p><code>/Users/ken/dev</code> - where I keep all of my development-related directories</p>
+<p>(for Windows or Linux, this will look a bit different)</p>
+</section><section class="slide">
+<h1 id="command-line-stuff">Command line stuff</h1>
+<p>Open a terminal and try some commands:</p>
+<p><code>ls</code></p>
+<p><code>cd</code></p>
+<p><code>pwd</code></p>
+<p><code>mkdir</code></p>
+<p>what about with &quot;arguments&quot;?</p>
+<p>~</p>
+<p><code>/</code></p>
+<p><code>..</code></p>
+<p><code>.</code></p>
+<p><code>/Users/ken/dev</code></p>
+<p>what&#39;s a &quot;flag&quot;?</p>
+</section><section class="slide">
+<h1 id="tonight-on-front-end-web-development-">Tonight, on Front End Web Development...</h1>
+<p>Let&#39;s take our code and deploy it out to the internet!</p>
+</section><section class="slide">
+<h1 id="firebase-time-">Firebase time!</h1>
+<p><code>readings 1</code></p>
+</section><section class="slide">
+<h1 id="back-to-html-">Back to HTML!</h1>
+</section><section class="slide">
+<h1 id="-img-"><code>&lt;img&gt;</code></h1>
+<p><code>&lt;img&gt;</code> tags have some things called <strong>attributes</strong>!</p>
+<p>Here&#39;s a couple attributes that we&#39;ve seen so far:</p>
+<p><code>src</code></p>
+<p><code>alt</code></p>
+<p><code>height</code>, <code>width</code> ← what happens if you leave out one of these?</p>
+<p>what about <code>style</code>?</p>
+</section><section class="slide">
+<h1 id="-a-"><code>&lt;a&gt;</code></h1>
+<p>Here&#39;s a couple common <code>&lt;a&gt;</code> tag attributes:</p>
+<p><code>href</code> - can have absolute and relative paths</p>
+<p>what if we set it to <code>#section1</code>?</p>
+<p><code>target</code> - what are the possible values for target?</p>
+<p>what&#39;s the difference between <code>_blank</code> and <code>_self</code>?</p>
+</section><section class="slide">
+<h1 id="html-tag-attributes">HTML tag attributes</h1>
+<p>Every tag can have <strong>attributes</strong>!</p>
+<p>There are <strong>global</strong> attributes, and there are <strong>element</strong> attributes.</p>
+<p><strong>Global</strong> attributes are attributes that can be placed on any tag - things like <code>id</code>, <code>class</code>, and <code>style</code></p>
+<p>List of global attributes: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes</a></p>
+<p><strong>Element</strong> attributes are specific to certain tags - things like <code>src</code>, <code>alt</code>, and <code>href</code></p>
+<p>Element attributes: <a href="http://www.w3schools.com/tags/tag_img.asp">http://www.w3schools.com/tags/tag_img.asp</a>,</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img</a></p>
+</section><section class="slide">
+<h1 id="what-about-the-p-tag-">What about the <code>&lt;p&gt;</code> tag?</h1>
+<p>What attributes does it have?</p>
+</section><section class="slide">
+<p>Now, with our remaining time...</p>
+<h1 id="you-are-now-campaigning-to-be-the-next-mayor-of-boulder-">You are now campaigning to be the next Mayor of Boulder!</h1>
+<p>You need a website!</p>
+<p>What is your platform?</p>
+<ul>
+<li>Time travel research?</li>
+<li>Everyone gets a free pony?</li>
+<li>Dental hygiene?!</li>
+</ul>
+<p>Tags you will need to win your campaign:</p>
+<ul>
+<li><code>&lt;img&gt;</code> ← sourced from somewhere on the internet</li>
+<li><code>&lt;img&gt;</code> ← sourced from somewhere on your own domain/filesystem</li>
+<li><code>&lt;br&gt;</code></li>
+<li><code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code></li>
+<li><code>&lt;title&gt;</code> ← tricky! where does it go???</li>
+<li><code>&lt;div&gt;</code>, <code>&lt;span&gt;</code> ← what the whaaat?</li>
+<li><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</code> (my favorite tag in the world)</li>
+</ul>
+</section><section class="slide">
+<h1 id="stuff-for-tonight-">Stuff for tonight:</h1>
+<ul>
+<li>Complete assignment <code>1</code> (type <code>submit 1</code> into @classbot and see what happens)</li>
+<li>Do the readings for session <code>2</code> (type <code>readings 2</code> into @classbot)</li>
+</ul>
+</section><section class="slide">
+<h1 id="how-to-be-a-web-developer">How to be a Web Developer</h1>
+<ul>
+<li>Look stuff up on the internet</li>
+<li>Make stuff</li>
+<li>Repeat</li>
+</ul>
+</section><section class="slide">
+<h1 id="excelsior-">Excelsior! 🚀</h1>
+</section></div><script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js" charset="utf-8"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/deck.js/1.1.0/core/deck.core.js" charset="utf-8"></script><script>$(function() {
+	$.deck.defaults.hashPrefix = ""
+	$.deck('.slide');
+});</script></body>

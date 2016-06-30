@@ -1,0 +1,157 @@
+<html lang="en"><head><meta charset="utf-8"/><link href="https://fonts.googleapis.com/css?family=EB+Garamond|Montserrat" rel="stylesheet"/><style media="screen">body {
+	font-family: 'EB Garamond', serif;
+}
+
+h1 {
+	font-family: 'Montserrat', sans-serif;
+}
+
+strong {
+	text-decoration: underline;
+}
+
+.slide {
+	display: none;
+	margin: auto;
+	width: 100%;
+}
+.deck-current {
+	display: block;
+}
+img {
+	max-width: 100%;
+	height: auto;
+	margin: auto;
+	display: block;
+}
+@media (min-width: 34em) {
+	.slide {
+		max-width: 576px;
+	}
+}
+@media (min-width: 48em) {
+	.slide {
+		max-width: 720px;
+	}
+}
+@media (min-width: 62em) {
+	.slide {
+		max-width: 940px;
+	}
+}
+@media (min-width: 75em) {
+	.slide {
+		max-width: 1140px;
+	}
+}</style><base target="_blank"/></head></html><body><div><section class="slide"><h1 id="front-end-web-development">Front End Web Development</h1>
+<p>Spark Boulder, Summer 2016</p>
+<p>Session 16: <strong>Revenge of the Session</strong></p>
+<p>jQuery 202: <code>$</code>, using jQuery selectors and methods</p>
+</section><section class="slide">
+<p>More dumb fun web stuff
+I’m not sure, but I think I know how this works:
+<a href="http://xkcd.com/1663">http://xkcd.com/1663</a>
+When you load the page, you get a fragment appended to the URL (a fragment is the # bit). This creates a new game, and sends some information off to the server, including unique info about your browser, so you can share a read-only URL with others. Every time you edit the page, it sends your edits to the server, and the server runs your garden continuously.
+<a href="http://xkcd.com/1663/#55944f62-fa9b-11e5-8001-42010a8e0010">http://xkcd.com/1663/#55944f62-fa9b-11e5-8001-42010a8e0010</a>
+When you load a URL that already has a fragment, it loads up that specific game, and the controls if you’re accessing it from the original browser.</p>
+<p>Notes on the end of class
+On April 27th at 8pm (1 week after the class ends), report cards get generated!
+Report cards include grades on all assignments, attendance, and links to projects (Client, Lorem Ipsum, and Portfolio)
+Remember to check your grades with grades!
+Remember to create separate firebase apps for your projects (and that they’re submitted to the grader for the right assignments), so that potential employers can see them!</p>
+<p>Tonight
+on Front End Web Development:</p>
+<p>Advanced Topics: Back End Web Development with Node.js!</p>
+<p>What is Node?
+You know how we can run JavaScript in the browser?
+We can also run JavaScript in Node.js!</p>
+<p>Things look a little different between the two:
+In the browser, you get some builtin variables/objects, like document and window
+In Node, you get a whole different bunch of builtin variables/objects, like fs and require
+Node.js is built on top of the V8 JavaScript engine: gross details here</p>
+<p>Using Node to run JavaScript
+First, create a file named index.js</p>
+<p>Then, add console.log(“Hello, this is running from Node.js!”); to your index.js</p>
+<p>Finally, run node index.js</p>
+<p>Marvel at your ultimate cosmic power!</p>
+<p>What is Express?
+We’ll be using a library called express. (<a href="http://expressjs.com/">http://expressjs.com/</a>)</p>
+<p>Express makes it easier to send and receive HTTP requests. It can turn Node.js into a web server!</p>
+<p>(Any time we request a webpage, or send information to a server, we use something called an HTTP request - the two main types of HTTP requests are GET and POST.)</p>
+<p>Install Express
+Navigate to a new project folder!</p>
+<p>Run:
+npm init (then just hit enter a bunch)
+npm install express --save</p>
+<p>Note: while it will work without it, --save is required for deploying to Modulus (more on that later)</p>
+<p>Including Express in our project
+Inside index.js:</p>
+<p>var express = require(“express”);</p>
+<p>Run it again (node index.js), just to be sure that it’s right.</p>
+<p>Telling express to be a web server!
+var app = express();
+// we’ll put some other code here
+app.listen(process.env.PORT || 3000);</p>
+<p>This tells express to start listening on port 3000 (or, whatever port Modulus assigns. More on Modulus later)
+Run the script again - what happens on the command line?
+(ctrl-C quits)</p>
+<p>Receiving HTTP requests
+Before app.listen(process.env.PORT || 3000):</p>
+<p>app.get(&quot;/&quot;, function(request, response) {
+    console.log(&quot;hey! something happened!&quot;);
+})</p>
+<p>Restart your server (kill and rerun node index.js), then open a browser and go to <a href="http://localhost:3000/">http://localhost:3000/</a>. What happens?</p>
+<p>Sending data back in response
+app.get(&quot;/&quot;, function(request, response) {
+    console.log(&quot;hey! something happened!&quot;);
+    response.send(&quot;client says what?&quot;);
+})</p>
+<p>Note that you have to restart your script every time!</p>
+<p>Getting info from the URL
+Add a second app.get call:</p>
+<p>app.get(&quot;/hello/:name&quot;, function(request, response) {
+    response.send(&quot;Hello, &quot; + request.params.name + &quot;!&quot;)
+})</p>
+<p>Restart, and go to <a href="http://localhost:3000/hello/yourname">http://localhost:3000/hello/yourname</a>. What happens?</p>
+<p>Deploying to Modulus
+We’re going to use Modulus to host our Node.js code. It’s a little like Firebase!</p>
+<p><a href="https://modulus.io/">https://modulus.io/</a></p>
+<p>Normally it’s not free, but they give you a $15 credit when you sign up, and they don’t require payment info.
+That should be enough to host a tiny server full-time for 2 months - more than enough for what we’re doing in the class!</p>
+<p>Install the Modulus command line tools:
+npm install modulus -g</p>
+<p>If you get an error with that, try:</p>
+<p>sudo npm install modulus -g</p>
+<p>Sign up for Modulus
+Run modulus signup, and follow the prompts</p>
+<p>(pretty cool that you can sign up from the command line, right?)</p>
+<p>Create a new Modulus project
+Navigate to your project folder, then run modulus project create.</p>
+<p>Name it whatever you like!
+When asked for the runtime, select Node.js.
+When asked for the servo size, enter 192.</p>
+<p>Deploy your Node.js app to Modulus
+In your project folder, run modulus deploy, and confirm that you’re deploying the right app.
+(then sit and wait for a minute or two)</p>
+<p>Navigate to your app (something like <a href="http://yourappnamehere-12345.onmodulus.net">http://yourappnamehere-12345.onmodulus.net</a>) and check that everything is working as expected.</p>
+<p>Marvel at your unlimited cosmic power!</p>
+<p>Debugging Modulus
+If your Modulus stuff isn’t working, try running modulus logs. It might give you a clue as to what’s broken!</p>
+<p>Are you in the right directory?
+Did you run npm init and npm install express --save in the right directory?
+Did you run modulus deploy from the right directory?</p>
+<p>Assignment 16
+Create a tiny Node.js web server that’s accessible from the internet! (use Modulus!)</p>
+<p>Your server needs to respond to “/hello/world” with “Hello, world!”
+(it also needs to respond to other names, too!)</p>
+<p>Check out the card on the syllabus for more info.</p>
+<p>How to Learn
+Web Development
+Look stuff up on the internet
+Make stuff
+Repeat</p>
+<p>Excelsior! 🚀</p>
+</section></div><script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js" charset="utf-8"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/deck.js/1.1.0/core/deck.core.js" charset="utf-8"></script><script>$(function() {
+	$.deck.defaults.hashPrefix = ""
+	$.deck('.slide');
+});</script></body>

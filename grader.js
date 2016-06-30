@@ -3,8 +3,12 @@ var app = express();
 var moment = require('moment');
 
 var port = process.env.PORT || 3000;
-app.use(express.static(__dirname + "/site"));
-app.listen(port); // binding to a port just for heroku
+app.use(express.static(__dirname + "/site/build", {
+	extensions: ["html", "htm"]
+}));
+app.listen(port, function() {
+	console.log("Listening on", port);
+}); // binding to a port just for heroku
 
 if (process.env.NODE_ENV != "production") {
 	require('dotenv').config();

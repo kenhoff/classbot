@@ -1,0 +1,145 @@
+<html lang="en"><head><meta charset="utf-8"/><link href="https://fonts.googleapis.com/css?family=EB+Garamond|Montserrat" rel="stylesheet"/><style media="screen">body {
+	font-family: 'EB Garamond', serif;
+}
+
+h1 {
+	font-family: 'Montserrat', sans-serif;
+}
+
+strong {
+	text-decoration: underline;
+}
+
+.slide {
+	display: none;
+	margin: auto;
+	width: 100%;
+}
+.deck-current {
+	display: block;
+}
+img {
+	max-width: 100%;
+	height: auto;
+	margin: auto;
+	display: block;
+}
+@media (min-width: 34em) {
+	.slide {
+		max-width: 576px;
+	}
+}
+@media (min-width: 48em) {
+	.slide {
+		max-width: 720px;
+	}
+}
+@media (min-width: 62em) {
+	.slide {
+		max-width: 940px;
+	}
+}
+@media (min-width: 75em) {
+	.slide {
+		max-width: 1140px;
+	}
+}</style><base target="_blank"/></head></html><body><div><section class="slide"><h1 id="front-end-web-development">Front End Web Development</h1>
+<p>Spark Boulder, Summer 2016</p>
+<p>Session 2: <strong>The Wrath of Session</strong></p>
+<p>HTML tags &amp; attributes, the <code>style</code> attribute</p>
+</section><section class="slide">
+<h1 id="projects-recap">Projects recap</h1>
+<ul>
+<li>Present if you want!</li>
+<li>Not formally &quot;due&quot; anytime, but there&#39;s specific sessions that we&#39;ll be talking about them</li>
+<li>URL to your project shown on your &quot;report card&quot; at the end of the course - cool to show off to clients &amp; employers</li>
+</ul>
+<h2 id="project-1-portfolio-page-session-4">Project 1: Portfolio Page - Session 4</h2>
+<p>Run <code>readings 4</code> to get a list of example portfolio pages.</p>
+<h2 id="project-2-client-project-session-9">Project 2: Client Project - Session 9</h2>
+<p>Run <code>readings 9</code> to get a list of clients that might be interested in having work done for them!</p>
+<h2 id="project-3-hackertyper-clone-session-14">Project 3: Hackertyper Clone - Session 14</h2>
+<p>Run <code>readings 14</code> to get more info about the requirements and instructions for this project.</p>
+<h2 id="project-4-quote-of-the-day-app-session-19">Project 4: Quote of the Day App - Session 19</h2>
+<p>Run <code>readings 14</code> to get more info about the requirements and instructions for this project, including endpoints and data structures!</p>
+</section><section class="slide">
+<h1 id="more-dumb-fun-web-stuff-">More dumb fun web stuff:</h1>
+<p><a href="http://ncase.me/polygons/">http://ncase.me/polygons/</a></p>
+</section><section class="slide">
+<h1 id="forms-and-buttons">Forms and Buttons</h1>
+<p>There&#39;s a whole group of tags focused on helping the user interact with the page - <code>&lt;form&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>, <code>&lt;option&gt;</code>, and more - they can be styled and manipulated just like any other elements.</p>
+<p>Forms usually interact with a &quot;Back End&quot; - user adding email address to a mailing list, or changing some profile information.</p>
+<p>When we build our &quot;Quote of the day&quot; app, we&#39;ll run some JavaScript to communicate with a server and change the page whenever a <code>&lt;button&gt;</code> is clicked.</p>
+<p>Because we won&#39;t really get to interaction and communication until the second half of the course, I&#39;d recommend revisiting these tags once we have a better understanding of JavaScript.</p>
+</section><section class="slide">
+<h1 id="-img-"><code>&lt;img&gt;</code></h1>
+<p><code>&lt;img&gt;</code> tags have some things called <strong>attributes</strong>!</p>
+<p>Here&#39;s a couple attributes that we&#39;ve seen so far:</p>
+<p><code>src</code></p>
+<p><code>alt</code></p>
+<p><code>height</code>, <code>width</code> ← what happens if you leave out one of these?</p>
+<p>what about <code>style</code>?</p>
+</section><section class="slide">
+<h1 id="-a-"><code>&lt;a&gt;</code></h1>
+<p>Here&#39;s a couple common <code>&lt;a&gt;</code> tag attributes:</p>
+<p><code>href</code> - can have absolute and relative paths</p>
+<p>what if we set it to <code>#section1</code>?</p>
+<p><code>target</code> - what are the possible values for target?</p>
+<p>what&#39;s the difference between <code>_blank</code> and <code>_self</code>?</p>
+</section><section class="slide">
+<h1 id="html-tag-attributes">HTML tag attributes</h1>
+<p>Every tag can have <strong>attributes</strong>!</p>
+<p>There are <strong>global</strong> attributes, and there are <strong>element</strong> attributes.</p>
+<p><strong>Global</strong> attributes are attributes that can be placed on any tag - things like <code>id</code>, <code>class</code>, and <code>style</code></p>
+<p>List of global attributes: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes</a></p>
+<p><strong>Element</strong> attributes are specific to certain tags - things like <code>src</code>, <code>alt</code>, and <code>href</code></p>
+<p>Element attributes: <a href="http://www.w3schools.com/tags/tag_img.asp">http://www.w3schools.com/tags/tag_img.asp</a>,</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img</a></p>
+</section><section class="slide">
+<h1 id="what-about-the-p-tag-">What about the <code>&lt;p&gt;</code> tag?</h1>
+<p>What attributes does it have?</p>
+</section><section class="slide">
+<h1 id="setting-the-width-and-height-of-something">Setting the width and height of something</h1>
+<p>Have to use the <code>style</code> attribute!</p>
+<p><code>&lt;h1 style=&quot;width:100px&quot;&gt;this h1 is 100 pixels wide&lt;/h1&gt;</code></p>
+<p><code>&lt;p style=&quot;height:200px&quot;&gt;this p is 200 pixels tall&lt;/p&gt;</code></p>
+<p><code>&lt;div style=&quot;width:150px;height:150px&quot;&gt;this div is 150 pixels wide and 150 pixels tall&lt;/div&gt;</code></p>
+<p><a href="http://www.w3schools.com/css/css_howto.asp">http://www.w3schools.com/css/css_howto.asp</a></p>
+</section><section class="slide">
+<h1 id="figuring-out-what-styles-are-applied-to-a-tag">Figuring out what styles are applied to a tag</h1>
+<p>To see the styles and attributes of an element, use the &quot;Inspect element&quot; tool</p>
+<p>The little nested boxes on the right tell you more about the dimensions of your element - <code>margin</code>, <code>border</code>, <code>padding</code>, <code>height</code> and <code>width</code></p>
+<p>On the left you have a list of all the style <strong>sources</strong>, what styles they&#39;re applying, and if any of those styles are being <em>overridden</em> by other styles.</p>
+<p>In the lower right, you have <strong>computed styles</strong> - the styles actually applied to the element, after all of the styles are overridden.</p>
+</section><section class="slide">
+<h1 id="still-have-your-about-me-page-try-adding-some-of-these-tags-and-styles-">Still have your &quot;about me&quot; page? Try adding some of these tags and styles:</h1>
+<p>Tags:</p>
+<ul>
+<li><code>&lt;img&gt;</code> ← sourced from somewhere on the internet</li>
+<li><code>&lt;img&gt;</code> ← sourced from somewhere on your own domain/filesystem</li>
+<li><code>&lt;br&gt;</code>, <code>&lt;hr&gt;</code></li>
+<li><code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code></li>
+<li><code>&lt;title&gt;</code> ← tricky! where does it go???</li>
+<li><code>&lt;div&gt;</code>, <code>&lt;span&gt;</code> ← what the whaaat?</li>
+<li><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</code> (my favorite tag in the world)</li>
+</ul>
+<p>Styles:</p>
+<ul>
+<li><code>color</code></li>
+<li><code>background-color</code></li>
+<li><code>border</code></li>
+<li><code>border-color</code></li>
+<li><code>font-style</code></li>
+<li><code>font-size</code></li>
+<li><code>font-family</code></li>
+<li><code>display</code> ← what&#39;s the difference between inline and block? what about flex?</li>
+</ul>
+</section><section class="slide">
+<h1 id="remember-">Remember:</h1>
+<p><a href="https://vimeo.com/24715531">https://vimeo.com/24715531</a></p>
+</section><section class="slide">
+<h1 id="excelsior-">Excelsior! 🚀</h1>
+</section></div><script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js" charset="utf-8"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/deck.js/1.1.0/core/deck.core.js" charset="utf-8"></script><script>$(function() {
+	$.deck.defaults.hashPrefix = ""
+	$.deck('.slide');
+});</script></body>

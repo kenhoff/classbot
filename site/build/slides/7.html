@@ -1,0 +1,227 @@
+<html lang="en"><head><meta charset="utf-8"/><link href="https://fonts.googleapis.com/css?family=EB+Garamond|Montserrat" rel="stylesheet"/><style media="screen">body {
+	font-family: 'EB Garamond', serif;
+}
+
+h1 {
+	font-family: 'Montserrat', sans-serif;
+}
+
+strong {
+	text-decoration: underline;
+}
+
+.slide {
+	display: none;
+	margin: auto;
+	width: 100%;
+}
+.deck-current {
+	display: block;
+}
+img {
+	max-width: 100%;
+	height: auto;
+	margin: auto;
+	display: block;
+}
+@media (min-width: 34em) {
+	.slide {
+		max-width: 576px;
+	}
+}
+@media (min-width: 48em) {
+	.slide {
+		max-width: 720px;
+	}
+}
+@media (min-width: 62em) {
+	.slide {
+		max-width: 940px;
+	}
+}
+@media (min-width: 75em) {
+	.slide {
+		max-width: 1140px;
+	}
+}</style><base target="_blank"/></head></html><body><div><section class="slide"><h1 id="front-end-web-development">Front End Web Development</h1>
+<p>Spark Boulder, Summer 2016</p>
+<p>Session 7: <strong>Generations</strong></p>
+<p>Bootstrap Themes &amp; Customization</p>
+</section><section class="slide">
+<p>More Dumb Fun (sort of web dev related) Stuff
+<a href="https://chrome.google.com/webstore/detail/herp-derp-for-youtube/ioomnmgjblnnolpdgdhebainmfbipjoh?hl=en">https://chrome.google.com/webstore/detail/herp-derp-for-youtube/ioomnmgjblnnolpdgdhebainmfbipjoh?hl=en</a></p>
+<p><a href="https://chrome.google.com/webstore/detail/cloud-to-butt-plus/apmlngnhgbnjpajelfkmabhkfapgnoai">https://chrome.google.com/webstore/detail/cloud-to-butt-plus/apmlngnhgbnjpajelfkmabhkfapgnoai</a></p>
+<p><a href="https://chrome.google.com/webstore/detail/millennials-to-snake-peop/jhkibealmjkbkafogihpeidfcgnigmlf">https://chrome.google.com/webstore/detail/millennials-to-snake-peop/jhkibealmjkbkafogihpeidfcgnigmlf</a></p>
+<p>Bootstrap themes!</p>
+<p>Bootstrap theme sites
+Generally, there’s 4 sites that I turn to for themes:
+<a href="https://bootswatch.com/">https://bootswatch.com/</a>
+Literally just reskins of Bootstrap
+<a href="http://startbootstrap.com/">http://startbootstrap.com/</a>
+Classy, free portfolio-ish sites. 1 or 2 app admin sites.
+<a href="http://www.bootstrapzero.com/">http://www.bootstrapzero.com/</a>
+Compilation from a bunch of free themes around the web - ymmv.
+<a href="https://wrapbootstrap.com/">https://wrapbootstrap.com/</a>
+Paid themes - some powerful, some...meh. Careful about the code quality on a lot of these.
+There’s probably lots more places to get themes out there!</p>
+<p>Let’s build! - Bootswatch
+<a href="https://bootswatch.com/">https://bootswatch.com/</a>
+Literally just reskins of original Bootstrap</p>
+<p>If you’ve built a site with Bootstrap, you can just include a Bootswatch theme instead of the builtin Bootstrap theme, and everything will still work fine, just with a different theme</p>
+<p>Can also use the Bootswatch CDN: <a href="https://www.bootstrapcdn.com/bootswatch/">https://www.bootstrapcdn.com/bootswatch/</a></p>
+<p>Let’s build! - StartBootstrap
+<a href="http://startbootstrap.com/">http://startbootstrap.com/</a>
+Not quite reskins of original bootstrap, but still reuses a lot of the components
+Most of these are one page sites</p>
+<p>The best way to learn these? Experiment</p>
+<p>Tons more bootstrap resources
+<a href="http://startbootstrap.com/bootstrap-resources/">http://startbootstrap.com/bootstrap-resources/</a></p>
+<p>That’s it!</p>
+<p>How to Learn
+Web Development
+Look stuff up on the internet
+Make stuff
+Repeat</p>
+<p>Excelsior!</p>
+</section><section class="slide">
+<h1 id="more-dumb-fun-web-dev-stuff">More Dumb Fun Web Dev Stuff</h1>
+<p>Code in the Dark - 1 screenshot of a website, 15 minutes, no autocomplete, no browser</p>
+<p><a href="http://codeinthedark.com/">http://codeinthedark.com/</a></p>
+</section><section class="slide">
+<p>Case study: Bootstrap on the web
+<a href="https://expo.getbootstrap.com/">https://expo.getbootstrap.com/</a></p>
+<p><a href="http://www.blackbox.cool/">http://www.blackbox.cool/</a>
+<a href="http://trakt.tv/">http://trakt.tv/</a></p>
+<p>Getting set up with Bootstrap again
+<a href="http://getbootstrap.com/getting-started/">http://getbootstrap.com/getting-started/</a></p>
+<p><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></p>
+<p><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"></p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+
+<p>Standard components vs Javascript components
+Standard components: <a href="http://getbootstrap.com/components/">http://getbootstrap.com/components/</a>
+Generally don’t include interaction - dropdowns are the exception, and require jQuery and bootstrap.js (see below)</p>
+<p>Javascript components: <a href="http://getbootstrap.com/javascript/">http://getbootstrap.com/javascript/</a>
+Generally include some type of interaction (dropdowns, modals, tooltips, etc)
+Requires jQuery and bootstrap.js!</p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+
+<p>Some standard components</p>
+<p>Jumbotron!
+We’ve used this one before!
+<a href="http://getbootstrap.com/components/#jumbotron">http://getbootstrap.com/components/#jumbotron</a></p>
+<p>Navs &amp; Navbars
+<a href="http://getbootstrap.com/components/#nav">http://getbootstrap.com/components/#nav</a>
+Can use pills or tabs - good for small amounts of navigation, or if you need nested navigation</p>
+<p><a href="http://getbootstrap.com/components/#navbar">http://getbootstrap.com/components/#navbar</a>
+Navbars span the entire width, but can be affixed to the top or bottom
+Dropdowns, form elements
+Builtin responsive support - collapses on narrow screens</p>
+<p>Glyphicons
+<a href="http://getbootstrap.com/components/#glyphicons">http://getbootstrap.com/components/#glyphicons</a></p>
+<p>Need something like ✭ ?</p>
+<p><span class="glyphicon glyphicon-star" /></p>
+<p>Control size with font-size: 10px</p>
+<p>Some Javascript components
+Don’t forget about jQuery and bootstrap.js!</p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+
+<p>Modals
+<a href="http://getbootstrap.com/javascript/#modals">http://getbootstrap.com/javascript/#modals</a></p>
+<p>Modals are those little popup window thingies - sometimes called lightboxes</p>
+<p>Use the examples!</p>
+<p>Modals work with the data-target, data-toggle, and data-dismiss attributes</p>
+<p>Carousels
+<a href="http://getbootstrap.com/javascript/#carousel">http://getbootstrap.com/javascript/#carousel</a></p>
+<p>Auto-progressing image rotator thingies - easy way to show multiple images without any scrolling.</p>
+<p>Case study in responsiveness
+Responsiveness - how a page changes on different devices (usually just different page widths)</p>
+<p><a href="http://boz.com/">http://boz.com/</a></p>
+<p>(also, every single article from Boz is great)</p>
+<!-- When you fix a bug in production: <https://twitter.com/JonathanDeMoor/status/676027065171316737> --> <!-- # More Dumb Fun Web Dev Stuff Parallax <http://www.firewatchgame.com/> -->
+<p>Ken’s project today - a page about his cat</p>
+<p>Bootstrap time!</p>
+<p>Cool things we can do with Bootstrap
+Bootstrap is a framework that gives us a couple things:
+A responsive grid system
+A default theme with CSS
+Some Javascript-enabled, interactable components</p>
+<p><a href="http://getbootstrap.com/getting-started/#examples">http://getbootstrap.com/getting-started/#examples</a></p>
+<p>Installing Bootstrap
+<a href="http://getbootstrap.com/getting-started/">http://getbootstrap.com/getting-started/</a></p>
+<p><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></p>
+<p><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"></p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+<p>Bootstrap CSS
+By default, Bootstrap gives us a bunch of styling for elements</p>
+<p>Let’s experiment!</p>
+<p>Everything is on <a href="http://getbootstrap.com/css/">http://getbootstrap.com/css/</a></p>
+<p>Bootstrap Grid System
+Might be easier than flexbox!</p>
+<p>Everything should go in a .container or .container-fluid ← remember, if it starts with a “.” it’s a class
+A container has a series of .rows
+Each .row has a series of .col-md-1s (or similar - needs a size and width)</p>
+<p>.rows and .cols can be nested - .cols inside of .rows inside of .cols inside of .rows...</p>
+<p>Bootstrap Grid System
+Each .row has 12 columns total (regardless of screen size or nesting!)</p>
+<p>You can specify col width size with class name:
+.col-xs-12 ← 12-column-wide column on extra-small devices and up
+.col-sm-6 ← 6-column-wide column on small devices and up
+.col-md-4 ← 4-column-wide column on medium devices and up
+.col-lg-1 ← 1-column-wide column on large devices and up</p>
+</section><section class="slide">
+<p>Centering</p>
+<p>Screw it - just use flexbox.</p>
+<p>The absolute best guide to flexbox: <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">https://css-tricks.com/snippets/css/a-guide-to-flexbox/</a></p>
+<p>tons of flexbox options.</p>
+<p>Note - IE 9 and earlier doesn&#39;t support flexbox.</p>
+<p>Web developers love having to support old IE versions.</p>
+</section><section class="slide">
+<p>(scrubs IE image)</p>
+</section><section class="slide">
+<p>Centering</p>
+<p><code>.container { display: flex; }</code></p>
+<p><code>.elementInContainer { margin: auto; }</code></p>
+<p>don&#39;t forget to give the container a height if you want it vertically centered!</p>
+<p>If nothing else works: <a href="http://howtocenterincss.com/">http://howtocenterincss.com/</a></p>
+</section><section class="slide">
+<p>The CSS Box Model</p>
+<p>Every element is a rectangular box.</p>
+<p>Each box has width, height, and a top/bottom/left/right border, margin, and padding</p>
+<p>More info: <a href="https://css-tricks.com/the-css-box-model/">https://css-tricks.com/the-css-box-model/</a></p>
+<p>Almost every site on the internet is built out of nested boxes (usually <code>&lt;div&gt;</code>s)</p>
+<p>The CSS Box Model.</p>
+<p>Lay out the content on your page using nested boxes!</p>
+<p>To adjust your boxes:</p>
+<p>width</p>
+<p>height</p>
+<p>padding (padding-top/bottom/left/right)</p>
+<p>border-style, border-width, border-radius, border-color</p>
+<p>margin (margin-top/bottom/left/right)</p>
+</section><section class="slide">
+<p><a href="https://twitter.com/sf_tristanb/status/534123993230356481">https://twitter.com/sf_tristanb/status/534123993230356481</a></p>
+</section><section class="slide">
+<h1 id="block-vs-inline-vs-inline-block">block vs inline vs inline-block</h1>
+<p>display: block takes up the entire width of an element, and can&#39;t be placed side-by-side to other elements. Its height and width can be changed!</p>
+<p>display: inline only takes up as much space as its content does, and is placed side-by-side to other elements. Its height and width cannot be changed!</p>
+<p>display: inline-block only takes up as much space as its content does, and is placed side-by-side to other elements. Its height and width can be changed!</p>
+</section><section class="slide">
+<p>That’s it!</p>
+<p>That’s it!</p>
+<p>Excelsior!</p>
+</section></div><script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js" charset="utf-8"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/deck.js/1.1.0/core/deck.core.js" charset="utf-8"></script><script>$(function() {
+	$.deck.defaults.hashPrefix = ""
+	$.deck('.slide');
+});</script></body>

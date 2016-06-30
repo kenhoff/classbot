@@ -6,6 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node grader.js",
+    "postinstall": "npm run build",
+    "build": "node site/metalsmith.js",
     "dev": "nodemon grader.js --ext js,mrkdwn"
   },
   "repository": {
@@ -27,7 +29,12 @@
     "eslint": "^2.3.0",
     "eslint-plugin-promise": "^1.1.0",
     "eslint-plugin-standard": "^1.3.2",
+    "jade": "^1.11.0",
     "jsdom": "^8.0.3",
+    "metalsmith": "^2.1.0",
+    "metalsmith-branch": "0.0.4",
+    "metalsmith-layouts": "^1.6.5",
+    "metalsmith-markdown": "^0.2.1",
     "moment": "^2.13.0",
     "request": "^2.69.0",
     "sinon": "^1.17.3"

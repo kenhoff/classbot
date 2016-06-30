@@ -1,0 +1,63 @@
+html(lang = "en")
+	head
+		meta(charset='utf-8')
+		link(href="https://fonts.googleapis.com/css?family=EB+Garamond|Montserrat" rel="stylesheet")
+		style(media='screen').
+			body {
+				font-family: 'EB Garamond', serif;
+			}
+
+			h1 {
+				font-family: 'Montserrat', sans-serif;
+			}
+
+			strong {
+				text-decoration: underline;
+			}
+
+			.slide {
+				display: none;
+				margin: auto;
+				width: 100%;
+			}
+			.deck-current {
+				display: block;
+			}
+			img {
+				max-width: 100%;
+				height: auto;
+				margin: auto;
+				display: block;
+			}
+			@media (min-width: 34em) {
+				.slide {
+					max-width: 576px;
+				}
+			}
+			@media (min-width: 48em) {
+				.slide {
+					max-width: 720px;
+				}
+			}
+			@media (min-width: 62em) {
+				.slide {
+					max-width: 940px;
+				}
+			}
+			@media (min-width: 75em) {
+				.slide {
+					max-width: 1140px;
+				}
+			}
+		base(target="_blank")
+
+body
+	div !{contents}
+	script(src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js', charset='utf-8')
+	script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js')
+	script(src='https://cdnjs.cloudflare.com/ajax/libs/deck.js/1.1.0/core/deck.core.js', charset='utf-8')
+	script.
+		$(function() {
+			$.deck.defaults.hashPrefix = ""
+			$.deck('.slide');
+		});
