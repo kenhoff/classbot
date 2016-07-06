@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV != "production") {
+	require('dotenv').config();
+}
+
 var express = require('express');
 var app = express();
 var moment = require('moment');
@@ -10,9 +14,6 @@ app.listen(port, function() {
 	console.log("Listening on", port); // eslint-disable-line no-console
 });
 
-if (process.env.NODE_ENV != "production") {
-	require('dotenv').config();
-}
 
 var assignments = require("./assignments");
 var readings = require("./readings");
