@@ -36,4 +36,4 @@ node_modules
 dump.rdb
 .DS_Store
 
-site/build
+site/build/*
