@@ -7,15 +7,14 @@ app.use(express.static(__dirname + "/site/build", {
 	extensions: ["html", "htm"]
 }));
 app.listen(port, function() {
-	console.log("Listening on", port);
-}); // binding to a port just for heroku
+	console.log("Listening on", port); // eslint-disable-line no-console
+});
 
 if (process.env.NODE_ENV != "production") {
 	require('dotenv').config();
 }
 
 var assignments = require("./assignments");
-
 var readings = require("./readings");
 var sessions = require("./sessions.js");
 
