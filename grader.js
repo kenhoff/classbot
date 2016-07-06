@@ -6,7 +6,7 @@ var express = require('express');
 var app = express();
 var moment = require('moment');
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 1234;
 app.use(express.static(__dirname + "/site/build", {
 	extensions: ["html", "htm"]
 }));
