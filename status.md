@@ -10,8 +10,8 @@ session | readings | slides | assignment
 5       | x        | x      | x
 6       | x        | x      | x
 7       | x        | x      | x
-8       | x        |        |
-9       |          |        |
+8       | x        | x      | x
+9       | x        |        |
 10      |          |        |
 11      |          |        |
 12      |          |        |
