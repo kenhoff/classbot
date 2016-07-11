@@ -1,4 +1,4 @@
-// Client Project Show-and-Tell, Lab session
+// Client Project Kickoff: Working with Clients
 
 var request = require('request');
 var async = require('async');
