@@ -70,7 +70,7 @@ module.exports = [{
 	date: "2016.07.27",
 	id: 13
 }, {
-	title: "Hackertyper project Show-and-Tell, Lab session",
+	title: "TSA Randomizer project Show-and-Tell, Lab session",
 	lecture_slides: "https://classbot.hoff.tech/slides/14",
 	date: "2016.08.01",
 	id: 14
