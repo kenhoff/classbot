@@ -1,22 +1,27 @@
-*Hackertyper project Show-and-Tell, Lab session*
+*TSA Randomizer project Show-and-Tell, Lab session*
 
-I'd like for you to build something like http://hackertyper.com/!
+For this project, you're gonna play the role of IBM, and I'm gonna play the role of the TSA.
 
-You can put whatever text you want in there! You can keep the big long string of C++ code (http://hackertyper.com/code.txt), or you can put in the complete text of Moby Dick (you bibliophile, you!), or you could just mash together a bunch of Kanye quotes and call it good! (infinite monkey theorem, amirite?)
+*I need a web app that, when you hit a button (or press a key), creates an arrow pointing left or right.*
+
+If you'd like, you can model it after <https://tsa-randomizer.hoff.tech/> - but if you just copy-paste, that's a *Bad Thing*.
+
+Submit your version of the app for assignment 14, using `submit 14 your-tsa-randomizer-app.firebaseapp.com`. Remember to create a separate Firebase project for it, and keep it up after the class ends!
 
 
+Here's a couple things that might help you on your epic TSA Randomizer journey:
 
+-   <http://lmgtfy.com/?q=how+to+tell+if+a+button+was+clicked+with+javascript|how to tell if a button was clicked with javascript>
+-   <http://lmgtfy.com/?q=how+to+generate+a+random+number+in+javascript|how to generate a random number in javascript>
+-   <http://lmgtfy.com/?q=how+to+tell+if+a+number+is+greater+than+or+equal+to+0.5+in+javascript|how to tell if a number is greater than or equal to 0.5 in javascript>
+-   <http://lmgtfy.com/?q=how+to+add+a+class+to+an+element+using+javascript|how to add a class to an element using javascript>
+-   <http://lmgtfy.com/?q=how+to+remove+a+class+to+an+element+using+javascript|how to remove a class to an element using javascript>
+-   <http://lmgtfy.com/?q=how+to+hide+an+element+using+CSS|how to hide an element using CSS>
 
+Advanced:
 
-Now, theoretically, you _could_ just slightly modify http://hackertyper.com/script.js, throw it on your site, and submit that, and nobody would be the wiser!
-
-...until you list it on your portfolio page and someone asks you how it works :\ that might make for an awkward interview question. I wouldn't recommend copy-pasting this one, even a little bit. *Build it from scratch!*
-
-Here's some things that might help you build this:
-
-- <http://lmgtfy.com/?q=detecting+a+key+press+with+javascript|detecting a key press with javascript>
-- <http://lmgtfy.com/?q=declaring+and+incrementing+a+counter+with+javascript|declaring and incrementing a counter with javascript>
-- <http://lmgtfy.com/?q=getting+the+first+n+characters+of+a+string+with+javascript|getting the first n characters of a string with javascript>
-- <http://lmgtfy.com/?q=replacing+the+contents+of+an+HTML+element+with+a+string+with+javascript|replacing the contents of an HTML element with a string with javascript>
-- <http://lmgtfy.com/?q=escaping+HTML+characters+in+strings+with+javascript|escaping HTML characters in strings with javascript>
-- <http://lmgtfy.com/?q=replacing+characters+in+javascript+strings+with+escaped+HTML+characters|replacing characters in javascript strings with escaped HTML characters>
+-   <http://lmgtfy.com/?q=how+to+listen+for+a+key+press+in+javascript|how to listen for a key press in javascript>
+-   <http://lmgtfy.com/?q=how+to+animate+an+element+using+CSS|how to animate an element using CSS>
+-   <http://lmgtfy.com/?q=how+to+re-animate+an+element+using+CSS|how to re-animate an element using CSS>
+    -   (or, <http://lmgtfy.com/?q=how+to+animate+an+element+using+CSS+again)|how to animate an element using CSS again>
+-	any other ones I should add?
