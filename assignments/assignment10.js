@@ -7,7 +7,7 @@ var jsdom = require('jsdom');
 var sinon = require('sinon');
 
 module.exports = {
-	description: "For this assignment, I'd like for you to create a page with some `<script>` tags on it! You'll include some `alert()` and `console.log()` commands on there too. See what you need by running `submit 10 http://your-site-here.firebaseapp.com`.\n\n_Note: I haven't included any requirements to `document.write()` anything on your page (it's surprisingly hard to do that!) but I'd recommend that you do it anyway._",
+	description: "For this assignment, I'd like for you to create a page with some `<script>` tags on it! You'll include some `alert()` and `console.log()` commands on there too. See what you need by running `submit 10 http://your-site-here.firebaseapp.com`.\n\n_Note: I haven't included any requirements to `document.write()` anything on your page (it's surprisingly hard to check for that!) but I'd recommend that you do it anyway._",
 	test: function(url, cb) {
 		if (!url) {
 			return cb("URL not found");
