@@ -162,7 +162,6 @@ module.exports = {
 								alertSpy = sinon.spy(window, "alert");
 							},
 							done: function() {
-								console.log("alert call count:", alertSpy.callCount);
 								if (alertSpy.callCount > 0) {
 									this.passed = true;
 								} else {
@@ -181,7 +180,7 @@ module.exports = {
 
 		async.map(tests, function(test, cb) {
 			test.assert(url, cb);
-		}, function(err, results) {
+		}, function() {
 			for (var test of tests) {
 				delete test.assert;
 			}
