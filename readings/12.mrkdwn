@@ -1,11 +1,23 @@
 *Javascript 103: objects and arrays*
 
-<https://teamtreehouse.com/library/javascript-basics/storing-and-tracking-information-with-variables/strings-and-numbers|Strings and Numbers> *(recommended)*
-	- I talked a bit about "escaping" characters last session - just use the `\` character.
 
-<https://teamtreehouse.com/library/javascript-basics/storing-and-tracking-information-with-variables/combining-strings-2|Combining Strings> *(recommended)*
+*Arrays*
+
+<https://teamtreehouse.com/library/javascript-loops-arrays-and-objects/tracking-multiple-items-with-arrays/what-is-an-array|What is an Array?> *(recommended)*
+
+
+*Objects*
+
+<https://teamtreehouse.com/library/javascript-loops-arrays-and-objects/tracking-data-using-objects/the-object-literal|The Object Literal> *(recommended)*
+<https://teamtreehouse.com/library/javascript-loops-arrays-and-objects/tracking-data-using-objects/accessing-object-properties|Accessing Object Properties> *(recommended)*
+
+*Other Stuff*
+
+<https://teamtreehouse.com/library/javascript-basics/storing-and-tracking-information-with-variables/strings-and-numbers|Strings and Numbers> _(optional)_
+
+<https://teamtreehouse.com/library/javascript-basics/storing-and-tracking-information-with-variables/combining-strings-2|Combining Strings> _(optional)_
 
 <https://teamtreehouse.com/library/javascript-basics/working-with-numbers/numbers|Numbers> _(optional)_
 
 <https://teamtreehouse.com/library/javascript-basics/making-decisions-with-conditional-statements/introducing-conditional-statements|Conditional Statements> _(optional)_
-	- We won't _really_ use too many conditional statements - but the `for` loop does inherently use them.
+	- Forgot to throw this on the last `readings`. Sorry!
