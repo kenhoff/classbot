@@ -43,4 +43,4 @@ module.exports = {
 			return cb(null, scoreObject);
 		});
 	}
-}
+};
