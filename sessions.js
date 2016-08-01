@@ -95,7 +95,7 @@ module.exports = [{
 	date: "2016.08.15",
 	id: 18
 }, {
-	title: "Quote-of-the-Day project Show-and-Tell, wrap-up/party :tada:",
+	title: "Random Quote App Show-and-Tell, wrap-up/party :tada:",
 	lecture_slides: "https://classbot.hoff.tech/slides/19",
 	date: "2016.08.17",
 	id: 19
