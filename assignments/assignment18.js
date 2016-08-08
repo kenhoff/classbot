@@ -37,3 +37,43 @@ module.exports = function(url, cb) {
 		return cb(null, scoreObject);
 	});
 };
+
+
+
+// var tests = [{
+// 	description: "server responds to the root URL",
+// 	assert: function(url, cb) {
+// 		request(url, function(error, response) {
+// 			if (!error && response.statusCode == 200) {
+// 				// console.log(response.body);
+// 				this.passed = true;
+// 				cb(null, this);
+// 			} else {
+// 				this.passed = false;
+// 				cb(null, this);
+// 			}
+// 		}.bind(this));
+// 	}
+// }];
+// for (var name of names) {
+// 	tests.push({
+// 		name: name,
+// 		description: "a request to `/hello/" + name + "` returns " + '`Hello, ' + name + "!`",
+// 		assert: function(url, cb) {
+// 			request(url + "/hello/" + this.name, function(error, response) {
+// 				if (!error && response.statusCode == 200) {
+// 					if (response.body == "Hello, " + this.name + "!") {
+// 						this.passed = true;
+// 						cb(null, this);
+// 					} else {
+// 						this.passed = false;
+// 						cb(null, this);
+// 					}
+// 				} else {
+// 					this.passed = false;
+// 					cb(null, this);
+// 				}
+// 			}.bind(this));
+// 		}
+// 	});
+// }
