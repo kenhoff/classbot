@@ -1,4 +1,13 @@
 // jQuery 203: HTTP requests with jQuery
+/*
+Hmmm...what can we do to test this?
+
+I suppose I could throw a spy on $.get and $.post, but that doesn't cover ajax. maybe if i throw a spy on .ajax, that'll cover both get and post?
+
+
+*/
+
+
 
 var request = require('request');
 var async = require('async');
@@ -21,17 +30,21 @@ module.exports = function(url, cb) {
 				}
 			}.bind(this));
 		}
-	}];
+	}, require("./tests/jquery_get_request.js"), require("./tests/jquery_post_request.js")];
 
 	async.map(tests, function(test, cb) {
 		test.assert(url, cb);
 	}, function() {
+		var newTests = [];
 		for (var test of tests) {
-			delete test.assert;
+			newTests.push({
+				description: test.description,
+				passed: test.passed
+			});
 		}
 		var scoreObject = {
-			score: calculateScore(tests),
-			tests: tests,
+			score: calculateScore(newTests),
+			tests: newTests,
 			url: url
 		};
 		return cb(null, scoreObject);
