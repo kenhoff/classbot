@@ -219,7 +219,8 @@ module.exports = {
 			}
 			var scoreObject = {
 				score: calculateScore(tests),
-				tests: tests
+				tests: tests,
+				url: url
 			};
 			return cb(null, scoreObject);
 		});

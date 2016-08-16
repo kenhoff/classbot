@@ -123,23 +123,34 @@ controller.hears(["assignment ([0-9]*)"], ["direct_message"], function(bot, mess
 });
 
 controller.hears(["grades", "grade"], ["direct_message"], function(bot, message) {
-	bot.startPrivateConversation(message, function(err, convo) {
-		convo.say("Looking up grades...");
-		controller.storage.users.get(message.user, function(err, user_data) {
-			var userScore = 0;
-			var totalScore = 0;
-			for (var i = 0; i < assignments.length; i++) {
-				if (("assignments" in user_data) && (user_data.assignments[i])) {
-					convo.say("Assignment " + i + ": " + (user_data.assignments[i].score * 100).toFixed(2) + "%");
-					userScore += user_data.assignments[i].score * 100;
+	bot.reply(message, "Looking up grades...");
+	var assignmentText = [];
+	controller.storage.users.get(message.user, function(err, user_data) {
+		var userScore = 0;
+		var totalScore = 0;
+		for (var i = 0; i < assignments.length; i++) {
+			if (("assignments" in user_data) && (user_data.assignments[i])) {
+				if ("url" in user_data.assignments[i]) {
+					var assignmentURL = " - " + user_data.assignments[i].url;
 				} else {
-					convo.say("Assignment " + i + ": 0%");
-					userScore += 0;
+					assignmentURL = "";
 				}
-				totalScore += 100;
+				assignmentText.push("Assignment " + i + ": " + (user_data.assignments[i].score * 100).toFixed(2) + "%" + assignmentURL);
+				userScore += user_data.assignments[i].score * 100;
+			} else {
+				assignmentText.push("Assignment " + i + ": 0%");
+				userScore += 0;
 			}
-			convo.say("Total: " + ((userScore / totalScore) * 100).toFixed(2) + "% _(" + userScore.toFixed(2) + "/" + totalScore.toFixed(2) + ")_");
+			totalScore += 100;
+		}
+		bot.reply(message, {
+			attachments: [{
+				fallback: "",
+				text: assignmentText.join("\n"),
+				mrkdwn_in: ["text"]
+			}]
 		});
+		bot.reply(message, "Total: " + ((userScore / totalScore) * 100).toFixed(2) + "% _(" + userScore.toFixed(2) + "/" + totalScore.toFixed(2) + ")_");
 	});
 });
 
