@@ -4,6 +4,8 @@ var layouts = require('metalsmith-layouts');
 var branch = require('metalsmith-branch');
 var htmlToSlides = require('./htmlToSlides.js');
 var changed = require('metalsmith-changed');
+const async = require('async');
+const pdf = require('html-pdf');
 
 console.log("Starting..."); // eslint-disable-line no-console
 Metalsmith(__dirname)
@@ -14,13 +16,38 @@ Metalsmith(__dirname)
 	.use(markdown())
 	// class slides
 	.use(branch()
-		.pattern("slides/**")
+		.pattern(["slides/**", "!slides/index.md"])
 		.use(htmlToSlides())
 		.use(layouts({
 			engine: "jade",
 			default: "slides.jade",
 			directory: "layouts"
 		}))
+		.use(function(files, metalsmith, done) {
+			async.map(Object.keys(files), function(file, cb) {
+				if (files.hasOwnProperty(file)) {
+					var html = files[file].contents.toString();
+					pdf.create(html, {
+						timeout: 180000
+					}).toBuffer(function(err, buffer) {
+						if (err) {
+							cb(err);
+						} else {
+							files[file.split(".")[0] + ".pdf"] = {
+								contents: buffer
+							};
+							cb();
+						}
+					});
+				}
+			}, function(err) {
+				if (err) {
+					throw err;
+				} else {
+					done();
+				}
+			});
+		})
 	)
 	.build(function(err) {
 		if (err) throw err;
