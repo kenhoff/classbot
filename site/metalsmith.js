@@ -14,6 +14,15 @@ Metalsmith(__dirname)
 	.source(__dirname + "/src")
 	.destination(__dirname + "/build")
 	.use(markdown())
+	// class syllabus
+	.use(branch()
+		.pattern(["index.html", "readings/**", "assignments/**"])
+		.use(layouts({
+			engine: "jade",
+			default: "syllabus.jade",
+			directory: "layouts"
+		}))
+	)
 	// class slides
 	.use(branch()
 		.pattern(["slides/**", "!slides/index.md"])
@@ -49,7 +58,7 @@ Metalsmith(__dirname)
 					}
 				});
 			} else {
-				done()
+				done();
 			}
 		})
 	)

@@ -1,0 +1,59 @@
+body {
+    font-family: 'EB Garamond', serif;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+}
+strong {
+    text-decoration: underline;
+}
+.slide {
+    display: none;
+    margin: auto;
+    width: 100%;
+}
+.deck-current {
+    display: block;
+}
+img {
+    max-width: 50%;
+    height: auto;
+    margin: auto;
+    display: block;
+}
+@media (min-width: 34em) {
+    .slide {
+        max-width: 576px;
+    }
+}
+@media (min-width: 48em) {
+    .slide {
+        max-width: 720px;
+    }
+}
+@media (min-width: 62em) {
+    .slide {
+        max-width: 940px;
+    }
+}
+@media (min-width: 75em) {
+    .slide {
+        max-width: 1140px;
+    }
+}
+table {
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid black;
+}
+th, td {
+    padding: 1em;
+}
+pre, code {
+    max-width: 100%;
+    white-space: pre-wrap;
+}
+p, li {
+    line-height: 1.5em;
+}
