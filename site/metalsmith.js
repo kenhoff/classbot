@@ -24,29 +24,33 @@ Metalsmith(__dirname)
 			directory: "layouts"
 		}))
 		.use(function(files, metalsmith, done) {
-			async.map(Object.keys(files), function(file, cb) {
-				if (files.hasOwnProperty(file)) {
-					var html = files[file].contents.toString();
-					pdf.create(html, {
-						timeout: 180000
-					}).toBuffer(function(err, buffer) {
-						if (err) {
-							cb(err);
-						} else {
-							files[file.split(".")[0] + ".pdf"] = {
-								contents: buffer
-							};
-							cb();
-						}
-					});
-				}
-			}, function(err) {
-				if (err) {
-					throw err;
-				} else {
-					done();
-				}
-			});
+			if (process.env.NODE_ENV != "development") {
+				async.map(Object.keys(files), function(file, cb) {
+					if (files.hasOwnProperty(file)) {
+						var html = files[file].contents.toString();
+						pdf.create(html, {
+							timeout: 180000
+						}).toBuffer(function(err, buffer) {
+							if (err) {
+								cb(err);
+							} else {
+								files[file.split(".")[0] + ".pdf"] = {
+									contents: buffer
+								};
+								cb();
+							}
+						});
+					}
+				}, function(err) {
+					if (err) {
+						throw err;
+					} else {
+						done();
+					}
+				});
+			} else {
+				done()
+			}
 		})
 	)
 	.build(function(err) {

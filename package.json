@@ -9,7 +9,7 @@
     "postinstall": "npm run build",
     "build": "node site/metalsmith.js",
     "dev-bot": "nodemon --exec 'node grader.js' --ext js,mrkdwn,md,jade",
-    "dev-site": "nodemon --exec 'npm run build' --ext js,mrkdwn,md,jade"
+    "dev-site": "nodemon --exec 'NODE_ENV=development npm run build' --ext js,mrkdwn,md,jade"
   },
   "repository": {
     "type": "git",
