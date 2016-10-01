@@ -16,10 +16,18 @@ Metalsmith(__dirname)
 	.use(markdown())
 	// class syllabus
 	.use(branch()
-		.pattern(["index.html", "readings/**", "assignments/**"])
+		.pattern(["index.html"])
 		.use(layouts({
 			engine: "jade",
 			default: "syllabus.jade",
+			directory: "layouts"
+		}))
+	)
+	.use(branch()
+		.pattern(["readings/**", "assignments/**"])
+		.use(layouts({
+			engine: "jade",
+			default: "syllabus-item.jade",
 			directory: "layouts"
 		}))
 	)
