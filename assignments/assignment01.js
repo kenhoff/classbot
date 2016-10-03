@@ -5,7 +5,6 @@ var request = require('request');
 var async = require('async');
 
 module.exports = {
-	description: "For your first real web dev assignment, I'd like you to create a super simple page and host it online using Firebase. (you can host it anywhere you like, but Firebase is the easiest - look at the `readings`!)\n\nYour page should contain this code:\n```<html>\n\t<body>\n\t\t<h1>Hello, World!</h1>\n\t</body>\n</html>```\nSubmit your page by running `submit 1 my-firebase-app.firebaseapp.com`.",
 	test: function(url, cb) {
 		if (!url) {
 			return cb("URL not found");
