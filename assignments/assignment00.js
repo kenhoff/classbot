@@ -3,7 +3,6 @@
 var calculateScore = require("../calculateScore.js");
 
 module.exports = {
-	description: "Welcome to the first assignment! Just go ahead and submit the URL `http://sparkboulder.com` by typing `submit 0 http://sparkboulder.com`.",
 	test: function(url, cb) {
 		if (!url) {
 			return cb("URL not found");
