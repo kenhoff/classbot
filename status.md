@@ -3,7 +3,7 @@
 | session | topic | readings | slides | assignment | project description |
 | ------- | ----- | -------- | ------ | ---------- | ------------------- |
 | 0       | x     | x        | x      | x          |                     |
-| 1       | x     | x        | x      |            |                     |
+| 1       | x     | x        | x      | x          |                     |
 | 2       |       |          |        |            |                     |
 | 3       |       |          |        |            |                     |
 | 4       |       |          |        |            | portfolio (x)       |
