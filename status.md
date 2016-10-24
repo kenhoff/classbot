@@ -8,7 +8,7 @@
 | 3       | x     | x        | x      | x          |                     |
 | 4       | x     | x        | x      | x          | portfolio (x)       |
 | 5       | x     | x        | x      | x          |                     |
-| 6       | x     | x        |        |            |                     |
+| 6       | x     | x        | x      | x          |                     |
 | 7       | x     | x        |        |            |                     |
 | 8       | x     |          |        |            |                     |
 | 9       | x     | x        |        | x          | client (x)          |
