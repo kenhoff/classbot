@@ -5,7 +5,6 @@ var async = require('async');
 var calculateScore = require('../calculateScore.js');
 
 module.exports = {
-	description: "Hm. We just kicked off the TSA Randomizer project, so I don't really care what you submit for this assignment!\n\nHow about...you just submit a site that you find technically or visually interesting? Something that we could throw on *More Dumb Fun Web Stuff*. Whatever you want!",
 	test: function(url, cb) {
 		if (!url) {
 			return cb("URL not found");
@@ -13,7 +12,7 @@ module.exports = {
 		var tests = [{
 			description: "submitted URL was accessible from the internet",
 			assert: function(url, cb) {
-				request(url, function(error, response, body) {
+				request(url, function(error, response) {
 					if (!error && response.statusCode == 200) {
 						this.passed = true;
 						cb(null, this);
@@ -27,7 +26,7 @@ module.exports = {
 
 		async.map(tests, function(test, cb) {
 			test.assert(url, cb);
-		}, function(err, results) {
+		}, function() {
 			for (var test of tests) {
 				delete test.assert;
 			}

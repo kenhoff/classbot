@@ -1,4 +1,4 @@
-// Bootstrap & CSS frameworks
+// The display and position styles
 
 var calculateScore = require("../calculateScore.js");
 
@@ -6,30 +6,8 @@ var request = require('request');
 var async = require('async');
 var jsdom = require("jsdom");
 
-// Your site needs to include:
-//
-// - the standard Bootstrap CSS from bootstrapcdn.com
-// - the standard Bootstrap Theme CSS from bootstrapcdn.com
-// - jQuery from the googleapis.com CDN
-// - the standard Bootstrap Javascript script from bootstrapcdn.com
-//
-// - Standard components
-//   - a `.glyphicon` element
-//   - a `.dropdown` element
-//   - a `.btn-group` element
-//   - a `.nav` element
-//   - a `.navbar` element
-//   - a `.breadcrumb` element
-//   - a `.label` element
-//   - a `.jumbotron` element
-// - Javascript components
-//   - a `.modal` element
-//   - a `.carousel` element
-//   - a `.dropdown` element
-
 
 module.exports = {
-	description: "For this assignment, I'd like you to include some links to the standard Bootstrap CSS and JavaScript on your site, as well as a bunch of Bootstrap grid items and components!\n\nYou can submit your site by using `submit 7 your-site-here.firebaseapp.com`.",
 	test: function(url, cb) {
 		if (!url) {
 			return cb("URL not found");

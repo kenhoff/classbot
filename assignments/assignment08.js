@@ -1,4 +1,4 @@
-// CSS layouts, the `display` style, flexbox & media queries
+// Flexbox and media queries
 
 var calculateScore = require("../calculateScore.js");
 
