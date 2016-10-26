@@ -9,7 +9,7 @@
 | 4       | x     | x        | x      | x          | portfolio (x)       |
 | 5       | x     | x        | x      | x          |                     |
 | 6       | x     | x        | x      | x          |                     |
-| 7       | x     | x        |        |            |                     |
+| 7       | x     | x        |        | x          |                     |
 | 8       | x     | x        |        |            |                     |
 | 9       | x     | x        |        | x          | client (x)          |
 | 10      |       |          |        |            |                     |
