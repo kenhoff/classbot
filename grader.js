@@ -16,8 +16,6 @@ app.listen(port, function() {
 
 
 var assignments = require("./assignments");
-// var readings = require("./readings");
-// var sessions = require("./sessions.js");
 
 var controller = require('botkit').slackbot({
 	debug: false,
@@ -96,31 +94,6 @@ controller.hears(['submit ([0-9]+)\s*(.*)'], ['direct_message'], function(bot, m
 		}
 	}
 });
-//
-// controller.hears(["assignments"], ["direct_message"], function(bot, message) {
-// 	var availableAssignments = [];
-// 	for (var i = 0; i < assignments.length; i++) {
-// 		availableAssignments.push("`" + i + "`");
-// 	}
-// 	bot.reply(message, "Available assignments are: " + availableAssignments.join(" "));
-// });
-//
-// controller.hears(["assignment ([0-9]*)"], ["direct_message"], function(bot, message) {
-// 	if (message.match[1]) {
-// 		var assignmentNumber = parseInt(message.match[1]);
-// 		if (assignmentNumber > assignments.length - 1) {
-// 			bot.reply(message, "Sorry! That assignment isn't available yet. See what assignments are available with `assignments`.");
-// 		} else {
-// 			if (assignments[assignmentNumber].description) {
-// 				bot.reply(message, "*Assignment " + assignmentNumber + "*\n\n" + assignments[assignmentNumber].description);
-// 			} else {
-// 				bot.reply(message, "Hmm...a description for that assignment isn't available yet! Check back later.");
-// 			}
-// 		}
-// 	} else {
-// 		bot.reply(message, "Wait...what?");
-// 	}
-// });
 
 controller.hears(["grades", "grade"], ["direct_message"], function(bot, message) {
 	bot.reply(message, "Looking up grades...");
@@ -167,73 +140,6 @@ controller.hears(["help"], ["direct_message"], function(bot, message) {
 	bot.reply(message, listOfCommands.join("\n"));
 });
 
-// controller.hears(["session ([0-9]+)"], ["direct_message"], function(bot, message) {
-// 	if (parseInt(message.match[1]) < sessions.length) {
-// 		var session = sessions[parseInt(message.match[1])];
-// 		var text = ["*Session " + session.id + "* - " + session.title,
-// 			moment(session.date, "YYYY.MM.DD").format("dddd, MMMM Do") + "\n",
-// 			"*Readings to be completed prior to session" + session.id + ":* " + "type `readings " + session.id + "` to view",
-// 			"*Slides:* <" + session.lecture_slides + "|Session " + session.id + " slides>",
-// 			"*Assignment:* " + "to submit assignment " + session.id + ", type `submit " + session.id + " https://your-url-here.example.com`"
-// 		];
-//
-// 		bot.reply(message, {
-// 			attachments: [{
-// 				fallback: "Information for Session " + session.id,
-// 				text: text.join("\n"),
-// 				mrkdwn_in: ["text"]
-// 			}]
-// 		});
-// 	} else {
-// 		bot.reply(message, "Sorry! I don't have information about that session yet.");
-// 	}
-// });
-
-// controller.hears(["sessions"], ["direct_message"], function(bot, message) {
-// 	var listOfSessions = [];
-// 	for (var session of sessions) {
-// 		listOfSessions.push(buildSessionText(session));
-// 	}
-// 	var sessionsText = "*Sessions*\n\n";
-// 	sessionsText += listOfSessions.join("\n");
-// 	sessionsText += "\n\nTo get more info about a session, type `session <<sessionNumber>>`, like `session 0` or `session 19`";
-// 	bot.reply(message, {
-// 		attachments: [{
-// 			fallback: "",
-// 			text: sessionsText,
-// 			mrkdwn_in: ["text"]
-// 		}]
-// 	});
-// });
-//
-// controller.hears(["readings ([0-9]+)"], ["direct_message"], function(bot, message) {
-// 	var readingNumber = parseInt(message.match[1]);
-// 	if (readingNumber >= readings.length) {
-// 		bot.reply(message, "Whoops! Looks like the readings for session " + readingNumber + " aren't available yet.");
-// 	} else {
-// 		bot.reply(message, {
-// 			attachments: [{
-// 				fallback: "Reading material for session " + readingNumber,
-// 				text: readings[readingNumber],
-// 				mrkdwn_in: ["text"]
-// 			}]
-// 		});
-// 	}
-// });
-
 controller.hears(['.*'], ['direct_message'], function(bot, message) {
 	bot.reply(message, "I'm sorry, I didn't quite understand that. For commands, type `help`");
 });
-
-// var buildSessionText = function(session) {
-// 	var sessionText = "*Session " + session.id + "*";
-// 	var date = moment(session.date, "YYYY MM DD").format("ddd, MMM Do");
-// 	var title = session.title;
-// 	var slides = "<" + session.lecture_slides + "|Slides>";
-// 	var text = [sessionText, date, slides, title].join("\t");
-//
-// 	if ("notes" in session) {
-// 		text += "\t" + session.notes;
-// 	}
-// 	return text;
-// };
