@@ -6,6 +6,36 @@ var request = require('request');
 var async = require('async');
 var jsdom = require("jsdom");
 
+/*
+	display flex
+	flex-direction row
+	flex-direction column
+	flex-wrap wrap
+	justify-content flex-start
+	justify-content flex-end
+	justify-content center
+	justify-content space-between
+	justify-content space-around
+	align-items flex-start
+	align-items flex-end
+	align-items flex-center
+*/
+
+var styleValuesRequired = [
+	["display", "flex", "display"],
+	["flex-direction", "row", "flexDirection"],
+	["flex-direction", "column", "flexDirection"],
+	["flex-wrap", "wrap", "flexWrap"],
+	["justify-content", "flex-start", "justifyContent"],
+	["justify-content", "flex-end", "justifyContent"],
+	["justify-content", "center", "justifyContent"],
+	["justify-content", "space-between", "justifyContent"],
+	["justify-content", "space-around", "justifyContent"],
+	["align-items", "flex-start", "alignItems"],
+	["align-items", "flex-end", "alignItems"],
+	["align-items", "flex-center", "alignItems"]
+];
+
 module.exports = function(url, cb) {
 	if (!url) {
 		return cb("URL not found");
@@ -24,25 +54,28 @@ module.exports = function(url, cb) {
 			}.bind(this));
 		}
 	}];
-
-	var displayTypes = ['block', 'inline', 'inline-block'];
-
-	for (var displayType of displayTypes) {
+	for (var style of styleValuesRequired) {
 		tests.push({
-			displayType: displayType,
-			description: 'site has an element with a `display` of `' + displayType + '` assigned',
+			style: style,
+			description: 'site has an element that has `' + style[0] +
+				": " + style[1] +
+				'` assigned',
 			assert: function(url, cb) {
-				request(url, function(error, response, body) {
+				request(url, function(error, response) {
 					if (!error && response.statusCode == 200) {
-						jsdom.env(body, {
+						jsdom.env({
 							url: url,
 							features: {
 								FetchExternalResources: ["link", "css"]
 							},
 							done: function(err, window) {
+								// console.log(jsdom.serializeDocument(window.document))
 								var elements = window.document.getElementsByTagName('*');
 								for (var element of elements) {
-									if (window.getComputedStyle(element).display == this.displayType) {
+									// check the element's style to see if it's got the style we're testing for
+									// console.log(window.getComputedStyle(element).alignItems);
+									console.log(window.getComputedStyle(element)[this.style[2]]);
+									if (window.getComputedStyle(element)[this.style[2]] == [this.style[1]]) {
 										this.passed = true;
 										return cb(null, this);
 									}
@@ -60,95 +93,6 @@ module.exports = function(url, cb) {
 		});
 	}
 
-	tests.push({
-		description: 'site has an element with `margin: auto`',
-		assert: function(url, cb) {
-			request(url, function(error, response, body) {
-				if (!error && response.statusCode == 200) {
-					jsdom.env(body, {
-						url: url,
-						features: {
-							FetchExternalResources: ["link", "css"]
-						},
-						done: function(err, window) {
-							var elements = window.document.getElementsByTagName('*');
-							for (var element of elements) {
-								if (
-									(window.getComputedStyle(element)["margin-top"] == "auto") &&
-									(window.getComputedStyle(element)["margin-right"] == "auto") &&
-									(window.getComputedStyle(element)["margin-bottom"] == "auto") &&
-									(window.getComputedStyle(element)["margin-left"] == "auto")) {
-									this.passed = true;
-									return cb(null, this);
-								}
-							}
-							this.passed = false;
-							return cb(null, this);
-						}.bind(this)
-					});
-				} else {
-					this.passed = false;
-					cb(null, this);
-				}
-			}.bind(this));
-		}
-	}, {
-		description: 'site has an element with `text-align: center`',
-		assert: function(url, cb) {
-			request(url, function(error, response, body) {
-				if (!error && response.statusCode == 200) {
-					jsdom.env(body, {
-						url: url,
-						features: {
-							FetchExternalResources: ["link", "css"]
-						},
-						done: function(err, window) {
-							var elements = window.document.getElementsByTagName('*');
-							for (var element of elements) {
-								if (window.getComputedStyle(element)["text-align"] == "center") {
-									this.passed = true;
-									return cb(null, this);
-								}
-							}
-							this.passed = false;
-							return cb(null, this);
-						}.bind(this)
-					});
-				} else {
-					this.passed = false;
-					cb(null, this);
-				}
-			}.bind(this));
-		}
-	}, {
-		description: 'site has an element with `display: flex`',
-		assert: function(url, cb) {
-			request(url, function(error, response, body) {
-				if (!error && response.statusCode == 200) {
-					jsdom.env(body, {
-						url: url,
-						features: {
-							FetchExternalResources: ["link", "css"]
-						},
-						done: function(err, window) {
-							var elements = window.document.getElementsByTagName('*');
-							for (var element of elements) {
-								if (window.getComputedStyle(element)["display"] == "flex") {
-									this.passed = true;
-									return cb(null, this);
-								}
-							}
-							this.passed = false;
-							return cb(null, this);
-						}.bind(this)
-					});
-				} else {
-					this.passed = false;
-					cb(null, this);
-				}
-			}.bind(this));
-		}
-	});
 
 	async.map(tests, function(test, cb) {
 		test.assert(url, cb);
