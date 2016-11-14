@@ -5,7 +5,6 @@ var async = require('async');
 var calculateScore = require('../calculateScore.js');
 
 module.exports = {
-	description: "This is an easy one - I'd just like for you to define an array and an object, `myArray` and `myObject` with some specific contents.\n\nRun `submit 12 http://your-firebase-app-here.firebaseapp.com` to get started!",
 	test: function(url, cb) {
 		if (!url) {
 			return cb("URL not found");

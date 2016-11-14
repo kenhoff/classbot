@@ -5,7 +5,6 @@ var async = require('async');
 var calculateScore = require('../calculateScore.js');
 
 module.exports = {
-	description: "For this assignment, you'll need to create some functions that call some specific browser API methods.\n\nRun `submit 13 https://your-firebase-app.firebaseapp.com` to get started.",
 	test: function(url, cb) {
 		if (!url) {
 			return cb("URL not found");
