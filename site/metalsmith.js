@@ -4,8 +4,8 @@ var layouts = require('metalsmith-layouts');
 var branch = require('metalsmith-branch');
 var htmlToSlides = require('./htmlToSlides.js');
 var changed = require('metalsmith-changed');
-const async = require('async');
-const pdf = require('html-pdf');
+// const async = require('async');
+// const pdf = require('html-pdf');
 
 console.log("Starting..."); // eslint-disable-line no-console
 Metalsmith(__dirname)
