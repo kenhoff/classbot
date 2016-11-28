@@ -1,4 +1,4 @@
-// Random Quote App Show-and-Tell, wrap-up/party
+// Social Network Front End Show-and-Tell, wrap-up/party
 
 var request = require('request');
 var async = require('async');
