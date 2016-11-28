@@ -7,7 +7,6 @@ var calculateScore = require('../calculateScore.js');
 
 
 module.exports = {
-	description: "For this project, you're gonna play the role of IBM, and I'm gonna play the role of the TSA.\n\n*I need a web app that, when you hit a button (or press a key), creates an arrow pointing left or right.*\n\nIf you'd like, you can model it after https://tsa-randomizer.hoff.tech/ - but if you just copy-paste, that's a *Bad Thing*.\n\nSubmit your version of the app for assignment 14, using `submit 14 your-tsa-randomizer-app.firebaseapp.com`. Remember to create a separate Firebase project for it, and keep it up after the class ends!\n\nFor more info on the project, check out `readings 14`.",
 	test: function(url, cb) {
 		if (!url) {
 			return cb("URL not found");

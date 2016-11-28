@@ -2,7 +2,7 @@ const request = require('request');
 const jsdom = require('jsdom');
 
 module.exports = {
-	description: "include jQuery on the site (using something like `<script src=\"https://code.jquery.com/jquery-2.2.4.js\"></script>`)",
+	description: "include jQuery on the site (using something like `<script src=\"https://code.jquery.com/jquery-3.1.1.js\"></script>`)",
 	assert: function(url, cb) {
 		request(url, function(error, response, body) {
 			if (!error && response.statusCode == 200) {
