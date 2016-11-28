@@ -18,7 +18,7 @@
 | 13      | x     | x        | x      | x          |                              |
 | 14      | x     | x        | x      | x          | coin flipping app (x)        |
 | 15      | x     | x        | x      | x          |                              |
-| 16      | x     | x        |        |            |                              |
-| 17      | x     |          |        |            |                              |
-| 18      | x     |          |        |            |                              |
+| 16      | x     | x        |        | x          |                              |
+| 17      | x     | x        |        | x          |                              |
+| 18      | x     | x        |        | x          |                              |
 | 19      | x     |          |        |            | social network front end ( ) |

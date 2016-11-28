@@ -1,13 +1,4 @@
 // jQuery 203: HTTP requests with jQuery
-/*
-Hmmm...what can we do to test this?
-
-I suppose I could throw a spy on $.get and $.post, but that doesn't cover ajax. maybe if i throw a spy on .ajax, that'll cover both get and post?
-
-
-*/
-
-
 
 var request = require('request');
 var async = require('async');
