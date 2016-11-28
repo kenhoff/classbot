@@ -16,7 +16,7 @@
 | 11      | x     | x        | x      | x          |                       |
 | 12      | x     | x        | x      | x          |                       |
 | 13      | x     | x        | x      | x          |                       |
-| 14      | x     | x        |        | x          | coin flipping app (x) |
+| 14      | x     | x        | x      | x          | coin flipping app (x) |
 | 15      | x     | x        |        |            |                       |
 | 16      |       |          |        |            |                       |
 | 17      |       |          |        |            |                       |
