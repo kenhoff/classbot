@@ -21,6 +21,6 @@
 | 16      | x     | x        | x      | x          |                              |
 | 17      | x     | x        | x      | x          |                              |
 | 18      | x     | x        | x      | x          |                              |
-| 19      | x     | x        |        | x          | social network front end (x) |
+| 19      | x     | x        | x      | x          | social network front end (x) |
 
 <https://dannyw.youcanbook.me/index.jsp>
