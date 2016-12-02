@@ -5,7 +5,6 @@ var async = require('async');
 var calculateScore = require('../calculateScore.js');
 
 module.exports = {
-	description: "For this assignment, you're going to have to create some variables and functions.\n\nDon't *call* the functions on your page, just create them. While you're developing, you should call them to ensure that they're performing correctly, but if you call them on the submitted page, it will screw up your results.\n\nRun `submit 11 your-domain-here.firebaseapp.com` to see what tests you have to pass!",
 	test: function(url, cb) {
 		if (!url) {
 			return cb("URL not found");
@@ -28,6 +27,7 @@ module.exports = {
 		async.map(tests, function(test, cb) {
 			test.assert(url, cb);
 		}, function() {
+			console.log(tests);
 			var newTests = [];
 			for (var test of tests) {
 				newTests.push({

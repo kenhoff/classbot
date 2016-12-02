@@ -15,12 +15,17 @@ module.exports = {
 						ProcessExternalResources: ["script"]
 					},
 					done: function(error, window) {
-						if (("createHelloString" in window) && (typeof window.createHelloString == "function") && (window.createHelloString("Kirk") == "Hello, Kirk!") && (window.createHelloString("Spock") == "Hello, Spock!")) {
-							this.passed = true;
-						} else {
+						try {
+							if (("createHelloString" in window) && (typeof window.createHelloString == "function") && (window.createHelloString("Kirk") == "Hello, Kirk!") && (window.createHelloString("Spock") == "Hello, Spock!")) {
+								this.passed = true;
+							} else {
+								this.passed = false;
+							}
+						} catch (e) {
 							this.passed = false;
+						} finally {
+							return cb(null, this);
 						}
-						return cb(null, this);
 					}.bind(this)
 				});
 			} else {

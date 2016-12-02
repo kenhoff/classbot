@@ -29,16 +29,21 @@ module.exports = {
 					},
 					done: function(error, window) {
 						// shitty, terrible way to do this, but not much of an option here
-						if (("helloWorld" in window) && (typeof window.helloWorld == "function")) {
-							window.sayHello("Kirk");
-							window.sayHello("Spock");
-							setTimeout(function() {
-								if (!this.passed) {
-									this.passed = false;
-								}
+						try {
+							if (("helloWorld" in window) && (typeof window.helloWorld == "function")) {
+								window.sayHello("Kirk");
+								window.sayHello("Spock");
+								setTimeout(function() {
+									if (!this.passed) {
+										this.passed = false;
+									}
+									return cb(null, this);
+								}, 1000);
+							} else {
+								this.passed = false;
 								return cb(null, this);
-							}, 1000);
-						} else {
+							}
+						} catch (e) {
 							this.passed = false;
 							return cb(null, this);
 						}
@@ -46,7 +51,7 @@ module.exports = {
 				});
 			} else {
 				this.passed = false;
-				cb(null, this);
+				return cb(null, this);
 			}
 		}.bind(this));
 	}
