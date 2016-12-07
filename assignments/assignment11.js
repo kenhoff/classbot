@@ -27,7 +27,6 @@ module.exports = {
 		async.map(tests, function(test, cb) {
 			test.assert(url, cb);
 		}, function() {
-			console.log(tests);
 			var newTests = [];
 			for (var test of tests) {
 				newTests.push({

@@ -10,6 +10,7 @@ module.exports = {
 			if (!error && response.statusCode == 200) {
 				var virtualConsole = jsdom.createVirtualConsole();
 				virtualConsole.on("log", function(message) {
+					console.log(message);
 					if (message == "Hello, Kirk!") {
 						this.kirk = true;
 					}
@@ -33,7 +34,7 @@ module.exports = {
 							if (("helloWorld" in window) && (typeof window.helloWorld == "function")) {
 								window.sayHello("Kirk");
 								window.sayHello("Spock");
-								setTimeout(function() {
+								setTimeout(() => {
 									if (!this.passed) {
 										this.passed = false;
 									}

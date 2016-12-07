@@ -25,10 +25,11 @@ module.exports = {
 						// shitty, terrible way to do this, but not much of an option here
 						if (("helloWorld" in window) && (typeof window.helloWorld == "function")) {
 							window.helloWorld();
-							setTimeout(function() {
+							setTimeout(() => {
 								if (!this.passed) {
 									this.passed = false;
 								}
+								console.log(this);
 								return cb(null, this);
 							}, 1000);
 						} else {
