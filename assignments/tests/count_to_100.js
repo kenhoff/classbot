@@ -27,15 +27,20 @@ module.exports = {
 					},
 					done: function(error, window) {
 						// shitty, terrible way to do this, but not much of an option here
-						if (("countTo100" in window) && (typeof window.countTo100 == "function")) {
-							window.countTo100();
-							setTimeout(function() {
-								if (!this.passed) {
-									this.passed = false;
-								}
+						try {
+							if (("countTo100" in window) && (typeof window.countTo100 == "function")) {
+								window.countTo100();
+								setTimeout(function() {
+									if (!this.passed) {
+										this.passed = false;
+									}
+									return cb(null, this);
+								}, 1000);
+							} else {
+								this.passed = false;
 								return cb(null, this);
-							}, 1000);
-						} else {
+							}
+						} catch (e) {
 							this.passed = false;
 							return cb(null, this);
 						}
