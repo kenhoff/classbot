@@ -15,12 +15,17 @@ module.exports = {
 						ProcessExternalResources: ["script"]
 					},
 					done: function(error, window) {
-						if (("isThisPersonOld" in window) && (typeof window.isThisPersonOld == "function") && (window.isThisPersonOld(27) == "Wow, you're old!") && window.isThisPersonOld(26) == "Nope! Not old.") {
-							this.passed = true;
-						} else {
+						try {
+							if (("isThisPersonOld" in window) && (typeof window.isThisPersonOld == "function") && (window.isThisPersonOld(27) == "Wow, you're old!") && window.isThisPersonOld(26) == "Nope! Not old.") {
+								this.passed = true;
+							} else {
+								this.passed = false;
+							}
+							return cb(null, this);
+						} catch (e) {
 							this.passed = false;
+							return cb(null, this);
 						}
-						return cb(null, this);
 					}.bind(this)
 				});
 			} else {
