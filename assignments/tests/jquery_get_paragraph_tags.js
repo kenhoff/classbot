@@ -16,6 +16,7 @@ module.exports = {
 						this.passed = false;
 						var newElement = window.document.createElement("p");
 						newElement.className = "rightAligned";
+						window.document.body.appendChild(newElement);
 						if (("getAllRightAlignedParagraphTags" in window) && (typeof window.getAllRightAlignedParagraphTags == "function")) {
 							try {
 								var results = window.getAllRightAlignedParagraphTags();
@@ -24,6 +25,10 @@ module.exports = {
 								return cb(null, this);
 							}
 							var allResultsCorrect = true;
+							if (!(Array.isArray(results)) || (results.length == 0)) {
+								this.passed = false;
+								return cb(null, this);
+							}
 							for (var result of results) {
 								if (!result.className.includes("rightAligned") || (result.tagName != "P")) {
 									allResultsCorrect = false;
