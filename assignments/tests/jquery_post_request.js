@@ -3,7 +3,7 @@ var jsdom = require('jsdom');
 const sinon = require('sinon');
 
 module.exports = {
-	description: "a function `postNewKanyeQuote` exists, that, when called, makes a POST request using jQuery to `http://randomquote.hoff.tech/api/lists/kanyequotes` (it doesn't matter what quote you submit)",
+	description: "a function `postNewKanyeQuote` exists, that, when called, makes a POST request (with `method: \"POST\"` - using the method key, and \"POST\" in all caps) using jQuery to `https://randomquote.hoff.tech/api/lists/kanyequotes` (it doesn't matter what quote you submit)",
 	assert: function(url, cb) {
 		request(url, function(error, response, body) {
 			if (!error && response.statusCode == 200) {
@@ -16,14 +16,14 @@ module.exports = {
 					done: (error, window) => {
 						try {
 							if ("$" in window) {
-								var myStub = sinon.stub(window.$, "ajax");
+								var mySpy = sinon.spy(window.$, "ajax");
 							}
 							if ("postNewKanyeQuote" in window) {
 								window.postNewKanyeQuote();
 							}
-							if ((myStub.callCount >= 1) && myStub.calledWithMatch({
-									url: "http://randomquote.hoff.tech/api/lists/kanyequotes",
-									type: "post"
+							if ((mySpy.callCount >= 1) && mySpy.calledWithMatch({
+									url: "https://randomquote.hoff.tech/api/lists/kanyequotes",
+									method: "POST"
 								})) {
 								this.passed = true;
 							} else {
