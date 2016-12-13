@@ -21,14 +21,22 @@ module.exports = {
 							try {
 								var results = window.getAllRightAlignedParagraphTags();
 							} catch (e) {
+								// console.log("caught:", e);
 								this.passed = false;
 								return cb(null, this);
 							}
 							var allResultsCorrect = true;
-							if (!(Array.isArray(results)) || (results.length == 0)) {
+							// console.log("results:");
+							// console.log(results);
+							// console.log("results is iterable:", isIterable(results));
+							// console.log("results length:", results.length);
+							if (!(isIterable(results)) || (results.length == 0)) {
+								// console.log("results doesn't look right:");
+								// console.log(results);
 								this.passed = false;
 								return cb(null, this);
 							}
+							// console.log(results);
 							for (var result of results) {
 								if (!result.className.includes("rightAligned") || (result.tagName != "P")) {
 									allResultsCorrect = false;
@@ -51,3 +59,12 @@ module.exports = {
 		}.bind(this));
 	}
 };
+
+
+function isIterable(obj) {
+	// checks for null and undefined
+	if (obj == null) {
+		return false;
+	}
+	return typeof obj[Symbol.iterator] === 'function';
+}
