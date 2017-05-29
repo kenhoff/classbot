@@ -73,8 +73,6 @@ module.exports = function(url, cb) {
 								var elements = window.document.getElementsByTagName('*');
 								for (var element of elements) {
 									// check the element's style to see if it's got the style we're testing for
-									// console.log(window.getComputedStyle(element).alignItems);
-									console.log(window.getComputedStyle(element)[this.style[2]]);
 									if (window.getComputedStyle(element)[this.style[2]] == [this.style[1]]) {
 										this.passed = true;
 										return cb(null, this);
