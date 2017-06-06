@@ -57,3 +57,10 @@ pre, code {
 p, li {
     line-height: 1.5em;
 }
+code, pre {
+    background: #eee;
+}
+code {
+    padding: 2px 4px;
+    /*vertical-align: text-bottom;*/
+}
